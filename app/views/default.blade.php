@@ -14,7 +14,7 @@
  
 <div class="navbar-header">
 <div style="color:white;margin:-10px 0 0 0;width:250px;height:30px;float:left">
-	<a class="navbar-brand" href="/items"><image src='images/logo1.png'></a>
+	<a class="navbar-brand" href="/items"><image src='/images/logo1.png'></a>
 </div>
 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 <span class="sr-only">Toggle navigation</span>
@@ -38,7 +38,7 @@
 <div class="input-group input-group-sm btn-group">
 <input type="text" class="form-control" style="width:100px" id="sn" placeholder="商品名称">
 <span class="input-group-btn">
-<button type="button" class="btn btn-danger btn-sm" id="searchbutton" onclick="javascript:search()">搜索商品</button>
+<button type="button" class="btn btn-danger btn-sm" id="searchbutton" onclick="javascript:search()">搜索</button>
 <button type="button" class="btn btn-danger dropdown-toggle" style="width:15px;padding-left:3px;" data-toggle="dropdown">
 <span class="caret"></span>
 <span class="sr-only">Toggle Dropdown</span>
@@ -54,6 +54,7 @@
 
 <div class="hum">
 <a href="/showcart">我的购物车</a>
+<a href="/orders">我的订单</a>
 </div>
 </ul>
 </div>

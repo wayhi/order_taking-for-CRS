@@ -1,6 +1,6 @@
 <?php
 Namespace app\controllers;
-use View, Sentry, DB, Redirect,Request,URL,Cookie,Item,ItemSkin,Skin,Notification,Input,Order,OrderItem,Debugbar;
+use View, Sentry, DB, Redirect,Request,URL,Cookie,Item,ItemSkin,Skin,Notification,Input,Order,OrderItem,Count,Crypt,Debugbar;
 class OrderController extends \BaseController {
 
 	/**
@@ -10,8 +10,8 @@ class OrderController extends \BaseController {
 	 */
 	public function index()
 	{
-		$items = Item::with('skins')->with('category')->orderby('created_at','desc')->paginate(5);
-		return \View::make('items/index')->with('items',$items);
+		$orders = Order::where('owner_id',Sentry::getUser()->id)->orderBy('created_at','desc')->paginate(5);
+		return \View::make('orders/index')->with('orders',$orders);
 		
 	}
 
@@ -21,26 +21,14 @@ class OrderController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
-		
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(){
-	
+	public function create(){
 		if(Input::has('submit') && (intval(Input::get('itemcount'))>0)){
 			
 			$order_new = DB::transaction(function(){
 				
 				$order = new Order();
 				$order->activity_code= '';
-				$order->order_number = '';
+				$order->order_number = Self::generate_order_number();
 				$order->owner_id = Sentry::getUser()->id;
 				$order->qty_total = 0;
 				$order->amount_original = 0.00;
@@ -74,7 +62,19 @@ class OrderController extends \BaseController {
 		
 		}
 		
-		return 'hello';
+		$cookie = Cookie::forget('item_id');
+		return redirect::route('orders.index')->withCookie($cookie);
+	}
+
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store(){
+	
+		
 	}
 
 
@@ -86,7 +86,9 @@ class OrderController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$uid = Crypt::decrypt($id);
+		$order = Order::with('order_items','order_items.item')->find($uid);
+		return View::make('orders.show')->with('order',$order);
 	}
 
 
@@ -125,5 +127,30 @@ class OrderController extends \BaseController {
 		//
 	}
 	
+	private function generate_order_number(){
+		
+		$yearmonth = strval(Date("Y").Date("m"));
+		$type_code = "IO".$yearmonth;
+		
+		$serial_record = Count::where('Year_Month',$yearmonth)->first();
+		
+		if($serial_record){
+			
+			$serial_no = intval($serial_record->serial_no)+1;
+			$serial_record->serial_no = $serial_no;
+			$serial_record->save();
+			
+		}else{
+			
+			$serial_record = new Count();
+			$serial_record->Year_Month = $yearmonth;
+			$serial_record->serial_no = 1;
+			$serial_record->save();
+			$serial_no=1;
+			
+		}
+		
+		return $type_code.strval(10000+$serial_no);
+	}
 	
 }

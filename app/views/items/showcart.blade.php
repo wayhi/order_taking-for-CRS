@@ -32,10 +32,10 @@
 	
 </script>
 {{ Notification::showAll() }}
-{{Former::secure_open()->id('shopping_cart')->Method('POST')->route('orders.store')}}
-<div class='col-md-offset-2 col-md-6 col-lg-6'>
+{{Former::secure_open()->id('shopping_cart')->Method('POST')->route('orders.create')}}
+<div class='col-md-offset-2 col-md-8 col-lg-8'>
 <h2><p align='center'>我的购物车</p></h2><br>
-<table style="background-color:#fff;font-size:12px;" class="table table-condensed" >
+<table class=" table n_table" >
 	
         <thead>
             <tr>
