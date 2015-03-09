@@ -97,7 +97,8 @@ class ItemController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$item=Item::find($id);
+		return View::make('items/show')->with('item',$item);
 	}
 
 
@@ -138,8 +139,14 @@ class ItemController extends \BaseController {
 	
 	public function showcart(){
 		$item_id = Cookie::get('item_id');
+		if(is_array($item_id)){
+			$item_id = array_unique($item_id);
+		}
 		$itemcount = count($item_id);
+		//Debugbar::info($item_id);
+		//$itemcount=1;
 		$items = Item::whereIn('id',$item_id)->get();
+		//Debugbar::info($items);
 		$amount = Item::whereIn('id',$item_id)->select(DB::raw('sum(price_actual) as amount'))->pluck('amount');
 		return View::make('items/showcart')->with('items',$items)->with('amount',$amount)->with('itemcount',$itemcount);
 	

@@ -15,7 +15,7 @@
 @foreach ($items as $item)
 <div class="box">
 <div class="pull-left lb_l">
-	<image src='{{$item->image->url('thumbnail')}}' >
+	<image src="{{$item->image->url('thumbnail')}}" >
 </div>
 <div class="pull-left lb_r">
 <h4>
