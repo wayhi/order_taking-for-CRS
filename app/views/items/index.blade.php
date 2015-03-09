@@ -4,7 +4,7 @@
 {{ Notification::showAll() }}
 
 <div class="row">
-<div class="col-md-9">
+<div class="col-md-12">
 <div class="pull-left"><h3 style="margin-top:0;">全部产品</h3></div>
 
 <div class="pull-right li_menu">
@@ -34,6 +34,7 @@
 		<span class='label label-danger'>{{$skin->type}}</span>		
 	@endif
 @endforeach
+
 <br>
 <span class="label label-info">{{$item->size}}</span> <span class="label label-success">{{$item->texture}}</span>
  <span class="label label-default">市场价：¥{{$item->price_original}}</span> 

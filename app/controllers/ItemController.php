@@ -141,13 +141,22 @@ class ItemController extends \BaseController {
 		$item_id = Cookie::get('item_id');
 		if(is_array($item_id)){
 			$item_id = array_unique($item_id);
+			$itemcount = count($item_id);
+			$items = Item::whereIn('id',$item_id)->get();
+			$amount = Item::whereIn('id',$item_id)->select(DB::raw('sum(price_actual) as amount'))->pluck('amount');
 		}
-		$itemcount = count($item_id);
+		if(is_null($item_id)){
+			$item_id=[];
+			$itemcount = 0;
+			$items =null;
+			$amount = 0.00;
+		}
+		
 		//Debugbar::info($item_id);
 		//$itemcount=1;
-		$items = Item::whereIn('id',$item_id)->get();
+		
 		//Debugbar::info($items);
-		$amount = Item::whereIn('id',$item_id)->select(DB::raw('sum(price_actual) as amount'))->pluck('amount');
+		
 		return View::make('items/showcart')->with('items',$items)->with('amount',$amount)->with('itemcount',$itemcount);
 	
 	}
