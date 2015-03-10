@@ -54,7 +54,7 @@
 <div class="input-group input-group-sm btn-group">
 <input type="text" class="form-control" style="width:180px" id="sn" placeholder="商品名称">
 <span class="input-group-btn">
-<button type="button" class="btn btn-danger btn-sm" id="searchbutton" onclick="javascript:search()">搜索商品</button>
+<button type="button" class="btn btn-danger btn-sm" id="searchbutton" onclick="javascript:search()">搜索</button>
 <button type="button" class="btn btn-danger dropdown-toggle" style="width:15px;padding-left:3px;" data-toggle="dropdown">
 <span class="caret"></span>
 <span class="sr-only">Toggle Dropdown</span>
