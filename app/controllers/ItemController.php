@@ -10,7 +10,7 @@ class ItemController extends \BaseController {
 	 */
 	public function index()
 	{
-		$items = Item::with('skins')->with('category')->orderby('created_at','desc')->paginate(5);
+		$items = Item::with('skins')->with('category')->orderby('created_at','desc')->paginate(9);
 		return \View::make('items/index')->with('items',$items);
 		
 	}
