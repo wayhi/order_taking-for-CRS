@@ -3,7 +3,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">产品介绍</h4>
 </div>
- <div class="modal-body">
+ 
 <div class="box">
 <div class="pull-left lb_l">
 	<image src="{{$item->image->url('original')}}" >
@@ -31,7 +31,7 @@
 <div style="clear:both"> </div>
 
 </div>
-</div>
+
 <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         
