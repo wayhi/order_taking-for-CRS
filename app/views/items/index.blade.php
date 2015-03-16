@@ -73,4 +73,4 @@ $(document).on('hidden.bs.modal', function (e) {
 
 @endfor
 <div class='pagination inline'>{{$items->links();}}</div>
-@stop 
+@stop
