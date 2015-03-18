@@ -126,6 +126,7 @@ return array(
 		'Former\FormerServiceProvider',
 		'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
 
 	),
 
@@ -197,6 +198,7 @@ return array(
 		'Notification'      => 'Krucas\Notification\Facades\Notification',
 		'Former' 			=> 'Former\Facades\Former',
 		'Debugbar' 			=> 'Barryvdh\Debugbar\Facade',
+		'Excel' 			=> 'Maatwebsite\Excel\Facades\Excel',
 
 	),
 

@@ -16,8 +16,6 @@ $(document).on('hidden.bs.modal', function (e) {
 <div  id='myModal' class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-    
-      
     </div>
   </div>
 </div>
@@ -45,6 +43,7 @@ $(document).on('hidden.bs.modal', function (e) {
 <div class="show1">{{$items[$i+$k]->category->name}}</div> <a href="{{URL::route('items.show',$items[$i+$k]->id)}}" data-toggle="modal" data-target="#myModal">{{$items[$i+$k]->item_name}}</a>
 </h4><br>
 <div style="clear:both"></div>
+<span class="label label-info">{{$items[$i+$k]->size}}</span>
 <span class="label label-success">¥ {{$items[$i+$k]->price_actual}}</span> 
 
 @if($items[$i+$k]->activated==1)

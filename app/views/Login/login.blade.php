@@ -48,9 +48,11 @@
 <div class='row'>
 	  @if ($errors->has('login'))
 
-        <div class="alert alert-error">{{ $errors->first('login', ':message') }}</div>
+        <div class="alert alert-danger">{{ $errors->first('login', ':message') }}</div>
       
       @endif
+      
+      {{Notification::showAll()}}
 </div>
 
       <div class='row'>

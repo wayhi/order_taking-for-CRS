@@ -13,6 +13,7 @@
 Route::get('login', array('as' => 'login', 'uses' => 'app\controllers\LoginController@getLogin'));
 Route::post('login','app\controllers\LoginController@postLogin');
 Route::get('/', array('as' => 'login', 'uses' => 'app\controllers\LoginController@getLogin'));
+Route::post('/','app\controllers\LoginController@postLogin');
 Route::group(array('before'=>'auth.login'),function(){
 Route::get('logout', array('as'=>'logout','uses'=>'app\controllers\LoginController@getLogout'));
 Route::get('/showcart',['as'=>'showcart','uses'=>'app\controllers\ItemController@showcart']);
@@ -20,5 +21,6 @@ Route::get('/clearcart',['as'=>'clearcart','uses'=>'app\controllers\ItemControll
 Route::get('items/addtocart/{item_id}/{page?}',['as'=>'items.addtocart','uses'=>'app\controllers\ItemController@addtocart']);	
 Route::Resource('items','app\controllers\ItemController');
 Route::Resource('orders','app\controllers\OrderController');
+Route::Resource('activity','app\controllers\ActivityController');
 });	
 

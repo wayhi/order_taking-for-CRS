@@ -84,7 +84,7 @@ class ItemController extends \BaseController {
 		
 		}
 		
-		Notification::success('The product has been added successfully!');
+		Notification::success('The product "'.$item_new->item_name.'" has been created successfully!');
 		return Redirect::route('items.create');
 	}
 

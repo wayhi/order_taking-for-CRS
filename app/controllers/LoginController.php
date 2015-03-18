@@ -46,15 +46,23 @@ class LoginController extends \BaseController {
       }else{
       	$user = Sentry::authenticateAndRemember($credentials);
       }
-	//Debugbar::info($user);
       
-        	return Redirect::route('items.index');
+	//Debugbar::info($user);
+      		if($user){
+        		return Redirect::route('items.index');
+        	}else{
+        		Notification::error('Email address or Password was not correct!');
+        		//return Redirect::route('login')->withErrors(array('login' => $e->getMessage()));
+        		return Redirect::route('login');
+        	}	
         
       }
     
     catch(\Exception $e)
     {
-      return Redirect::route('login')->withErrors(array('login' => $e->getMessage()));
+      			Notification::error('Email address or Password was not correct!');
+        		//return Redirect::route('login')->withErrors(array('login' => $e->getMessage()));
+        		return Redirect::route('login');
     }
   }
   
