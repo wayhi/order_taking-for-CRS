@@ -27,6 +27,7 @@
 
 
 <li><a href="/activity/create">新建 New Activity</a></li>
+<li><a href="/activity">返回 Back</a></li>
 </ul>
 
 

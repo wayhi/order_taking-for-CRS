@@ -127,6 +127,7 @@ return array(
 		'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 	),
 

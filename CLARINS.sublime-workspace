@@ -1,0 +1,248 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ac",
+				"activity_item"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/config/app.php",
+			"settings":
+			{
+				"buffer_size": 8159,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/Activity.php",
+			"settings":
+			{
+				"buffer_size": 114,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?php\nNamespace app\\controllers;\nuse View, Sentry, Activity, ActivityItem, DB, Excel,Redirect,Request,URL,Cookie,Item,ItemSkin,Skin,Notification,Input,Debugbar;\n\n\nclass ActivityController extends \\BaseController {\n\n	/**\n	 * Display a listing of the resource.\n	 *\n	 * @return Response\n	 */\n	public function index()\n	{\n		$activities = Activity::orderBy('created_at','desc')->paginate(10);\n		return View::make('activity/index')->with('activities',$activities);\n	}\n\n\n	/**\n	 * Show the form for creating a new resource.\n	 *\n	 * @return Response\n	 */\n	public function create()\n	{\n		return View::make('activity/create');\n	}\n\n\n	/**\n	 * Store a newly created resource in storage.\n	 *\n	 * @return Response\n	 */\n	public function store()\n	{\n		if(Input::has('submit'))\n		{	\n		\n			$New_activity = DB::transaction(function(){\n				\n				$activity = New Activity();\n				$activity->code = Input::get('code');\n				$activity->name = Input::get('name');\n				$activity->start = Input::get('start');\n				$activity->end = Input::get('end');\n				$activity->type = Input::get('type');\n				$activity->qty_limit = intval(Input::get('qty_limit'));\n				$activity->amount_limit = floatval(Input::get('amount_limit'));\n				$activity->updated_by = Sentry::getUser()->id;\n				$activity->activated = Input::get('activated');\n				$activity->save();\n				\n				\n				$results = Excel::load('system/uploads/ccsc.xlsx')->get()->first();\n				foreach($results as $row)\n				{\n					$activity_item = new ActivityItem();\n					$activity_item->activity_id = $activity->id;\n					$activity_item->item_id = 0;\n					Debugbar::info($row);\n					$activity_item->item_limit = $row['order_qty'];\n					$activity_item->item_stock = $row['amount_price'];\n					$activity_item->retail_price = $row['retail_price'];\n					$activity_item->offer_price = $row['offer_price'];\n					$activity_item->save();\n					\n					\n				}	\n			});\n			return Redirect::route(activity.index);\n		}\n	}\n\n\n	/**\n	 * Display the specified resource.\n	 *\n	 * @param  int  $id\n	 * @return Response\n	 */\n	public function show($id)\n	{\n		//\n	}\n\n\n	/**\n	 * Show the form for editing the specified resource.\n	 *\n	 * @param  int  $id\n	 * @return Response\n	 */\n	public function edit($id)\n	{\n		//\n	}\n\n\n	/**\n	 * Update the specified resource in storage.\n	 *\n	 * @param  int  $id\n	 * @return Response\n	 */\n	public function update($id)\n	{\n		//\n	}\n\n\n	/**\n	 * Remove the specified resource from storage.\n	 *\n	 * @param  int  $id\n	 * @return Response\n	 */\n	public function destroy($id)\n	{\n		//\n	}\n\n\n}\n",
+			"file": "app/controllers/ActivityController.php",
+			"file_size": 2482,
+			"file_write_time": 1426733750000000,
+			"settings":
+			{
+				"buffer_size": 2488,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"CI Codeintel Helper: Create IDE helper"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/config/app.php",
+					"settings":
+					{
+						"buffer_size": 8159,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4681,
+								4681
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 64.0,
+						"translation.y": 1664.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/models/Activity.php",
+					"settings":
+					{
+						"buffer_size": 114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/controllers/ActivityController.php",
+					"settings":
+					{
+						"buffer_size": 2488,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1840,
+								1840
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 415.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
