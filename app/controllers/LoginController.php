@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use Auth, BaseController, Validator, Form, Input, Redirect, URL, Sentry, View, Payment,Crypt, Notification;
+use Auth, BaseController, Session,Validator, Activity,Form, Input, Redirect, URL, Sentry, View, Payment,Crypt, Notification;
 
 class LoginController extends \BaseController {
 
@@ -14,7 +14,7 @@ class LoginController extends \BaseController {
   {
     if(Sentry::check()){
     
-    	return Redirect::route('items.index');
+    	return Redirect::route('login.show_policy');
     	
     }else{
     
@@ -49,7 +49,9 @@ class LoginController extends \BaseController {
       
 	//Debugbar::info($user);
       		if($user){
-        		return Redirect::route('items.index');
+        		
+            return Redirect::route('login.show_policy');
+
         	}else{
         		Notification::error('Email address or Password was not correct!');
         		//return Redirect::route('login')->withErrors(array('login' => $e->getMessage()));
@@ -157,4 +159,37 @@ class LoginController extends \BaseController {
   	}
   	
   }
+
+  public function show_policy()
+  {
+
+      Session::put('activity_id',0);
+      $activity = Activity::where('activated',1)->orderBy('created_at','desc')->first();
+      if($activity<>null){
+
+        //Session::put('activity_id',$activity->id);
+        return View::make('Login/policy')->with('activity',$activity);
+
+
+      }else{
+        
+        return "Not Availible!";
+
+
+      }
+      
+
+
+  }
+
+  public function confirm($activity_id)
+  {
+
+    Session::put('activity_id',$activity_id);
+    return Redirect::route('items.index');
+
+  }
+
+
+  
 }

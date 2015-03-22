@@ -1,6 +1,6 @@
 <?php
 Namespace app\controllers;
-use View, Sentry, DB, Redirect,Request,URL,Cookie,Item,ItemSkin,Skin,Notification,Input,Debugbar;
+use View, Sentry, DB, Redirect,Request,URL,Cookie,Item,ActivityItem,ItemSkin,Skin,Notification,Input,Debugbar;
 class ItemController extends \BaseController {
 
 	/**
@@ -10,7 +10,8 @@ class ItemController extends \BaseController {
 	 */
 	public function index()
 	{
-		$items = Item::with('skins')->with('category')->orderby('created_at','desc')->paginate(9);
+		//$items = Item::with('skins')->with('category')->orderby('created_at','desc')->paginate(9);
+		$items = ActivityItem::with('item.category')->orderby('created_at','desc')->paginate(9);
 		return \View::make('items/index')->with('items',$items);
 		
 	}
@@ -142,8 +143,10 @@ class ItemController extends \BaseController {
 		if(is_array($item_id)){
 			$item_id = array_unique($item_id);
 			$itemcount = count($item_id);
-			$items = Item::whereIn('id',$item_id)->get();
-			$amount = Item::whereIn('id',$item_id)->select(DB::raw('sum(price_actual) as amount'))->pluck('amount');
+			//$items = Item::whereIn('id',$item_id)->get();
+			//$amount = Item::whereIn('id',$item_id)->select(DB::raw('sum(price_actual) as amount'))->pluck('amount');
+			$items = ActivityItem::with('item')->whereIn('id',$item_id)->get();
+			$amount = ActivityItem::whereIn('id',$item_id)->select(DB::raw('sum(offer_price) as amount'))->pluck('amount');
 		}
 		if(is_null($item_id)){
 			$item_id=[];
@@ -167,7 +170,7 @@ class ItemController extends \BaseController {
 	}
 
 	public function addtocart($item_id,$page=1){
-		$item = Item::find($item_id);
+		$item = ActivityItem::with('item')->find($item_id);
 		$items_exist = Cookie::get('item_id');
 		if(($items_exist)==null){
 			$items_exist=[];
@@ -178,7 +181,7 @@ class ItemController extends \BaseController {
 		
 		$cookie = Cookie::make('item_id',$items, 600);
 
-		Notification::success($item->item_name.'已加入您的购物车。');
+		Notification::success($item->item->item_name.'已加入您的购物车。');
 		//Debugbar::info($url);
 		return Redirect::route('items.index',['page'=>$page])->withCookie($cookie);
 	

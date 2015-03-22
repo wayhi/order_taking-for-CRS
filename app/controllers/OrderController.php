@@ -1,6 +1,7 @@
 <?php
 Namespace app\controllers;
-use View, Sentry, DB, Redirect,Request,URL,Cookie,Item,ItemSkin,Skin,Notification,Input,Order,OrderItem,Count,Crypt,Debugbar;
+use View, Sentry,Session, DB, Redirect,Request,URL,Cookie,Item,
+ItemSkin,Skin,Notification,Input,Order,OrderItem,Count,Crypt,Debugbar;
 class OrderController extends \BaseController {
 
 	/**
@@ -27,7 +28,7 @@ class OrderController extends \BaseController {
 			$order_new = DB::transaction(function(){
 				
 				$order = new Order();
-				$order->activity_code= '';
+				$order->activity_code= Session::get('activity_id');
 				$order->order_number = Self::generate_order_number();
 				$order->owner_id = Sentry::getUser()->id;
 				$order->qty_total = 0;

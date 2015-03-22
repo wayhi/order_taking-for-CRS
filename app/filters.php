@@ -93,5 +93,14 @@ Route::filter('auth.login', function()
 {
     if ( ! Sentry::check()) {
         return Redirect::route('login');
+
     }
+});
+
+Route::filter('activated',function()
+{
+	if (Session::get('activity_id') === 0)
+	{
+		return Redirect::route('login.show_policy');
+	}
 });

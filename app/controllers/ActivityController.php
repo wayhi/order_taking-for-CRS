@@ -51,7 +51,7 @@ class ActivityController extends \BaseController {
 				$activity->updated_by = Sentry::getUser()->id;
 				$activity->activated = Input::get('activated');
 				$activity->save();
-				
+
 				
 				$results = Excel::load('system/uploads/ccsc.xlsx')->get()->first();
 				foreach($results as $row)

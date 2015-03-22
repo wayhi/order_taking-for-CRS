@@ -45,7 +45,7 @@
                 </th>
                 <th style="vertical-align:middle; text-align:center;">单价 <br> Price</th>
                 <th style="vertical-align:middle; text-align:center;">数量 <br> Quantity</th>
-                
+                <th style="vertical-align:middle; text-align:center;">操作 <br> Action</th>
                 
             </tr>
         </thead>
@@ -54,28 +54,34 @@
             @for($i=0;$i<$itemcount;$i++)
             	<tr>
                     
-                    <td><image src="{{$items[$i]->image->url('micro')}}">
+                    <td><image src="{{$items[$i]->item->image->url('micro')}}">
                     <input type='hidden' name='item_id{{$i}}' value='{{$items[$i]->id}}'>
                     </td>
-                    <td style="vertical-align:middle; text-align:left;">{{$items[$i]->item_name}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{$items[$i]->price_actual}}
-                    <input type='hidden' name='item_price{{$i}}' value='{{$items[$i]->price_actual}}'>
-                    <input type='hidden' name='item_price_o{{$i}}' value='{{$items[$i]->price_original}}'>
+                    <td style="vertical-align:middle; text-align:left;">{{$items[$i]->item->item_name}}</td>
+                    <td style="vertical-align:middle; text-align:center;">{{$items[$i]->offer_price}}
+                    <input type='hidden' name='item_price{{$i}}' value='{{$items[$i]->offer_price}}'>
+                    <input type='hidden' name='item_price_o{{$i}}' value='{{$items[$i]->retail_price}}'>
                     
                     </td>
                     <td style="vertical-align:middle; text-align:center;">
-                    <button class='btn btn-default btn-xs' type='button' onclick="reduceqty('qty{{$items[$i]->id}}','qty_{{$items[$i]->id}}',{{$items[$i]->price_actual}})">-</button>
-                    <input type='button' class='btn btn-default btn-xs' name='item_qty{{$i}}' id='qty{{$items[$i]->id}}' value='1'>
+                    <button class='btn btn-default btn-xs' type='button' 
+                    onclick="reduceqty('qty{{$items[$i]->id}}','qty_{{$items[$i]->id}}',{{$items[$i]->offer_price}})">-</button>
+                    <input type='button' class='btn btn-default btn-xs' name='item_qty{{$i}}' 
+                    id='qty{{$items[$i]->id}}' value='1'>
                     <input type='hidden' name="item_qty_{{$i}}" id='qty_{{$items[$i]->id}}' value='1'>
-                    <button class='btn btn-default btn-xs' type='button' onclick="addqty('qty{{$items[$i]->id}}','qty_{{$items[$i]->id}}',{{$items[$i]->price_actual}})">+</button>
+                    <button class='btn btn-default btn-xs' type='button' 
+                    onclick="addqty('qty{{$items[$i]->id}}','qty_{{$items[$i]->id}}',{{$items[$i]->offer_price}})">+</button>
                     
                     </td>  
+                    <td style="vertical-align:middle; text-align:center;">
+                        <a href='' class='btn btn-default btn-sm'>删除</a>
+                    </td>
                 </tr>
                @endfor 
            
            <tr>
         
-        <td  colspan=4 align='right'><div class='pull-right'>Total Amount 总价：¥
+        <td  colspan=5 align='right'><div class='pull-right'>Total Amount 总价：¥
         <input type='button' class='btn btn-default btn-sm' id='totalamount' value='{{$amount}}'>
         </div></td>
         

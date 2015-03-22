@@ -36,4 +36,11 @@ class Item extends Eloquent implements StaplerableInterface{
     
     
     }
+
+    public function activity_items()
+    {
+        return $this->hasMany('ActivityItem','item_id','id');
+
+
+    }
 }

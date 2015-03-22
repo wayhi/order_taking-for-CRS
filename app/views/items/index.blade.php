@@ -34,19 +34,21 @@ $(document).on('hidden.bs.modal', function (e) {
 
 <div class="box">
 <div class="lb_l">
-	<image src="{{$items[$i+$k]->image->url('thumbnail')}}" >
+	<image src="{{$items[$i+$k]->item->image->url('thumbnail')}}" >
 	
 </div>
 
 <div class="lb_r">
 <h4>
-<div class="show1">{{$items[$i+$k]->category->name}}</div> <a href="{{URL::route('items.show',$items[$i+$k]->id)}}" data-toggle="modal" data-target="#myModal">{{$items[$i+$k]->item_name}}</a>
+<div class="show1">{{$items[$i+$k]->item->category->name}}</div>
+ <a href="{{URL::route('items.show',$items[$i+$k]->item->id)}}" data-toggle="modal" data-target="#myModal">
+ {{$items[$i+$k]->item->item_name}}</a>
 </h4><br>
 <div style="clear:both"></div>
-<span class="label label-info">{{$items[$i+$k]->size}}</span>
-<span class="label label-success">¥ {{$items[$i+$k]->price_actual}}</span> 
+<span class="label label-info">{{$items[$i+$k]->item->size}}</span>
+<span class="label label-success">¥ {{$items[$i+$k]->offer_price}}</span> 
 
-@if($items[$i+$k]->activated==1)
+@if($items[$i+$k]->item_stock>0)
 <div class='pull-right'>
 
 <a href="{{URL::route('items.addtocart',['id'=>$items[$i+$k]->id,'page'=>Input::get('page')])}}"> 
