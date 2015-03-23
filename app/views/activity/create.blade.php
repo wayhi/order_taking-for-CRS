@@ -38,9 +38,11 @@
 
 
 <div class='row'>
+	<div class='col-md-offset-2 col-md-4 col-lg-4'>
+		{{ Former::file('attachement')->label('上传产品目录 ：')->max(5,'MB')}}
 	
-	<div class='col-md-offset-2 col-md-4 col-lg-4'>	
-		{{Former::number('qty_limit','限购数量(单个产品)')->class('form-control')}}
+	
+	<a href=''>下载模版</a>
 	</div>
 	<div class='col-md-2 col-lg-2'>
 		{{Former::radios('activated','活动中')->checkboxes(0,1)->inline()->check(1)}}
@@ -49,15 +51,6 @@
 		{{Former::radios('activated','暂停')->checkboxes(0,1)->inline()->check(0)}}
 	</div>
 
-</div>
-
-<div class='row'>
-	<div class='col-md-offset-2 col-md-8 col-lg-8'>
-		{{ Former::file('attachement')->label('上传产品目录 ：')->max(5,'MB')}}
-	
-	
-	<a href=''>下载模版</a>
-	</div>
 </div>
 
 

@@ -25,7 +25,7 @@
 			<td><a href='{{URL::Route('activity.show',Crypt::encrypt($activity->id))}}'>{{$activity->name}}</a></td>
 			<td>{{$activity->start}}</td>
 			<td>{{$activity->end}}</td>
-			<td>{{$activity->updated_by}}</td>
+			<td>{{$activity->creator->last_name}}</td>
 			<td>{{$activity->updated_at}}</td>
 			</tr>
 			

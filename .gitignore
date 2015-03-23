@@ -13,3 +13,5 @@ Thumbs.db
 *.bbprojectsettings
 
 *.bbprojectsettings
+
+*.sublime-workspace

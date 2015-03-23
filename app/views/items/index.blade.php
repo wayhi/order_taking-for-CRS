@@ -41,7 +41,7 @@ $(document).on('hidden.bs.modal', function (e) {
 <div class="lb_r">
 <h4>
 <div class="show1">{{$items[$i+$k]->item->category->name}}</div>
- <a href="{{URL::route('items.show',$items[$i+$k]->item->id)}}" data-toggle="modal" data-target="#myModal">
+ <a href="{{URL::route('items.show',$items[$i+$k]->id)}}" data-toggle="modal" data-target="#myModal">
  {{$items[$i+$k]->item->item_name}}</a>
 </h4><br>
 <div style="clear:both"></div>

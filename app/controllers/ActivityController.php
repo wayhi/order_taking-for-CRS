@@ -12,7 +12,7 @@ class ActivityController extends \BaseController {
 	 */
 	public function index()
 	{
-		$activities = Activity::orderBy('created_at','desc')->paginate(10);
+		$activities = Activity::with('creator')->orderBy('created_at','desc')->paginate(10);
 		return View::make('activity/index')->with('activities',$activities);
 	}
 
@@ -46,7 +46,6 @@ class ActivityController extends \BaseController {
 				$activity->start = Input::get('start');
 				$activity->end = Input::get('end');
 				$activity->type = Input::get('type');
-				$activity->qty_limit = intval(Input::get('qty_limit'));
 				$activity->amount_limit = floatval(Input::get('amount_limit'));
 				$activity->updated_by = Sentry::getUser()->id;
 				$activity->activated = Input::get('activated');

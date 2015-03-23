@@ -74,7 +74,7 @@
                     
                     </td>  
                     <td style="vertical-align:middle; text-align:center;">
-                        <a href='' class='btn btn-default btn-sm'>删除</a>
+                        <a href="{{URL::route('delfrmcart',$items[$i]->id)}}" class='btn btn-default btn-sm'>删除</a>
                     </td>
                 </tr>
                @endfor 

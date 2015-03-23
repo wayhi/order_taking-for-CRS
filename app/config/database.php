@@ -60,7 +60,7 @@ return array(
 			'password'  => 'checkin',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => 'crs_',
+			'prefix'    => 'ccsc_',
 		),
 
 		'pgsql' => array(

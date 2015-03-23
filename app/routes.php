@@ -21,7 +21,9 @@ Route::group(array('before'=>'auth.login'),function(){
 	Route::get('/showcart',['as'=>'showcart','uses'=>'app\controllers\ItemController@showcart']);
 	Route::get('/clearcart',['as'=>'clearcart','uses'=>'app\controllers\ItemController@clearcart']);
 	Route::get('items/addtocart/{item_id}/{page?}',
-		['as'=>'items.addtocart','uses'=>'app\controllers\ItemController@addtocart']);	
+		['as'=>'items.addtocart','uses'=>'app\controllers\ItemController@addtocart']);
+	Route::get('/delfrmcart/{item_id}',
+		['as'=>'delfrmcart','uses'=>'app\controllers\ItemController@delfrmcart']);		
 	Route::group(['before'=>'activated'],function(){
 		Route::Resource('items','app\controllers\ItemController');
 	});

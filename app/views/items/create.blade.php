@@ -26,15 +26,6 @@
 
 </div>
 
-<div class='row'>
-	<div class='col-md-offset-2 col-md-4 col-lg-4'>
-		{{Former::text('price_original','市场价')->class('form-control')}}
-	</div>
-	<div class='col-md-4 col-lg-4'>	
-		{{Former::text('price_actual','现价')->class('form-control')}}
-	</div>
-
-</div>
 
 <div class='row'>
 	<div class='col-md-offset-2 col-md-4 col-lg-4'>
@@ -47,10 +38,7 @@
 </div>
 <div class='row'>
 	
-	<div class='col-md-offset-2 col-md-4 col-lg-4'>	
-		{{Former::number('qty','数量')->class('form-control')}}
-	</div>
-	<div class='col-md-4 col-lg-4'>
+	<div class='col-md-offset-2 col-md-4 col-lg-4'>
 		{{Former::textarea('how_to_use','使用方法')->class('form-control')}}
 	</div>
 
@@ -75,9 +63,7 @@
 	<div class='col-md-offset-2 col-md-4 col-lg-4'>
 		{{ Former::files('attachement')->label('上传图片 ：')->max(5,'MB')}}
 	</div>
-	<div class='col-md-4 col-lg-4'>
-		{{ Former::date('expiration','产品有效期')->class('form-control')}}
-	</div>
+	
 </div>
 <hr>
 <div class ='row'>
