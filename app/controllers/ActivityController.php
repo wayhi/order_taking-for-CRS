@@ -1,6 +1,6 @@
 <?php
 Namespace app\controllers;
-use View, Sentry, Activity, ActivityItem, DB, Excel,Redirect,Request,URL,Cookie,Item,ItemSkin,Skin,Notification,Input,Debugbar;
+use View, Sentry, Activity, ActivityItem, DB, Crypt,Excel,Redirect,Request,URL,Cookie,Item,ItemSkin,Skin,Notification,Input,Debugbar;
 
 
 class ActivityController extends \BaseController {
@@ -80,7 +80,9 @@ class ActivityController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$uid=Crypt::decrypt($id);
+		$activity = Activity::find($uid);
+		return View::make('activity/show')->with('activity',$activity);
 	}
 
 

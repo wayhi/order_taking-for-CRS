@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"path": "/Applications/MAMP/htdocs/clarins"
+			"follow_symlinks": true,
+			"path": "."
 		}
 	]
 }

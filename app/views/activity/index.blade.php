@@ -15,7 +15,8 @@
                 <th>开始时间<br>Commencement </th>
                 <th>结束时间<br>Termination</th>
                 <th>管理人<br>Updated by</th> 
-                <th>更新时间<br>Updated at</th>  
+                <th>更新时间<br>Updated at</th>
+                <th>操作<br>Action</th>  
             </tr>
         </thead>
 		<tbody>
@@ -27,6 +28,7 @@
 			<td>{{$activity->end}}</td>
 			<td>{{$activity->creator->last_name}}</td>
 			<td>{{$activity->updated_at}}</td>
+			<td><a class="btn btn-xs btn-warning" href=''>更改</a></td>
 			</tr>
 			
 			@endforeach

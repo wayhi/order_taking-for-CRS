@@ -64,14 +64,4 @@
         </div>
 {{Former::close()}}
 
-
-
-
-
-
-
-
-
-
-
 @stop
