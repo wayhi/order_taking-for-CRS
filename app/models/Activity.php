@@ -8,7 +8,15 @@ class Activity extends Eloquent{
 	public function creator(){
 
 
-	return $this->belongsTo('User','updated_by','id');
+		return $this->belongsTo('User','updated_by','id');
+
+
+	}
+
+	public function a_items(){
+
+
+		return $this->hasMany('ActivityItem','activity_id','id');
 
 
 	}

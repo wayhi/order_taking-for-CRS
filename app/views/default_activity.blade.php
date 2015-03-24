@@ -26,15 +26,15 @@
 
 
 
-<li><a href="/activity/create">新建 New Activity</a></li>
-<li><a href="/activity">返回 Back</a></li>
+<!--li><a href="/activity/create">新建 New Activity</a></li>
+<li><a href="/activity">返回 Back</a></li-->
 </ul>
 
 
 <ul class="nav navbar-nav navbar-right huser">
 
 <div class="hum" style='color:#fff'>
-当前用户：{{Sentry::getuser()->first_name.' '.Sentry::getuser()->last_name;}}
+当前用户：{{Sentry::getuser()->last_name;}}
  
 
 </div>

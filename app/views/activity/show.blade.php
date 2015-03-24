@@ -53,7 +53,47 @@
 
 
 <hr>
-<h3 align='center'>产品列表</h3>
+<h3 align='center'>供应产品列表</h3>
+<div class='row'>
+	<div class='col-md-12 col-lg-12'>
+		<table class="table n_table" >
+			<thead>
+				<tr>
+					<th>产品SKU</th>
+					<th>产品名称</th>
+					<th>市场价</th>
+					<th>优惠价</th>
+					<th>供应总量</th>
+					<th>最小起订</th>
+					<th>最大可供(每人)</th>
+					<th>产品有效期</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody>
+			@foreach($activity->a_items as $a_item)
+				<tr>
+					<td>{{$a_item->item->SKU_code}}</td>
+					<td>{{$a_item->item->item_name}}</td>
+					<td>{{$a_item->retail_price}}</td>
+					<td>{{$a_item->offer_price}}</td>
+					<td>{{$a_item->item_stock}}</td>
+					<td>{{$a_item->MOQ}}</td>
+					<td>{{$a_item->item_limit}}</td>
+					<td>{{$a_item->expiration}}</td>
+					<td>{{$a_item->Memo}}</td>
+				</tr>
+			@endforeach	
 
+			</tbody>
+		</table>	
+
+	</div>
+
+</div>	
+<div class='col-md-offset-6 col-md-6 col-lg-6'>
+	
+	<a class='btn btn-sm btn-default'  href="{{URL::Route('activity.index')}}">返回</a>
+</div>
 
 @stop

@@ -15,6 +15,14 @@ class ActivityItem extends Eloquent{
 
 	}
 
+	public function activity()
+	{
+
+		return $this->belongsTo('Activity','activity_id','id');
+
+
+	}
+
 
 
 }

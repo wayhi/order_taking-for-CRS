@@ -81,7 +81,7 @@ class ActivityController extends \BaseController {
 	public function show($id)
 	{
 		$uid=Crypt::decrypt($id);
-		$activity = Activity::find($uid);
+		$activity = Activity::with('a_items.item')->find($uid);
 		return View::make('activity/show')->with('activity',$activity);
 	}
 
@@ -93,8 +93,11 @@ class ActivityController extends \BaseController {
 	 * @return Response
 	 */
 	public function edit($id)
-	{
-		//
+	{	
+		$uid=Crypt::decrypt($id);
+		$activity = Activity::with('a_items.item')->find($uid);
+		return View::make('activity/edit')->with('activity',$activity);
+		
 	}
 
 
@@ -106,7 +109,57 @@ class ActivityController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		
+
+		if( Input::has('submit'))
+		{	
+			
+			//$New_activity = DB::transaction(function()
+			//{
+				
+				$uid=Crypt::decrypt($id);
+				//Debugbar::info($uid);
+				$activity = Activity::find($uid);
+				if($activity)
+				{
+					$activity->code = Input::get('code');
+					$activity->name = Input::get('name');
+					$activity->start = Input::get('start');
+					$activity->end = Input::get('end');
+					$activity->type = Input::get('type');
+					$activity->amount_limit = floatval(Input::get('amount_limit'));
+					$activity->updated_by = Sentry::getUser()->id;
+					$activity->activated = Input::get('activated');
+					$activity->save();
+
+					/***
+					$results = Excel::load('system/uploads/ccsc.xlsx')->get()->first();
+					foreach($results as $row)
+					{
+						$activity_item = new ActivityItem();
+						$activity_item->activity_id = $activity->id;
+						$activity_item->item_id = 0;
+						Debugbar::info($row);
+						$activity_item->item_limit = $row['order_qty'];
+						$activity_item->item_stock = $row['amount_price'];
+						$activity_item->retail_price = $row['retail_price'];
+						$activity_item->offer_price = $row['offer_price'];
+						$activity_item->save();
+						
+					}	***/
+					Notification::success("The activity infomation has been updated successfully!");
+				}else{
+
+					Notification::error("The activity infomation has NOT been updated successfully!");
+
+				}	
+				//return $activity;
+		
+			//});
+			
+			
+			return Redirect::route('activity.edit',Crypt::encrypt($activity->id));
+		}
 	}
 
 
