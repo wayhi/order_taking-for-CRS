@@ -44,11 +44,8 @@
 	
 	<a href=''>下载模版</a>
 	</div>
-	<div class='col-md-2 col-lg-2'>
-		{{Former::radios('activated','活动中')->checkboxes(0,1)->inline()->check(1)}}
-	</div>
-	<div class='col-md-2 col-lg-2'>
-		{{Former::radios('activated','暂停')->checkboxes(0,1)->inline()->check(0)}}
+	<div class='col-md-4 col-lg-4'>
+		{{Former::radios('activated','')->radios('暂停','活动中')->inline()}}
 	</div>
 
 </div>

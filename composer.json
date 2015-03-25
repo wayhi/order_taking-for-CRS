@@ -9,7 +9,7 @@
 		"cartalyst/sentry": "2.1.4",
 		"edvinaskrucas/notification": "3.0.1",
 		"anahkiasen/html-object": "1.4.0",
-		"anahkiasen/former": "dev-master",
+		"anahkiasen/former": "3.5.*",
 		"codesleeve/stapler": "1.0.*",
 		"codesleeve/laravel-stapler": "1.0.*",
 		"barryvdh/laravel-debugbar": "~1.8",

@@ -3,7 +3,7 @@
 <h2 align='center'>创建新的活动</h2>
 {{ Notification::showAll() }}
 
- {{ Former::secure_open()->id('ActivityForm')->Method('POST')->route('activity.store')}}
+ {{ Former::secure_open()->id('ActivityForm')->Method('POST')->route('activity.store')->enctype('multipart/form-data')}}
     	
     	
 <div class="row">

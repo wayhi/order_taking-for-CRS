@@ -51,7 +51,33 @@ class ActivityController extends \BaseController {
 				$activity->activated = Input::get('activated');
 				$activity->save();
 
-				
+				if(Input::hasFile('attachement'))
+					{		
+						$attached = Input::file('attachement')->move('system/uploads','ccsc1.xlsx');
+
+						
+						$results = Excel::load('system/uploads/ccsc1.xlsx')->get()->first();
+						//$results = Excel::load($attached)->get()->first();
+						Debugbar::info($results);
+						foreach($results as $row)
+						{
+							$activity_item = new ActivityItem();
+							$activity_item->activity_id = $activity->id;
+							$activity_item->item_id = 2;
+							$activity_item->MOQ = $row['minimum_order_qty'];
+							$activity_item->item_limit = $row['max_order_qty'];
+							$activity_item->item_stock = $row['inventory'];
+							$activity_item->retail_price = $row['retail_price'];
+							$activity_item->offer_price = $row['offer_price'];
+							$activity_item->updated_by = Sentry::getUser()->id;
+							$activity_item->expiration = $row['expiration']->format('YYYY/mm/dd');
+							$activity_item->memo = $row['comments'];
+							$activity_item->save();
+							
+						}	
+					}
+
+				/*
 				$results = Excel::load('system/uploads/ccsc.xlsx')->get()->first();
 				foreach($results as $row)
 				{
@@ -65,9 +91,11 @@ class ActivityController extends \BaseController {
 					$activity_item->offer_price = $row['offer_price'];
 					$activity_item->save();
 					
-				}	
+				}	*/
+				return $activity;
 			});
-			return Redirect::route(activity.index);
+			Notification::success('The Activity - "'.$New_activity->name.'" has been created successfully!');
+			return Redirect::route('activity.index');
 		}
 	}
 
@@ -132,25 +160,31 @@ class ActivityController extends \BaseController {
 					$activity->activated = Input::get('activated');
 					$activity->save();
 
-					/***
-					$results = Excel::load('system/uploads/ccsc.xlsx')->get()->first();
-					foreach($results as $row)
-					{
-						$activity_item = new ActivityItem();
-						$activity_item->activity_id = $activity->id;
-						$activity_item->item_id = 0;
-						Debugbar::info($row);
-						$activity_item->item_limit = $row['order_qty'];
-						$activity_item->item_stock = $row['amount_price'];
-						$activity_item->retail_price = $row['retail_price'];
-						$activity_item->offer_price = $row['offer_price'];
-						$activity_item->save();
+					if(Input::hasFile('attachement'))
+					{		
+						$attached = Input::file('attachement');
+
 						
-					}	***/
-					Notification::success("The activity infomation has been updated successfully!");
+						//$results = Excel::load('system/uploads/ccsc.xlsx')->get()->first();
+						$results = Excel::load($attached)->get()->first();
+						foreach($results as $row)
+						{
+							$activity_item = new ActivityItem();
+							$activity_item->activity_id = $activity->id;
+							$activity_item->item_id = 0;
+							$activity_item->MOQ = $row['Minimum_Order_Qty'];
+							$activity_item->item_limit = $row['Max_Order_Qty'];
+							$activity_item->item_stock = $row['Inventory'];
+							$activity_item->retail_price = $row['retail_price'];
+							$activity_item->offer_price = $row['offer_price'];
+							$activity_item->save();
+							
+						}	
+					}
+					Notification::success("The activity information has been updated successfully!");
 				}else{
 
-					Notification::error("The activity infomation has NOT been updated successfully!");
+					Notification::error("The activity information has NOT been updated successfully!");
 
 				}	
 				//return $activity;

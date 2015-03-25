@@ -58,7 +58,7 @@
 	<div class='col-md-12 col-lg-12'>
 		<table class="table n_table" >
 			<thead>
-				<tr>
+				<tr class='warning'>
 					<th>产品SKU</th>
 					<th>产品名称</th>
 					<th>市场价</th>
