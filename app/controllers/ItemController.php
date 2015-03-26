@@ -36,59 +36,7 @@ class ItemController extends \BaseController {
 	 */
 	public function store(){
 	
-		if(Input::has('submit')){    //提交表单
-			
-			$item_new = DB::transaction(function(){
-			
-				$item = new Item();
-				$item->SKU_code = Input::get('SKU_code');
-				$item->category_id = 0;
-				$item->item_name = Input::get('item_name');
-				$item->texture = Input::get('texture');
-				$item->description = Input::get('description');
-				$item->description_short = Input::get('description_short');
-				$item->how_to_use = Input::get('how_to_use');
-				//$item->price_original = Input::get('price_original');
-				//$item->price_actual = Input::get('price_actual');
-				$item->size = Input::get('size');
-				//$item->qty = Input::get('qty');
-				//$item->expiration = Input::get('expiration');
-				$item->activated = 1;
-				if(Input::hasFile('attachement')) {
-					$item->image = Input::file('attachement')[0];
-				}
-				$item->save();
-				if(Input::has('skin_1')){
-					$itemskin = new ItemSkin();
-					$itemskin->item_id = $item->id;
-					$itemskin->skin_id = 1;
-					$itemskin->save();
-				}
-				if(Input::has('skin_2')){
-					$itemskin = new ItemSkin();
-					$itemskin->item_id = $item->id;
-					$itemskin->skin_id = 2;
-					$itemskin->save();
-				}
-				if(Input::has('skin_3')){
-					$itemskin = new ItemSkin();
-					$itemskin->item_id = $item->id;
-					$itemskin->skin_id = 3;
-					$itemskin->save();
-				}
-				if(Input::has('skin_4')){
-					$itemskin = new ItemSkin();
-					$itemskin->item_id = $item->id;
-					$itemskin->skin_id = 4;
-					$itemskin->save();
-				}
-				return $item;
-			});
 		
-		}
-		
-		Notification::success('The product "'.$item_new->item_name.'" has been created successfully!');
-		return Redirect::route('items.create');
 	}
 
 

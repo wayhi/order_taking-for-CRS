@@ -27,7 +27,9 @@ Route::group(array('before'=>'auth.login'),function(){
 	Route::group(['before'=>'activated'],function(){
 		Route::Resource('items','app\controllers\ItemController');
 	});
+	Route::get('products/import',['as'=>'products.import','uses'=>'app\controllers\ProductController@import']);
 	Route::Resource('orders','app\controllers\OrderController');
 	Route::Resource('activity','app\controllers\ActivityController');
+	Route::Resource('products','app\controllers\ProductController');
 });	
 

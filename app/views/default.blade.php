@@ -48,7 +48,7 @@
 
 <ul class="dropdown-menu" role="menu">
 <li><a href="/">人员管理</a></li>
-<li><a href="/items/create">产品管理</a></li>
+<li><a href="{{URL::Route('products.index')}}">产品管理</a></li>
 <li><a href="/activity">活动管理</a></li>
 <li><a href="/">订单管理</a></li>
 </ul>

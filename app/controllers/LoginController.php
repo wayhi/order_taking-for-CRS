@@ -174,7 +174,7 @@ class LoginController extends \BaseController {
 
       }else{
         
-        return "Not Availible!";
+        return View::make('Login/na');
 
 
       }
