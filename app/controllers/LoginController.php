@@ -164,7 +164,8 @@ class LoginController extends \BaseController {
   {
 
       Session::put('activity_id',0);
-      $activity = Activity::where('activated',1)->orderBy('created_at','desc')->first();
+      $activity = Activity::where('activated',1)->where('start','<',date('Y-m-d h:i:s',time()))
+      ->where('end','>',date('Y-m-d h:i:s',time()))->orderBy('created_at','desc')->first();
       if($activity<>null){
 
         //Session::put('activity_id',$activity->id);

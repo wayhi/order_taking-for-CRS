@@ -6,7 +6,7 @@
 <h2 align='center'>所有活动</h2><br>
 {{ Notification::showAll() }}
 
-<table class="table n_table" >
+<table class="table n_table table-striped" >
 	
         <thead>
             <tr>
@@ -16,6 +16,7 @@
                 <th>结束时间<br>Termination</th>
                 <th>管理人<br>Updated by</th> 
                 <th>更新时间<br>Updated at</th>
+                <th>活动状态<br>Status</th>
                 <th>操作<br>Action</th>  
             </tr>
         </thead>
@@ -28,6 +29,14 @@
 			<td>{{$activity->end}}</td>
 			<td>{{$activity->creator->last_name}}</td>
 			<td>{{$activity->updated_at}}</td>
+			<td>
+				@if($activity->activated == 0) 
+				暂停
+				@elseif(($activity->end < date("Y-m-d h:i:s",time())) or ($activity->start > date('Y-m-d h:i:s',time())))
+				不在活动期 
+				@else活动中
+				@endif
+			</td>
 			<td><a class="btn btn-xs btn-warning" href="{{URL::Route('activity.edit',Crypt::encrypt($activity->id))}}">更改</a></td>
 			</tr>
 			

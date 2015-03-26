@@ -3,7 +3,8 @@
 <h2 align='center'>活动详情</h2>
 {{ Notification::showAll() }}
 
- {{ Former::secure_open()->id('ActivityForm')->Method('POST')->route('activity.update',Crypt::encrypt($activity->id))}}
+ {{ Former::secure_open()->id('ActivityForm')->Method('POST')
+ ->route('activity.update',Crypt::encrypt($activity->id))->enctype('multipart/form-data')}}
     	
  {{Former::populate($activity)}}   	
 <div class="row">

@@ -43,7 +43,7 @@
 <div class='row'>
 	<div class='col-md-offset-2 col-md-4 col-lg-4'>
 	活动状态：
-	@if($activity->activated===1)
+	@if($activity->activated==1)
 	活动中
 	@else 
 	暂停
@@ -71,7 +71,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			@foreach($activity->a_items as $a_item)
+			@foreach($a_items as $a_item)
 				<tr>
 					<td>{{$a_item->item->SKU_code}}</td>
 					<td>{{$a_item->item->item_name}}</td>
@@ -87,7 +87,7 @@
 
 			</tbody>
 		</table>	
-
+		<div class='pagination inline'>{{$a_items->links();}}</div>
 	</div>
 
 </div>	

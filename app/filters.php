@@ -99,8 +99,14 @@ Route::filter('auth.login', function()
 
 Route::filter('activated',function()
 {
-	if (Session::get('activity_id') === 0)
+	if (Session::get('activity_id') == 0)
 	{
 		return Redirect::route('login.show_policy');
+	}else{
+		$activity_id = Session::get('activity_id');
+		$activity = Activity::find($activity_id)->where('activated',1)->first();
+		if(!$activity){
+			return Redirect::route('login.show_policy');
+		}
 	}
 });

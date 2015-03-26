@@ -73,7 +73,7 @@
 <ul class="nav navbar-nav huser">
 
 <div class="hum" style='color:#fff'>
-当前用户：{{Sentry::getuser()->first_name.' '.Sentry::getuser()->last_name;}}
+当前用户：{{Sentry::getuser()->last_name;}}
  &nbsp<a href="/showcart">购物车</a>
 
 </div>

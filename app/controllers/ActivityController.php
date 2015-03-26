@@ -38,7 +38,7 @@ class ActivityController extends \BaseController {
 		if(Input::has('submit'))
 		{	
 		
-			$New_activity = DB::transaction(function(){
+			$msg = DB::transaction(function(){
 				
 				$activity = New Activity();
 				$activity->code = Input::get('code');
@@ -53,48 +53,44 @@ class ActivityController extends \BaseController {
 
 				if(Input::hasFile('attachement'))
 					{		
-						$attached = Input::file('attachement')->move('system/uploads','ccsc1.xlsx');
+						$attached = Input::file('attachement');
 
 						
-						$results = Excel::load('system/uploads/ccsc1.xlsx')->get()->first();
-						//$results = Excel::load($attached)->get()->first();
-						Debugbar::info($results);
+						//$results = Excel::load('system/uploads/ccsc1.xlsx')->get()->first();
+						$results = Excel::load($attached)->get()->first();
+						//Debugbar::info($results);
+						$items_not_found = "";
 						foreach($results as $row)
 						{
 							$activity_item = new ActivityItem();
 							$activity_item->activity_id = $activity->id;
-							$activity_item->item_id = 2;
+							$item_id = $this->getItemId($row['item_code']);
+							if($item_id===0){
+								$items_not_found = $items_not_found.$row['item_code'].",";
+							}
+							$activity_item->item_id = $item_id;
 							$activity_item->MOQ = $row['minimum_order_qty'];
 							$activity_item->item_limit = $row['max_order_qty'];
 							$activity_item->item_stock = $row['inventory'];
 							$activity_item->retail_price = $row['retail_price'];
 							$activity_item->offer_price = $row['offer_price'];
 							$activity_item->updated_by = Sentry::getUser()->id;
-							$activity_item->expiration = $row['expiration']->format('YYYY/mm/dd');
+							$activity_item->expiration = $row['expiration']->format('Y-m-d');
 							$activity_item->memo = $row['comments'];
 							$activity_item->save();
 							
 						}	
 					}
 
-				/*
-				$results = Excel::load('system/uploads/ccsc.xlsx')->get()->first();
-				foreach($results as $row)
-				{
-					$activity_item = new ActivityItem();
-					$activity_item->activity_id = $activity->id;
-					$activity_item->item_id = 0;
-					Debugbar::info($row);
-					$activity_item->item_limit = $row['order_qty'];
-					$activity_item->item_stock = $row['amount_price'];
-					$activity_item->retail_price = $row['retail_price'];
-					$activity_item->offer_price = $row['offer_price'];
-					$activity_item->save();
-					
-				}	*/
-				return $activity;
+				
+				return $items_not_found;
 			});
-			Notification::success('The Activity - "'.$New_activity->name.'" has been created successfully!');
+			if($msg<>""){
+				Notification::warning('The item(s) "'.$msg.'" has/have NOT been loaded successfully, please check the product setting!');
+			}else{
+				Notification::success('The Activity - "'.$activity->name.'" has been created successfully!');
+			}
+			
 			return Redirect::route('activity.index');
 		}
 	}
@@ -109,8 +105,9 @@ class ActivityController extends \BaseController {
 	public function show($id)
 	{
 		$uid=Crypt::decrypt($id);
-		$activity = Activity::with('a_items.item')->find($uid);
-		return View::make('activity/show')->with('activity',$activity);
+		$activity = Activity::find($uid);
+		$a_items = ActivityItem::with('item')->where('activity_id',$uid)->paginate(8);
+		return View::make('activity/show')->with(['activity'=>$activity,'a_items'=>$a_items]);
 	}
 
 
@@ -160,28 +157,47 @@ class ActivityController extends \BaseController {
 					$activity->activated = Input::get('activated');
 					$activity->save();
 
+					$items_not_found = "";
 					if(Input::hasFile('attachement'))
 					{		
 						$attached = Input::file('attachement');
-
+						$existing_items = ActivityItem::where('activity_id',$uid);
+						$existing_items->delete();
 						
 						//$results = Excel::load('system/uploads/ccsc.xlsx')->get()->first();
 						$results = Excel::load($attached)->get()->first();
+						
 						foreach($results as $row)
 						{
 							$activity_item = new ActivityItem();
-							$activity_item->activity_id = $activity->id;
-							$activity_item->item_id = 0;
-							$activity_item->MOQ = $row['Minimum_Order_Qty'];
-							$activity_item->item_limit = $row['Max_Order_Qty'];
-							$activity_item->item_stock = $row['Inventory'];
+							$activity_item->activity_id = $uid;
+							$item_id = $this->getItemId($row['item_code']);
+							if($item_id===0){
+								$items_not_found = $items_not_found.$row['item_code'].",";
+							}
+							$activity_item->item_id = $item_id;
+							
+							//$activity_item->item_id = $this->getItemId($row['item_code']);
+							$activity_item->MOQ = $row['minimum_order_qty'];
+							$activity_item->item_limit = $row['max_order_qty'];
+							$activity_item->item_stock = $row['inventory'];
 							$activity_item->retail_price = $row['retail_price'];
 							$activity_item->offer_price = $row['offer_price'];
+							$activity_item->updated_by = Sentry::getUser()->id;
+							$activity_item->expiration = $row['expiration']->format('Y-m-d');
+							$activity_item->memo = $row['comments'];
 							$activity_item->save();
 							
 						}	
 					}
-					Notification::success("The activity information has been updated successfully!");
+					if($items_not_found == ""){
+						Notification::success("The activity information has been updated successfully!");
+					}else{
+						Notification::warning("The item(s): ".$items_not_found." has/have NOT been loaded successfully,
+							please check the product setting!");
+					}
+
+					
 				}else{
 
 					Notification::error("The activity information has NOT been updated successfully!");
@@ -206,6 +222,23 @@ class ActivityController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	private function getItemId($skucode)
+	{
+
+		$item = Item::where('SKU_Code','=',$skucode)->first();
+		if($item){
+
+			return $item->id;
+
+		}else{
+
+			return 0;
+		}
+		
+
+
 	}
 
 

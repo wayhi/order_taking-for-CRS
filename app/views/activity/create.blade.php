@@ -8,7 +8,7 @@
     	
 <div class="row">
 	<div class='col-md-offset-2 col-md-4 col-lg-4'>
-		{{Former::text('code','活动代码')->class('form-control')}}
+		{{Former::text('code','活动编号:')->class('form-control')}}
 	</div>
 	<div class='col-md-4 col-lg-4'>	
 		{{Former::text('name','活动名称：')->class('form-control')}}
@@ -17,10 +17,10 @@
 
 <div class='row'>
 	<div class='col-md-offset-2 col-md-4 col-lg-4'>
-		{{Former::date('start','开始时间')->class('form-control')}}
+		{{Former::text('start','开始时间:')->class('form-control')->placeholder('YYYY-mm-dd hh:mm:ss')}}
 	</div>
 	<div class='col-md-4 col-lg-4'>	
-		{{Former::date('end','结束时间')->class('form-control')}}
+		{{Former::text('end','结束时间:')->class('form-control')->placeholder('YYYY-mm-dd hh:mm:ss')}}
 	</div>
 
 </div>
