@@ -21,6 +21,11 @@ class Activity extends Eloquent{
 
 	}
 
+	public function orders(){
+
+		return $this->hasMany('Order','activity_id','id');
+	}
+
 
 
 }

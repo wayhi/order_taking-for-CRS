@@ -11,7 +11,7 @@ class OrderController extends \BaseController {
 	 */
 	public function index()
 	{
-		$orders = Order::where('owner_id',Sentry::getUser()->id)->orderBy('created_at','desc')->paginate(5);
+		$orders = Order::with('activity')->where('owner_id',Sentry::getUser()->id)->orderBy('created_at','desc')->paginate(10);
 		return \View::make('orders/index')->with('orders',$orders);
 		
 	}
@@ -28,7 +28,7 @@ class OrderController extends \BaseController {
 			$order_new = DB::transaction(function(){
 				
 				$order = new Order();
-				$order->activity_code= Session::get('activity_id');
+				$order->activity_id= Session::get('activity_id');
 				$order->order_number = Self::generate_order_number();
 				$order->owner_id = Sentry::getUser()->id;
 				$order->qty_total = 0;
@@ -88,8 +88,14 @@ class OrderController extends \BaseController {
 	public function show($id)
 	{
 		$uid = Crypt::decrypt($id);
-		$order = Order::with('order_items','order_items.item')->find($uid);
-		return View::make('orders.show')->with('order',$order);
+		$order = Order::with('order_items.item')->where('owner_id',Sentry::getUser()->id)->find($uid);
+		if($order){
+			return View::make('orders.show')->with('order',$order);
+		}else{
+			Notification::error('Visit Not Authorized!');
+			return Redirect::route('orders.index');
+		}
+		
 	}
 
 
@@ -152,6 +158,13 @@ class OrderController extends \BaseController {
 		}
 		
 		return $type_code.strval(10000+$serial_no);
+	}
+
+	public function manage($actvity_id,$item_id=0,$user_id=0)
+	{
+		$orders = Order::with('order_items','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
+		return \View::make('orders/manage')->with('orders',$orders);
+		
 	}
 	
 }

@@ -13,10 +13,10 @@
 
 <div class="col-md-offset-2 col-md-8 col-lg-8">
 	
-<P>
+<Pre>
 	{{$activity->policy}}
 
-</P>
+</Pre>
 </div>
 
 <div class="col-md-offset-2 col-md-4 col-lg-4">

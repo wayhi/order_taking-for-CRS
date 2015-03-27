@@ -28,7 +28,7 @@
                     
                     </td>
                     <td style="vertical-align:middle; text-align:left;">{{$order_item->item->item_name}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{$order_item->item->price_actual}}
+                    <td style="vertical-align:middle; text-align:center;">{{$order_item->price}}
                     </td>
                     <td style="vertical-align:middle; text-align:center;">
                    {{$order_item->qty}}

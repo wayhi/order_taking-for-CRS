@@ -36,13 +36,19 @@
 
 </div>
 
+<div class='row'>
+	<div class='col-md-offset-2 col-md-8 col-lg-8'>	
+		{{Former::textarea('policy','活动规则')->class('form-control')->rows(6)}}
+	</div>
+
+</div>	
 
 <div class='row'>
 	<div class='col-md-offset-2 col-md-4 col-lg-4'>
 		{{ Former::file('attachement')->label('上传产品目录 ：')->max(5,'MB')}}
 	
 	
-	<a href=''>下载模版</a>
+	<a href="{{URL::route('download_template','activity_item_template.xlsx')}}">下载模版</a>
 	</div>
 	<div class='col-md-2 col-lg-2'>
 		{{Former::radios('activated','活动中')->checkboxes(0,1)->inline()->check(1)}}

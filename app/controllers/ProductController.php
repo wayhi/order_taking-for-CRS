@@ -35,7 +35,7 @@ class ProductController extends \BaseController {
 	 */
 	public function store()
 	{
-		if(Input::has('submit')){    //提交表单
+		if(Input::has('submit')){    //新增单个商品
 			
 			$item_new = DB::transaction(function(){
 			
@@ -79,11 +79,83 @@ class ProductController extends \BaseController {
 				}
 				return $item;
 			});
+
+		Notification::success('The product "'.$item_new->item_name.'" has been created successfully!');
+		return Redirect::route('products.create');
 		
 		}
 		
-		Notification::success('The product "'.$item_new->item_name.'" has been created successfully!');
-		return Redirect::route('products.create');
+		if (Input::has('import')) { //批量导入产品
+			$n=0;
+			if(Input::hasFile('attachement')){
+
+				$attached = Input::file('attachement');
+				$results = Excel::load($attached)->get();
+				Debugbar::info($results);
+				foreach($results as $row){
+					$item = new Item();
+					$item->SKU_code = $row['sku_code'];
+					$item->category_id = $row["category"];
+					$item->item_name = $row["product_name_cn"];
+					$item->item_name_2 = $row["product_name_en"];
+					$item->texture = $row["texture"];
+					$item->description = $row["description"];
+					$item->description_short = $row["description_short"];
+					$item->how_to_use = $row["how_to_use"];
+					$item->size = $row["size"];
+					$item->activated = 1;
+					$item->save();
+					$n +=1;
+					if($row['一般肌肤1']==1){
+						$itemskin = new ItemSkin();
+						$itemskin->item_id = $item->id;
+						$itemskin->skin_id = 1;
+						$itemskin->save();
+					}
+					if($row['干性肌肤']==1){
+						$itemskin = new ItemSkin();
+						$itemskin->item_id = $item->id;
+						$itemskin->skin_id = 2;
+						$itemskin->save();
+					}
+					if($row['混合型肌肤']==1){
+						$itemskin = new ItemSkin();
+						$itemskin->item_id = $item->id;
+						$itemskin->skin_id = 3;
+						$itemskin->save();
+					}
+					if($row['油性肌肤']==1){
+						$itemskin = new ItemSkin();
+						$itemskin->item_id = $item->id;
+						$itemskin->skin_id = 4;
+						$itemskin->save();
+					}
+
+				}
+				
+				if($n>0){
+					if($n==1){
+						Notification::success("There is 1 product imported into system successfully.");
+						return redirect::route("products.index");
+					}else{
+						Notification::success("There are ".$n." products imported into system successfully.");
+						return redirect::route("products.index");
+					}
+					
+				}else{
+					Notification::error("There are NO products imported into system successfully.");
+					return redirect::route("products.import");
+				}
+				
+			}else{ //no file selected
+
+				Notification::error('Please choose an appropriate Excel file.');
+				return redirect::route("products.import");
+			}
+			
+			
+		}
+		
 	}
 
 

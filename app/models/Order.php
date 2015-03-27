@@ -12,4 +12,17 @@ class Order extends Eloquent{
 		return $this->hasMany('OrderItem','order_id');
 	
 	}
+
+	public function activity(){
+
+		return $this->belongsTo('Activity','activity_id','id');
+
+
+	}
+
+	public function owner(){
+
+		return $this->belongsTo('User','owner_id','id');
+
+	}
 }

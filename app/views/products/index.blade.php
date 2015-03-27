@@ -11,7 +11,7 @@
         <thead>
             <tr class='warning'>
                 <th></th>
-                <th>SKU编号<br>SKU Code</th>
+                <th>SKU Code</th>
                 <th>产品名称<br>Product Name</th>
                 <th>产品类别<br>Product Category</th>
                 <th>容量<br>size</th>

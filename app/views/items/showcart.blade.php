@@ -55,7 +55,7 @@
             	<tr>
                     
                     <td><image src="{{$items[$i]->item->image->url('micro')}}">
-                    <input type='hidden' name='item_id{{$i}}' value='{{$items[$i]->id}}'>
+                    <input type='hidden' name='item_id{{$i}}' value='{{$items[$i]->item->id}}'>
                     </td>
                     <td style="vertical-align:middle; text-align:left;">{{$items[$i]->item->item_name}}</td>
                     <td style="vertical-align:middle; text-align:center;">{{$items[$i]->offer_price}}

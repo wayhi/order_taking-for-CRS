@@ -36,7 +36,12 @@
 	</div>
 
 </div>
+<div class='row'>
+	<div class='col-md-offset-2 col-md-8 col-lg-8'>	
+		{{Former::textarea('policy','活动规则')->class('form-control')->rows(6)}}
+	</div>
 
+</div>	
 
 <div class='row'>
 	<div class='col-md-offset-2 col-md-4 col-lg-4'>

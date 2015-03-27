@@ -106,7 +106,7 @@ class ItemController extends \BaseController {
 		}
 		
 		
-		Debugbar::info($item_id);
+		//Debugbar::info($item_id);
 		//$itemcount=1;
 		
 		//Debugbar::info($items);

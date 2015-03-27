@@ -104,7 +104,8 @@ Route::filter('activated',function()
 		return Redirect::route('login.show_policy');
 	}else{
 		$activity_id = Session::get('activity_id');
-		$activity = Activity::find($activity_id)->where('activated',1)->first();
+		$activity = Activity::find($activity_id)->where('activated',1)->where('start','<',date('Y-m-d h:i:s',time()))
+      ->where('end','>',date('Y-m-d h:i:s',time()))->first();
 		if(!$activity){
 			return Redirect::route('login.show_policy');
 		}

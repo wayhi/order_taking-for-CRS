@@ -27,7 +27,10 @@ Route::group(array('before'=>'auth.login'),function(){
 	Route::group(['before'=>'activated'],function(){
 		Route::Resource('items','app\controllers\ItemController');
 	});
+	Route::get('download_template/{file_name}',['as'=>'download_template','uses'=>function($file_name)
+		{return Redirect::to('/Templates/'.$file_name);}]);
 	Route::get('products/import',['as'=>'products.import','uses'=>'app\controllers\ProductController@import']);
+	Route::get('orders/manage/{activity_id}/{item_id?}/{user_id?}',['as'=>'orders.manage','uses'=>'app\controllers\OrderController@manage']);
 	Route::Resource('orders','app\controllers\OrderController');
 	Route::Resource('activity','app\controllers\ActivityController');
 	Route::Resource('products','app\controllers\ProductController');

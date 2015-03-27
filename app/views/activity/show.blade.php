@@ -51,7 +51,12 @@
 	</div>
 </div>
 
-
+<div class='row'>
+	<div class='col-md-offset-2 col-md-8 col-lg-8'>
+		<b>活动规则</b>
+		<pre>{{{$activity->policy}}}</pre>
+	</div>
+</div>	
 <hr>
 <h3 align='center'>供应产品列表</h3>
 <div class='row'>

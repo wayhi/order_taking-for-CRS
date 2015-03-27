@@ -46,6 +46,7 @@ class ActivityController extends \BaseController {
 				$activity->start = Input::get('start');
 				$activity->end = Input::get('end');
 				$activity->type = Input::get('type');
+				$activity->policy = Input::get('policy');
 				$activity->amount_limit = floatval(Input::get('amount_limit'));
 				$activity->updated_by = Sentry::getUser()->id;
 				$activity->activated = Input::get('activated');
@@ -155,6 +156,7 @@ class ActivityController extends \BaseController {
 					$activity->amount_limit = floatval(Input::get('amount_limit'));
 					$activity->updated_by = Sentry::getUser()->id;
 					$activity->activated = Input::get('activated');
+					$activity->policy = Input::get('policy');
 					$activity->save();
 
 					$items_not_found = "";
