@@ -50,7 +50,7 @@
 <li><a href="/">人员管理</a></li>
 <li><a href="{{URL::Route('products.index')}}">产品管理</a></li>
 <li><a href="{{URL::Route('activity.index')}}">活动管理</a></li>
-<li><a href="{{URL::Route('orders.manage')}}">订单管理</a></li>
+<li><a href="{{URL::Route('orders.manage',5)}}">订单管理</a></li>
 </ul>
 </li>
 

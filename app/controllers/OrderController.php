@@ -160,9 +160,9 @@ class OrderController extends \BaseController {
 		return $type_code.strval(10000+$serial_no);
 	}
 
-	public function manage($actvity_id,$item_id=0,$user_id=0)
+	public function manage($activity_id,$item_id=0,$user_id=0)
 	{
-		$orders = Order::with('order_items','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
+		$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
 		return \View::make('orders/manage')->with('orders',$orders);
 		
 	}
