@@ -166,5 +166,22 @@ class OrderController extends \BaseController {
 		return \View::make('orders/manage')->with('orders',$orders);
 		
 	}
+
+	public function search(){
+		if(Input::has('submit')){
+
+			$activity_id = Input::get('activity_id');
+			$item_id = Input::get('item_id');
+			$user_id = Input::get('user_id');
+
+			$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
+			return \View::make('orders/manage')->with('orders',$orders);
+		
+
+
+		}
+
+
+	}
 	
 }

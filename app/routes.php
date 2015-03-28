@@ -31,6 +31,7 @@ Route::group(array('before'=>'auth.login'),function(){
 		{return Redirect::to('/Templates/'.$file_name);}]);
 	Route::get('products/import',['as'=>'products.import','uses'=>'app\controllers\ProductController@import']);
 	Route::get('orders/manage/{activity_id}/{item_id?}/{user_id?}',['as'=>'orders.manage','uses'=>'app\controllers\OrderController@manage']);
+	Route::post('orders/manage',['as'=>'orders.manage_post','uses'=>'app\controllers\OrderController@search']);
 	Route::Resource('orders','app\controllers\OrderController');
 	Route::Resource('activity','app\controllers\ActivityController');
 	Route::Resource('products','app\controllers\ProductController');

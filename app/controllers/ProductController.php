@@ -12,7 +12,7 @@ class ProductController extends \BaseController {
 	 */
 	public function index()
 	{
-		$products = Item::with('category')->orderBy('created_at','desc')->paginate(8);
+		$products = Item::with('category')->where('id','>','0')->orderBy('created_at','desc')->paginate(8);
 		return View::make('products/index')->with('products',$products);
 	}
 

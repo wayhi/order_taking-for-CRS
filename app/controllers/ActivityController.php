@@ -51,7 +51,7 @@ class ActivityController extends \BaseController {
 				$activity->updated_by = Sentry::getUser()->id;
 				$activity->activated = Input::get('activated');
 				$activity->save();
-
+				$items_not_found = "";
 				if(Input::hasFile('attachement'))
 					{		
 						$attached = Input::file('attachement');
@@ -60,7 +60,7 @@ class ActivityController extends \BaseController {
 						//$results = Excel::load('system/uploads/ccsc1.xlsx')->get()->first();
 						$results = Excel::load($attached)->get()->first();
 						//Debugbar::info($results);
-						$items_not_found = "";
+						
 						foreach($results as $row)
 						{
 							$activity_item = new ActivityItem();
@@ -89,7 +89,7 @@ class ActivityController extends \BaseController {
 			if($msg<>""){
 				Notification::warning('The item(s) "'.$msg.'" has/have NOT been loaded successfully, please check the product setting!');
 			}else{
-				Notification::success('The Activity - "'.$activity->name.'" has been created successfully!');
+				Notification::success('The Activity - "'.Input::get('name').'" has been created successfully!');
 			}
 			
 			return Redirect::route('activity.index');
