@@ -1,7 +1,8 @@
 <?php
 Namespace app\controllers;
-use View, Sentry,Session, DB, Redirect,Request,URL,Cookie,Item,
-ItemSkin,Skin,Notification,Input,Order,OrderItem,Count,Crypt,Debugbar;
+use View, Sentry,Session, DB, Excel,Redirect,Request,URL,Cookie,Item,
+ItemSkin,Skin,Notification,Input,Order,OrderItem,Count,Crypt;
+
 class OrderController extends \BaseController {
 
 	/**
@@ -163,7 +164,7 @@ class OrderController extends \BaseController {
 	public function manage($activity_id,$item_id=0,$user_id=0)
 	{
 		$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
-		return \View::make('orders/manage')->with('orders',$orders);
+		return \View::make('orders/manage')->with(['orders'=>$orders,'user_id'=>$user_id]);
 		
 	}
 
@@ -174,10 +175,59 @@ class OrderController extends \BaseController {
 			$item_id = Input::get('item_id');
 			$user_id = Input::get('user_id');
 
-			$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
-			return \View::make('orders/manage')->with('orders',$orders);
-		
+			if($item_id==0 && $user_id==0){
+				$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
+				return \View::make('orders/manage')->with('orders',$orders);
+			}elseif($item_id<>0 and $user_id==0){
+				
+				//
+				$orders = Order::with('order_items.item','owner')
+				->where('activity_id',$activity_id)
+				->whereRaw(DB::raw('id in (select order_id from ccsc_order_items where item_id='.$item_id.')'))
+				->orderBy('created_at','desc')->paginate(10);
+				return \View::make('orders/manage')->with('orders',$orders);
 
+			}elseif($item_id==0 and $user_id<>0){
+				$orders = Order::with('order_items.item','owner')
+				->where('activity_id',$activity_id)
+				->where('owner_id',$user_id)
+				->orderBy('created_at','desc')->paginate(10);
+				return \View::make('orders/manage')->with('orders',$orders);
+
+			}else{
+
+				$orders = Order::with('order_items.item','owner')
+				->where('activity_id',$activity_id)
+				->whereRaw(DB::raw('id in (select order_id from ccsc_order_items where item_id='.$item_id.')'))
+				->where('owner_id',$user_id)
+				->orderBy('created_at','desc')->paginate(10);
+				return \View::make('orders/manage')->with('orders',$orders);
+
+			}
+
+		}
+		if(Input::has('export')){
+
+			$activity_id = Input::get('activity_id');
+			$item_id = Input::get('item_id');
+			$user_id = Input::get('user_id');
+
+			$orders = Order::with('order_items.item','owner')->where('activity_id',5)
+			->orderBy('created_at','desc');
+			
+			
+			Excel::create('Filename', function($excel) use($orders) {
+
+    			$excel->sheet('Sheetname', function($sheet) use($orders) {
+    				$main_arr[]=$orders->get()->toArray();
+        			foreach($main_arr as $one){
+                    $sheet->fromArray($one);
+                }
+        			$sheet->loadView('orders.export')->with('orders',$orders);
+
+    			});
+
+			})->download('xls');
 
 		}
 

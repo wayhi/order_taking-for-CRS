@@ -43,4 +43,6 @@ class Item extends Eloquent implements StaplerableInterface{
 
 
     }
+
+    
 }

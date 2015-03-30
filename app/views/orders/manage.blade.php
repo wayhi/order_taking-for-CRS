@@ -14,12 +14,19 @@
             {{Former::select('item_id','产品: ')->fromQuery(Item::all(),'item_name','id')->class('form-control')}}
         </div>    
         <div class='col-md-2 col-lg-2'>
-            {{Former::select('user_id','客户: ')->fromQuery(User::all(),'last_name','id')->class('form-control')}}
+            {{Former::select('user_id','用户: ')->fromQuery(User::all(),'last_name','id')->class('form-control')}}
         </div>  
-         <div class='col-md-1 col-lg-1' >    
-                 <label><br></label>
-                 {{Former::submit('查询')->class('btn btn-default')->name('submit')}}
-                   
+         <div class='col-md-2 col-lg-2' > 
+                <div class="control-group">   
+                 <label class="control-label"> <br></label>
+                 <div class="controls">
+                     
+                     {{Former::submit('查询')->class('btn btn-primary btn-sm')->name('submit')}}
+                     <!--{{Former::submit('导出')->class('btn btn-warning btn-sm')->name('export')}} -->
+                     <a class='btn btn-default btn-sm' href="{{URL::route('items.index')}}" >返回</a>
+                 
+                 </div>
+                 </div>
         </div>  
         
 </div>
@@ -54,15 +61,17 @@
                                 @if($i==0)
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->owner->last_name}}</td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">
-                                    <a href='{{URL::Route('orders.show',Crypt::encrypt($order->id))}}'>{{$order->order_number}}</a>
+                                        <a href='{{URL::Route('orders.show',Crypt::encrypt($order->id))}}'>{{$order->order_number}}</a>
                                     </td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->qty_total}}</td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->amount_actual}}</td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->created_at}}</td>
                                 @endif
+                                
                                 <td style="vertical-align:middle; text-align:center;">{{$order->order_items[$i]->item->SKU_code}}</td>
                                 <td style="vertical-align:middle; text-align:center;">{{$order->order_items[$i]->item->item_name}}</td>
                                 <td style="vertical-align:middle; text-align:center;">{{$order->order_items[$i]->qty}}</td>
+                                
                             </tr>
                         @endfor
                     
@@ -73,7 +82,7 @@
 </div>
 <div class='col-md-offset-4 col-md-6 col-lg-6'>
         
-        <a class='btn btn-default btn-sm' href="{{URL::route('items.index')}}" >返回</a>
+        
 </div>
 {{Former::close()}} 
 @stop
