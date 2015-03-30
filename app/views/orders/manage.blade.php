@@ -1,4 +1,4 @@
-@extends('default')
+@extends('default_order')
 @section('main')
 
 {{ Notification::showAll() }}

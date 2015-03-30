@@ -4,12 +4,44 @@
 		"selected_items":
 		[
 			[
-				"ac",
-				"activity_id"
+				"i",
+				"getId〔function〕"
+			],
+			[
+				"get",
+				"getUser〔function〕"
+			],
+			[
+				"has",
+				"hasMany〔function〕"
+			],
+			[
+				"b",
+				"belongsTo〔function〕"
+			],
+			[
+				"resu",
+				"$results〔variable〕"
+			],
+			[
+				"I",
+				"Input"
+			],
+			[
+				"Cr",
+				"crypt"
+			],
+			[
+				"ord",
+				"orderBy"
 			],
 			[
 				"p",
-				"put〔function〕"
+				"$products〔variable〕"
+			],
+			[
+				"ac",
+				"activity_id"
 			],
 			[
 				"acti",
@@ -52,26 +84,34 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/activity/index.blade.php",
+			"file": "app/controllers/OrderController.php",
 			"settings":
 			{
-				"buffer_size": 1088,
+				"buffer_size": 6236,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/activity/create.blade.php",
+			"file": "app/views/orders/manage.blade.php",
 			"settings":
 			{
-				"buffer_size": 1717,
+				"buffer_size": 4140,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/activity/show.blade.php",
+			"file": "app/controllers/ProductController.php",
 			"settings":
 			{
-				"buffer_size": 979,
+				"buffer_size": 6673,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/routes.php",
+			"settings":
+			{
+				"buffer_size": 2369,
 				"line_ending": "Unix"
 			}
 		},
@@ -79,7 +119,15 @@
 			"file": "app/controllers/ActivityController.php",
 			"settings":
 			{
-				"buffer_size": 2566,
+				"buffer_size": 6455,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/default_order.blade.php",
+			"settings":
+			{
+				"buffer_size": 890,
 				"line_ending": "Unix"
 			}
 		}
@@ -95,15 +143,11 @@
 				"CI Codeintel Helper: Create IDE helper"
 			]
 		],
-		"width": 449.0
+		"width": 593.0
 	},
 	"console":
 	{
-		"height": 0.0,
-		"history":
-		[
-			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
-		]
+		"height": 0.0
 	},
 	"distraction_free":
 	{
@@ -114,31 +158,46 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/Applications/MAMP/htdocs/clarins",
-		"/Applications/MAMP/htdocs/clarins/app",
-		"/Applications/MAMP/htdocs/clarins/app/controllers",
-		"/Applications/MAMP/htdocs/clarins/app/views",
-		"/Applications/MAMP/htdocs/clarins/app/views/activity"
-	],
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/models/Order.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/policy.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/show.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
+		"/Applications/MAMP/htdocs/clarins/app/models/Activity.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/import.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/ActivityController.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
+		"/Applications/MAMP/htdocs/clarins/app/routes.php",
+		"/Applications/MAMP/htdocs/clarins/app/filters.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/show.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/import.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/show.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/create.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/na.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_product.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/policy.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
-		"/Applications/MAMP/htdocs/clarins/app/models/Item.php",
-		"/Applications/MAMP/htdocs/clarins/app/models/Activity.php"
+		"/Applications/MAMP/htdocs/clarins/app/models/Item.php"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 		]
@@ -148,13 +207,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"'",
+			")",
+			"("
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"\"",
+			"]",
+			"["
 		],
 		"reverse": false,
 		"show_context": true,
@@ -165,53 +230,108 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/activity/index.blade.php",
-					"semi_transient": false,
+					"file": "app/controllers/OrderController.php",
 					"settings":
 					{
-						"buffer_size": 1088,
+						"buffer_size": 6236,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								483,
-								483
+								5558,
+								5558
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2681.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/views/activity/create.blade.php",
-					"semi_transient": false,
+					"file": "app/views/orders/manage.blade.php",
 					"settings":
 					{
-						"buffer_size": 1717,
+						"buffer_size": 4140,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								1717
+								2029,
+								2029
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 408.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/controllers/ProductController.php",
+					"settings":
+					{
+						"buffer_size": 6673,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								500,
+								500
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 168.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/routes.php",
+					"settings":
+					{
+						"buffer_size": 2369,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2163,
+								2163
 							]
 						],
 						"settings":
@@ -224,24 +344,22 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/views/activity/show.blade.php",
-					"semi_transient": false,
+					"buffer": 4,
+					"file": "app/controllers/ActivityController.php",
 					"settings":
 					{
-						"buffer_size": 979,
+						"buffer_size": 6455,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								966,
-								966
+								2731,
+								2731
 							]
 						],
 						"settings":
@@ -251,40 +369,36 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 248.0,
+						"translation.y": 530.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/controllers/ActivityController.php",
-					"semi_transient": false,
+					"buffer": 5,
+					"file": "app/views/default_order.blade.php",
 					"settings":
 					{
-						"buffer_size": 2566,
+						"buffer_size": 890,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2015,
-								2015
+								645,
+								645
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
 						},
-						"translation.x": 12.0,
-						"translation.y": 987.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -325,10 +439,9 @@
 	{
 		"height": 0.0
 	},
-	"project": "CLARINS.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -347,25 +460,10 @@
 		],
 		"width": 0.0
 	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
-	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 229.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }

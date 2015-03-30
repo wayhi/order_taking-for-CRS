@@ -163,8 +163,38 @@ class OrderController extends \BaseController {
 
 	public function manage($activity_id,$item_id=0,$user_id=0)
 	{
-		$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
-		return \View::make('orders/manage')->with(['orders'=>$orders,'user_id'=>$user_id]);
+		//$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
+		//return \View::make('orders/manage')->with(['orders'=>$orders,,'item_id'=>$item_id,'user_id'=>$user_id]);
+
+		if($item_id==0 && $user_id==0){
+				$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
+				return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
+			}elseif($item_id<>0 and $user_id==0){
+				
+				//
+				$orders = Order::with('order_items.item','owner')
+				->where('activity_id',$activity_id)
+				->whereRaw(DB::raw('id in (select order_id from ccsc_order_items where item_id='.$item_id.')'))
+				->orderBy('created_at','desc')->paginate(10);
+				return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
+
+			}elseif($item_id==0 and $user_id<>0){
+				$orders = Order::with('order_items.item','owner')
+				->where('activity_id',$activity_id)
+				->where('owner_id',$user_id)
+				->orderBy('created_at','desc')->paginate(10);
+				return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
+
+			}else{
+
+				$orders = Order::with('order_items.item','owner')
+				->where('activity_id',$activity_id)
+				->whereRaw(DB::raw('id in (select order_id from ccsc_order_items where item_id='.$item_id.')'))
+				->where('owner_id',$user_id)
+				->orderBy('created_at','desc')->paginate(10);
+				return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
+
+			}
 		
 	}
 
@@ -175,35 +205,8 @@ class OrderController extends \BaseController {
 			$item_id = Input::get('item_id');
 			$user_id = Input::get('user_id');
 
-			if($item_id==0 && $user_id==0){
-				$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
-				return \View::make('orders/manage')->with('orders',$orders);
-			}elseif($item_id<>0 and $user_id==0){
-				
-				//
-				$orders = Order::with('order_items.item','owner')
-				->where('activity_id',$activity_id)
-				->whereRaw(DB::raw('id in (select order_id from ccsc_order_items where item_id='.$item_id.')'))
-				->orderBy('created_at','desc')->paginate(10);
-				return \View::make('orders/manage')->with('orders',$orders);
-
-			}elseif($item_id==0 and $user_id<>0){
-				$orders = Order::with('order_items.item','owner')
-				->where('activity_id',$activity_id)
-				->where('owner_id',$user_id)
-				->orderBy('created_at','desc')->paginate(10);
-				return \View::make('orders/manage')->with('orders',$orders);
-
-			}else{
-
-				$orders = Order::with('order_items.item','owner')
-				->where('activity_id',$activity_id)
-				->whereRaw(DB::raw('id in (select order_id from ccsc_order_items where item_id='.$item_id.')'))
-				->where('owner_id',$user_id)
-				->orderBy('created_at','desc')->paginate(10);
-				return \View::make('orders/manage')->with('orders',$orders);
-
-			}
+			return redirect::route('orders.manage',['activity_id'=>$activity_id,'item_id'=>$item_id,'user_id'=>$user_id])->withinput();
+			
 
 		}
 		if(Input::has('export')){
