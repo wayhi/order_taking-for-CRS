@@ -91,7 +91,7 @@ class ProductController extends \BaseController {
 
 				$attached = Input::file('attachement');
 				$results = Excel::load($attached)->get();
-				Debugbar::info($results);
+				//Debugbar::info($results);
 				foreach($results as $row){
 					$item = new Item();
 					$item->SKU_code = $row['sku_code'];

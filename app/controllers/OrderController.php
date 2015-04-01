@@ -99,6 +99,18 @@ class OrderController extends \BaseController {
 		
 	}
 
+	Public function admin($id)
+	{
+		$uid = Crypt::decrypt($id);
+		$order = Order::with('order_items.item')->find($uid);
+		if($order){
+			return View::make('orders.show')->with('order',$order);
+		}else{
+			Notification::error('Visit Not Authorized!');
+			return Redirect::route('orders.index');
+		}
+	}
+
 
 	/**
 	 * Show the form for editing the specified resource.

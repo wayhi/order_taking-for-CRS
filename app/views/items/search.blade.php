@@ -21,7 +21,7 @@ $(document).on('hidden.bs.modal', function (e) {
 </div>
 <div class="col-md-12">
 <div class="pull-left"><h3 style="margin-top:0;">
-  {{Category::find($category)->name}}
+  搜索：“{{$search_string}}”
 </h3>
 </div>
 
@@ -29,7 +29,9 @@ $(document).on('hidden.bs.modal', function (e) {
 <a href="＃" class="li_menu_a">全部产品</a>　<a href="＃">限购产品</a>　<a href="＃">热销产品</a>
 </div-->
 </div>
-
+@if(count($items)==0)
+<h2 align="center">没有符合条件的结果</h2>
+@endif
 @for($i=0;$i < count($items);$i=$i+3)
 <div class="row">
 @for($k=0;($k<3)&&($k+$i < count($items));$k++)

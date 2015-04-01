@@ -104,10 +104,36 @@ Route::filter('activated',function()
 		return Redirect::route('login.show_policy');
 	}else{
 		$activity_id = Session::get('activity_id');
-		$activity = Activity::find($activity_id)->where('activated',1)->where('start','<',date('Y-m-d h:i:s',time()))
-      ->where('end','>',date('Y-m-d h:i:s',time()))->first();
+		$activity = Activity::find($activity_id)->where('activated',1)
+		->where('start','<',date('Y-m-d h:i:s',time()))
+      	->where('end','>',date('Y-m-d h:i:s',time()))->first();
 		if(!$activity){
 			return Redirect::route('login.show_policy');
 		}
 	}
 });
+
+Route::filter('HRAccess',function(){
+
+	if(!Sentry::getUser()->hasAccess('HR')){
+
+		Notification::warning('Not Authorized!');
+		return Redirect::route('login.show_policy');
+	}
+
+});
+
+Route::filter('OperationAccess',function(){
+	if(!Sentry::getUser()->hasAccess('Operation')){
+
+		Notification::warning('Not Authorized!');
+		return Redirect::route('login.show_policy');
+	}
+
+});
+
+
+
+
+
+

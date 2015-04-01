@@ -1,6 +1,6 @@
 <?php
 Namespace app\controllers;
-use View, Sentry, DB, Redirect,Session,Request,URL,Cookie,Item,ActivityItem,ItemSkin,Skin,Notification,Input,Debugbar;
+use View, Sentry, DB, Redirect,Session,Request,URL,Cookie,Item, Order, Activity,ActivityItem,ItemSkin,Skin,Notification,Input,Debugbar;
 class ItemController extends \BaseController {
 
 	/**
@@ -10,13 +10,37 @@ class ItemController extends \BaseController {
 	 */
 	public function index()
 	{
-		//$items = Item::with('skins')->with('category')->orderby('created_at','desc')->paginate(9);
 		$activity_id = Session::get('activity_id');
-		$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)->orderby('created_at','desc')->paginate(9);
-		return \View::make('items/index')->with('items',$items);
+		$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)
+			->orderby('created_at','desc')->paginate(9);
+			return \View::make('items/index')->with('items',$items)->with('category',0);
+		
+		
+		
 		
 	}
 
+	public function category($category_id=0)
+	{
+		$activity_id = Session::get('activity_id');
+
+		if($category_id==0){
+			
+			$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)
+			->orderby('created_at','desc')->paginate(9);
+			return \View::make('items/index')->with('items',$items)->with('category',0);
+		
+		}else{
+
+			$items = ActivityItem::with('item.category')
+			->whereraw("item_id in (select id from ccsc_item_master where category_id = ".$category_id.")")
+			->where('activity_id',$activity_id)
+			->orderby('created_at','desc')->paginate(9);
+			return \View::make('items/index')->with('items',$items)->with('category',$category_id);
+		
+		}
+
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -94,7 +118,15 @@ class ItemController extends \BaseController {
 		$itemcount = 0;
 		$items =null;
 		$amount = 0.00;
-		
+		$balance = 0.00;
+		$amount_limit = 0.00;
+		$activity_id = Session::get('activity_id');
+		$activity = Activity::find($activity_id);
+		if($activity->activated==1){
+			$amount_limit = $activity->amount_limit;
+			$balance = Self::getBalance($activity_id,Sentry::getUser()->id);
+		}
+
 		if(is_array($item_id) ){
 			$item_id = array_unique($item_id);
 			$itemcount = count($item_id);
@@ -106,12 +138,15 @@ class ItemController extends \BaseController {
 		}
 		
 		
-		//Debugbar::info($item_id);
-		//$itemcount=1;
-		
-		//Debugbar::info($items);
-		
-		return View::make('items/showcart')->with('items',$items)->with('amount',$amount)->with('itemcount',$itemcount);
+		if($balance<=100){
+			Notification::errorInstant("本次活动限额 ¥".$amount_limit.", 剩余额度 ¥".$balance);
+			//Notification::message("ok");
+		}else{
+			Notification::warningInstant("本次活动限额 ¥".$amount_limit.", 剩余额度 ¥".$balance);
+
+		}
+		return View::make('items/showcart')->with('items',$items)
+		->with('amount',$amount)->with('itemcount',$itemcount)->with('balance',$balance);
 	
 	}
 	
@@ -163,10 +198,40 @@ class ItemController extends \BaseController {
 		$cookie = Cookie::make('item_id',$item_list, 7200);
 		return Redirect::route('showcart')->withCookie($cookie)->withinput();
 		//return View::make('items/showcart');
-	
+
+	}
+
+	public function search()
+	{
+		if(Input::has('search')){
+
+			$search_string = Input::get('sn');
+			if($search_string<>""){
+
+				$activity_id = Session::get('activity_id');
+				$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)
+				->whereIn('item_id',Item::where('item_name','like','%'.$search_string.'%')->lists('id'))
+				->orderby('created_at','desc')->paginate(9);
+
+				return \View::make('items/search')->with('items',$items)->with('search_string',$search_string);
+			}
+
+		}else{
+
+		}
 
 
+	}
 
+	private static function getBalance($activity_id,$user_id)
+	{
+		$balance = 0.00;
+		$used = Order::where('activity_id',$activity_id)->where('owner_id',$user_id)
+			->sum('amount_actual');
+		$limit = Activity::find($activity_id)->amount_limit;
+			
+		$balance = $limit - $used;
+		return $balance;
 
 	}
 }

@@ -18,22 +18,35 @@ Route::group(array('before'=>'auth.login'),function(){
 	Route::get('login/show_policy',['as'=>'login.show_policy','uses'=>'app\controllers\LoginController@show_policy']);
 	Route::get('login/confirm/{activity_id}',['as'=>'login.confirm','uses'=>'app\controllers\LoginController@confirm']);
 	Route::get('logout', array('as'=>'logout','uses'=>'app\controllers\LoginController@getLogout'));
-	Route::get('/showcart',['as'=>'showcart','uses'=>'app\controllers\ItemController@showcart']);
-	Route::get('/clearcart',['as'=>'clearcart','uses'=>'app\controllers\ItemController@clearcart']);
-	Route::get('items/addtocart/{item_id}/{page?}',
-		['as'=>'items.addtocart','uses'=>'app\controllers\ItemController@addtocart']);
-	Route::get('/delfrmcart/{item_id}',
-		['as'=>'delfrmcart','uses'=>'app\controllers\ItemController@delfrmcart']);		
+		
 	Route::group(['before'=>'activated'],function(){
+		Route::get('/showcart',['as'=>'showcart','uses'=>'app\controllers\ItemController@showcart']);
+		Route::get('/clearcart',['as'=>'clearcart','uses'=>'app\controllers\ItemController@clearcart']);
+		Route::get('items/addtocart/{item_id}/{page?}',
+			['as'=>'items.addtocart','uses'=>'app\controllers\ItemController@addtocart']);
+		Route::get('/delfrmcart/{item_id}',
+			['as'=>'delfrmcart','uses'=>'app\controllers\ItemController@delfrmcart']);	
+		Route::get('items/category/{category_id}',
+			['as'=>'items.category','uses'=>'app\controllers\ItemController@category']);
+		Route::post('items/search',['as'=>'items.search','uses'=>'app\controllers\ItemController@search']);
 		Route::Resource('items','app\controllers\ItemController');
 	});
+	Route::group(['before'=>'HRAccess'],function(){
+		Route::get('users/import',['as'=>'users.import','uses'=>'app\controllers\UserController@import']);
+		Route::Resource('users','app\controllers\UserController');
+	});
+	Route::group(['before'=>'OperationAccess'],function(){
+		Route::get('products/import',['as'=>'products.import','uses'=>'app\controllers\ProductController@import']);
+		Route::get('orders/manage/{activity_id}/{item_id?}/{user_id?}',['as'=>'orders.manage','uses'=>'app\controllers\OrderController@manage']);
+		Route::post('orders/manage',['as'=>'orders.manage_post','uses'=>'app\controllers\OrderController@search']);
+		Route::get('orders/admin/{id}',['as'=>'orders.admin','uses'=>'app\controllers\OrderController@admin']);
+		Route::Resource('activity','app\controllers\ActivityController');
+		Route::Resource('products','app\controllers\ProductController');
+	});
+	Route::Resource('orders','app\controllers\OrderController');
 	Route::get('download_template/{file_name}',['as'=>'download_template','uses'=>function($file_name)
 		{return Redirect::to('/Templates/'.$file_name);}]);
-	Route::get('products/import',['as'=>'products.import','uses'=>'app\controllers\ProductController@import']);
-	Route::get('orders/manage/{activity_id}/{item_id?}/{user_id?}',['as'=>'orders.manage','uses'=>'app\controllers\OrderController@manage']);
-	Route::post('orders/manage',['as'=>'orders.manage_post','uses'=>'app\controllers\OrderController@search']);
-	Route::Resource('orders','app\controllers\OrderController');
-	Route::Resource('activity','app\controllers\ActivityController');
-	Route::Resource('products','app\controllers\ProductController');
+	
+	
 });	
 

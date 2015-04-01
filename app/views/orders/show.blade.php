@@ -49,7 +49,8 @@
     </table>
     <div class='col-md-offset-4 col-md-6 col-lg-6'>
     	
-    	<a class='btn btn-default btn-sm' href='/orders' >关闭</a>
+    	<a class='btn btn-default btn-sm' href="javascript:history.go(-1)" >关闭</a>
+            
     </div>
     </div>
 

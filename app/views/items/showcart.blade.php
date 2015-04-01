@@ -7,6 +7,15 @@
 		document.getElementById(qty_).value = document.getElementById(qty).value;
 		document.getElementById('totalamount').value = 
 		parseFloat(document.getElementById('totalamount').value) + parseFloat(price);
+        if(parseFloat(document.getElementById('totalamount').value) > parseFloat(document.getElementById('balance').value)){
+            
+            document.getElementById(qty).value =parseInt(document.getElementById(qty).value)-1;
+            document.getElementById(qty_).value = document.getElementById(qty).value;
+            document.getElementById('totalamount').value = 
+            parseFloat(document.getElementById('totalamount').value) - parseFloat(price);
+            alert("购买总额超过限额！");
+
+        }
 		
 	}
 	function reduceqty(q,q_,price){
@@ -83,6 +92,7 @@
         
         <td  colspan=5 align='right'><div class='pull-right'>Total Amount 总价：¥
         <input type='button' class='btn btn-default btn-sm' id='totalamount' value='{{$amount}}'>
+        <input type='hidden' id='balance' name='balance' value="{{$balance}}">
         </div></td>
         
         </tr>
@@ -92,7 +102,9 @@
         
     </table>
     <div class='col-md-offset-4 col-md-6 col-lg-6'>
-    	<input class='btn btn-success btn-sm' name='submit' type='submit' value='生成订单'>
+
+    	<input class='btn btn-success btn-sm' name='submit' type='submit' value='生成订单' 
+        @if($amount>$balance) disabled @endif>
     	<a class='btn btn-default btn-sm' href='/clearcart' >清空购物车</a>
     </div>
     </div>
