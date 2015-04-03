@@ -21,8 +21,13 @@
     {{Former::select('group','所属群组：')->fromQuery(Group::all(),'name','id')
     ->class('form-control')->select($group_id)}}
   </div>
-  
-  <div class='col-md-offset-1 col-md-4 col-lg-4'>
+  <div class='col-md-4 col-lg-4'>
+    {{Former::text('quota','个人单次购买限额(元):')->class('form-control')
+    ->inlinehelp('To replace the common rule.')}}
+  </div>
+  </div>
+  <div class='row'>
+  <div class='col-md-offset-2 col-md-4 col-lg-4'>
     
     {{Former::radios('activated','')->radios('禁止登录','有效')->inline()}}
     

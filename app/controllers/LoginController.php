@@ -40,11 +40,10 @@ class LoginController extends \BaseController {
 	
     try
     {
-      if(!$remember_me){
-      	
-      	$user = Sentry::authenticate($credentials, true);
+      if($remember_me){
+        $user = Sentry::authenticateAndRemember($credentials);
       }else{
-      	$user = Sentry::authenticateAndRemember($credentials);
+      	$user = Sentry::authenticate($credentials, false);
       }
       
 	//Debugbar::info($user);

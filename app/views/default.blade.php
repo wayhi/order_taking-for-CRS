@@ -38,7 +38,7 @@
  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人<span class="caret"></span></a>
 
 <ul class="dropdown-menu" role="menu">
-<li><a href="/orders">订单信息</a></li>
+<li><a href="{{URL::Route('orders.index')}}">订单信息</a></li>
 <li><a href="/">账户信息</a></li>
 <li><a href="/">修改密码</a></li>
 
@@ -97,6 +97,11 @@
 
 </div>
 
-
+<footer class="bs-docs-footer" role="contentinfo">
+<hr>
+<div class='container'>
+<div class='col-md-6 col-lg-6 text-muted'><p>&copy Clarins {{date('Y')}} </p></div>
+</div>
+</footer>
 </body>
 </html>

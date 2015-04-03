@@ -1,6 +1,6 @@
 <?php
 Namespace app\controllers;
-use View, Sentry, DB, Redirect,Session,Request,URL,Cookie,Item, Order, Activity,ActivityItem,ItemSkin,Skin,Notification,Input,Debugbar;
+use View, Sentry, User,DB, Redirect,Session,Request,URL,Cookie,Item, Order, Activity,ActivityItem,ItemSkin,Skin,Notification,Input,Debugbar;
 class ItemController extends \BaseController {
 
 	/**
@@ -123,7 +123,13 @@ class ItemController extends \BaseController {
 		$activity_id = Session::get('activity_id');
 		$activity = Activity::find($activity_id);
 		if($activity->activated==1){
-			$amount_limit = $activity->amount_limit;
+			if(User::find(Sentry::getUser()->id)->quota>0){
+
+				$amount_limit = User::find(Sentry::getUser()->id)->quota;
+			}else{
+				$amount_limit = $activity->amount_limit;
+			}
+			
 			$balance = Self::getBalance($activity_id,Sentry::getUser()->id);
 		}
 
@@ -228,7 +234,13 @@ class ItemController extends \BaseController {
 		$balance = 0.00;
 		$used = Order::where('activity_id',$activity_id)->where('owner_id',$user_id)
 			->sum('amount_actual');
-		$limit = Activity::find($activity_id)->amount_limit;
+		if(User::find($user_id)->quota>0){
+
+				$limit = User::find($user_id)->quota;
+			}else{
+				$limit = Activity::find($activity_id)->amount_limit;
+			}	
+		
 			
 		$balance = $limit - $used;
 		return $balance;

@@ -48,6 +48,7 @@ class UserController extends \BaseController {
 			        'email'     => Input::get('email'),
 			        'password'  => Input::get('Password'),
 			        'last_name'	=> Input::get('last_name'),
+			        'quota' => floatval(Input::get('quota')),
 			        'activated' => Input::get('activated'),
 			    ));
 
@@ -165,6 +166,7 @@ class UserController extends \BaseController {
 			}
 			$user->last_name = Input::get('last_name');
 			$user->activated = Input::get('activated');
+			$user->quota = floatval(Input::get('quota'));
 			$user->addGroup(Sentry::findGroupById(Input::get('group')));
 
 			$user->save();

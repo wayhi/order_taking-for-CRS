@@ -50,7 +50,12 @@
   @yield('main')
 
 </div>
-
+<footer class="bs-docs-footer" role="contentinfo">
+<hr>
+<div class='container'>
+<div class='col-md-6 col-lg-6 text-muted'><p>&copy Clarins {{date('Y')}} </p></div>
+</div>
+</footer>
 
 </body>
 </html>
