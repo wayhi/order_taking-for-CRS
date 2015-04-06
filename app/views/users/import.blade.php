@@ -17,7 +17,6 @@
 	</div>
 </div>
 
-<hr>
 <div class ='row'>
 <div class="col-md-offset-5">
 

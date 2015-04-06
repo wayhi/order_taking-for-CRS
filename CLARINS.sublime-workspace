@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"with",
+				"withInput〔function〕"
+			],
+			[
+				"floa",
+				"floatval〔function〕"
+			],
+			[
 				"se",
 				"search"
 			],
@@ -26,10 +34,6 @@
 			[
 				"wi",
 				"withCookie"
-			],
-			[
-				"with",
-				"withinput"
 			],
 			[
 				"get",
@@ -148,18 +152,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/controllers/ItemController.php",
+			"file": "app/controllers/LoginController.php",
 			"settings":
 			{
-				"buffer_size": 5373,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/items/search.blade.php",
-			"settings":
-			{
-				"buffer_size": 2064,
+				"buffer_size": 4957,
 				"line_ending": "Unix"
 			}
 		},
@@ -167,23 +163,15 @@
 			"file": "app/views/default.blade.php",
 			"settings":
 			{
-				"buffer_size": 2982,
+				"buffer_size": 3217,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/routes.php",
+			"file": ".gitignore",
 			"settings":
 			{
-				"buffer_size": 2996,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/products/create.blade.php",
-			"settings":
-			{
-				"buffer_size": 2170,
+				"buffer_size": 256,
 				"line_ending": "Unix"
 			}
 		},
@@ -244,28 +232,38 @@
 		"/Applications/MAMP/htdocs/clarins",
 		"/Applications/MAMP/htdocs/clarins/app",
 		"/Applications/MAMP/htdocs/clarins/app/config",
-		"/Applications/MAMP/htdocs/clarins/vendor/cartalyst/sentry/src",
-		"/Applications/MAMP/htdocs/clarins/vendor/cartalyst/sentry/src/Cartalyst",
-		"/Applications/MAMP/htdocs/clarins/vendor/cartalyst/sentry/src/Cartalyst/Sentry",
-		"/Applications/MAMP/htdocs/clarins/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Users",
-		"/Applications/MAMP/htdocs/clarins/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Users/Eloquent"
+		"/Applications/MAMP/htdocs/clarins/app/views"
 	],
 	"file_history":
 	[
-		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/routes.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_change.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activemail.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/login.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activemail.html",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_pwd.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/users/create.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/create.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/users/edit.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/UserController.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_order.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_product.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_user.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/User.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Item.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/UserController.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/users/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/import.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/users/create.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_user.blade.php",
 		"/Applications/MAMP/htdocs/clarins/vendor/cartalyst/sentry/src/migrations/2012_12_06_225921_migration_cartalyst_sentry_install_users.php",
 		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/cache.php",
 		"/Users/JW/Desktop/userlist.csv",
@@ -279,7 +277,6 @@
 		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Group.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/Login/pwd_change.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/create.blade.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/user/register.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/controllers/user/UserController.php",
@@ -292,9 +289,7 @@
 		"/Applications/MAMP/htdocs/easyProcess/app/controllers/payment/PaymentController.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
 		"/Applications/MAMP/htdocs/clarins/app/filters.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/create.blade.php",
 		"/Applications/MAMP/htdocs/clarins/composer.json",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/policy.blade.php",
@@ -351,49 +346,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/controllers/ItemController.php",
+					"file": "app/controllers/LoginController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5373,
+						"buffer_size": 4957,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5067,
-								5067
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2912.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/items/search.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2064,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								987,
-								987
+								3899,
+								3899
 							]
 						],
 						"settings":
@@ -404,27 +369,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1.0,
+						"translation.y": 2016.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "app/views/default.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2982,
+						"buffer_size": 3217,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1153,
-								1153
+								1574,
+								1574
 							]
 						],
 						"settings":
@@ -433,7 +398,35 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 233.0,
+						"translation.y": 329.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": ".gitignore",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 256,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -441,65 +434,6 @@
 				},
 				{
 					"buffer": 3,
-					"file": "app/routes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2996,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1825,
-								1825
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 137.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/views/products/create.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2170,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								119,
-								192
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "app/views/orders/index.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -521,14 +455,14 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 17.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 4,
 					"file": "app/filters.php",
 					"semi_transient": false,
 					"settings":
@@ -554,7 +488,7 @@
 						"translation.y": 1424.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -637,7 +571,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 323.0,
+	"side_bar_width": 200.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

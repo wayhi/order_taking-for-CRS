@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use Auth, BaseController, Session,Validator, Activity,Form, Input, Redirect, URL, Sentry, View, Payment,Crypt, Notification;
+use Auth, BaseController, Session,Validator, Mail, Activity,Form, Input, Redirect, URL, Sentry, View, Payment,Crypt, Notification;
 
 class LoginController extends \BaseController {
 
@@ -91,14 +91,20 @@ class LoginController extends \BaseController {
 
    		 // Get the password reset code
     	$resetCode = $user->getResetPasswordCode();
-		echo URL::route('change_password',['resetCode'=>Crypt::encrypt($resetCode),'userid'=>Crypt::encrypt($user->id)]);
+		//echo URL::route('change_password',['resetCode'=>Crypt::encrypt($resetCode),'userid'=>Crypt::encrypt($user->id)]);
     	// Now you can send this code to your user via email for example.
-	}catch (\Exception $e){
-    	Notification::error( '没有发现该用户。User was not found.');
-    	return redirect::route('reset_password');
-    }
+      $data = ['email'=>$user->email, 'name'=>$user->last_name, 'uid'=>$user->id, 'activationcode'=>$resetCode];
+      Mail::send('activemail', $data, function($message) use($data){
+        $message->to($data['email'], $data['name'])->subject('【密码重置 Reset Password】');
+      });
+      Notification::success('An email with the link to Reset Password was sent to the address you provided,
+         please follow it to complete the process.');
+	   }catch (\Exception $e){
+      	Notification::error( '没有发现该用户。User was not found.');
+      	return redirect::back();
+      }
     
-
+    return redirect::back();
   
   }
   
@@ -144,16 +150,18 @@ class LoginController extends \BaseController {
   		$validator = Validator::make(Input::all(), $rules);
     	if($validator->fails()) {
   				//Former::withErrors($validator);
-  				return Redirect::to('change_password/'.$resetCode.'/'.$uid)->withInput()
-  				->withErrors($validator);
+  				//return Redirect::to('change_password/'.$resetCode.'/'.$uid)->witherrors($validator);
+        return Redirect::back()->witherrors($validator);
 		}
   	
   	$user = Sentry::findUserById(Crypt::decrypt($uid));	
   	if($user->attemptResetPassword(Crypt::decrypt($resetCode),Input::get('Password'))){
-  		echo "Password has been changed successfully.";
+  		Notification::success("Your password has been changed successfully.");
+      return Redirect::Route('login');
   	}else{
   		
-  		echo "Password change failed.";
+  		Notification::error("Change failed.");
+      return Redirect::back()->withInput();
   		
   	}
   	

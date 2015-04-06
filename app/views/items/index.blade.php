@@ -50,7 +50,8 @@ $(document).on('hidden.bs.modal', function (e) {
 <div style="clear:both"></div>
 <span class="label label-info">{{$items[$i+$k]->item->size}}</span>
 <span class="label label-success">¥ {{$items[$i+$k]->offer_price}}</span> 
-
+<br>
+产品有效期：{{($items[$i+$k]->expiration)}}
 @if($items[$i+$k]->item_stock>0)
 <div class='pull-right'>
 

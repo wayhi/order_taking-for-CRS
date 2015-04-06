@@ -41,7 +41,7 @@
         <div class='row'>
         <label class=" checkbox">
           <input type="checkbox" id='remember_me' name='remember_me' value='1'> 记住我的登录
-          <a href="#">忘记密码？</a>
+          <a href="{{URL::route('Login.pwd_reset')}}">忘记密码？</a>
         </label>
         <br>
       </div>

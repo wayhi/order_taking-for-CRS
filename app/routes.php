@@ -14,6 +14,12 @@ Route::get('login', array('as' => 'login', 'uses' => 'app\controllers\LoginContr
 Route::post('login','app\controllers\LoginController@postLogin');
 Route::get('/', array('as' => 'login', 'uses' => 'app\controllers\LoginController@getLogin'));
 Route::post('/','app\controllers\LoginController@postLogin');
+Route::get('Login/pwd_reset',['as'=>'Login.pwd_reset','uses'=>function(){
+	return View::make('Login.pwd_reset');
+}]);
+Route::post('Login/pwd_reset',['as'=>'Login.pwd_reset','uses'=>'app\controllers\LoginController@email_confirm']);
+Route::get('change_password/{resetCode}/{uid}',['as'=>'change_password','uses'=>'app\controllers\LoginController@change_password']);
+Route::get('password_confirm',['as'=>'password_confirm','uses'=>'app\controllers\LoginController@password_confirm']);
 Route::group(array('before'=>'auth.login'),function(){
 	Route::get('login/show_policy',['as'=>'login.show_policy','uses'=>'app\controllers\LoginController@show_policy']);
 	Route::get('login/confirm/{activity_id}',['as'=>'login.confirm','uses'=>'app\controllers\LoginController@confirm']);

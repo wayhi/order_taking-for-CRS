@@ -40,7 +40,7 @@
 <ul class="dropdown-menu" role="menu">
 <li><a href="{{URL::Route('orders.index')}}">订单信息</a></li>
 <li><a href="/">账户信息</a></li>
-<li><a href="/">修改密码</a></li>
+<li><a href="{{URL::route('Login.pwd_reset')}}">修改密码</a></li>
 
 </ul>
 </li>
