@@ -39,8 +39,7 @@
 
 <ul class="dropdown-menu" role="menu">
 <li><a href="{{URL::Route('orders.index')}}">订单信息</a></li>
-<li><a href="/">账户信息</a></li>
-<li><a href="{{URL::route('Login.pwd_reset')}}">修改密码</a></li>
+<li><a href="{{URL::route('Login.pwd_reset',Sentry::getUser()->email)}}">修改密码</a></li>
 
 </ul>
 </li>
@@ -65,7 +64,7 @@
 {{Former::secure_open()->id('SearchForm')->Method('POST')->route('items.search')}}
 <div class="navbar-form navbar-left" role="search">
 <div class="input-group input-group-sm btn-group">
-<input type="text" class="form-control" style="width:150px" id="sn" name='sn' placeholder="商品名称">
+<input type="text" class="form-control" style="width:150px" id="sn" name='sn' placeholder="商品名称或SKU Code">
 <span class="input-group-btn">
 
 <button type="submit" class="btn btn-danger btn-sm" id="search" name='search' value="s">搜索</button>

@@ -10,7 +10,7 @@
     
       <div  class="row">
     		<div class='col-md-6 col-lg-6'>
-          {{Former::text('Email','需要重设密码的登录账户(Email)：')->class('form-control')}}
+          {{Former::text('Email','需要重设密码的登录账户(Email)：')->class('form-control')->value($login)}}
         </div>
 		  </div> 
       
@@ -19,7 +19,7 @@
        <div class="row">
         <div class='col-md-6 col-lg-6'>
         	{{ Form::submit('确认', array('class' => 'btn btn-success btn-sm')) }}
-        	<a class='btn btn-default btn-sm' href="{{URL::route('login')}}">返回<a/>
+        	<a class='btn btn-default btn-sm' href="{{URL::route('items.index')}}">返回<a/>
          </div> 
     	</div>
     	

@@ -14,10 +14,10 @@ Route::get('login', array('as' => 'login', 'uses' => 'app\controllers\LoginContr
 Route::post('login','app\controllers\LoginController@postLogin');
 Route::get('/', array('as' => 'login', 'uses' => 'app\controllers\LoginController@getLogin'));
 Route::post('/','app\controllers\LoginController@postLogin');
-Route::get('Login/pwd_reset',['as'=>'Login.pwd_reset','uses'=>function(){
-	return View::make('Login.pwd_reset');
+Route::get('Login/pwd_reset/{login?}',['as'=>'Login.pwd_reset','uses'=>function($login=''){
+	return View::make('Login.pwd_reset')->with('login',$login);
 }]);
-Route::post('Login/pwd_reset',['as'=>'Login.pwd_reset','uses'=>'app\controllers\LoginController@email_confirm']);
+Route::post('Login/pwd_reset/{login?}',['as'=>'Login.pwd_reset','uses'=>'app\controllers\LoginController@email_confirm']);
 Route::get('change_password/{resetCode}/{uid}',['as'=>'change_password','uses'=>'app\controllers\LoginController@change_password']);
 Route::get('password_confirm',['as'=>'password_confirm','uses'=>'app\controllers\LoginController@password_confirm']);
 Route::group(array('before'=>'auth.login'),function(){
@@ -43,7 +43,8 @@ Route::group(array('before'=>'auth.login'),function(){
 	});
 	Route::group(['before'=>'OperationAccess'],function(){
 		Route::get('products/import',['as'=>'products.import','uses'=>'app\controllers\ProductController@import']);
-		Route::get('orders/manage/{activity_id}/{item_id?}/{user_id?}',['as'=>'orders.manage','uses'=>'app\controllers\OrderController@manage']);
+		Route::get('orders/manage/{activity_id}/{item_id?}/{user_id?}',['as'=>'orders.manage',
+			'uses'=>'app\controllers\OrderController@manage']);
 		Route::post('orders/manage',['as'=>'orders.manage_post','uses'=>'app\controllers\OrderController@search']);
 		Route::get('orders/admin/{id}',['as'=>'orders.admin','uses'=>'app\controllers\OrderController@admin']);
 		Route::Resource('activity','app\controllers\ActivityController');

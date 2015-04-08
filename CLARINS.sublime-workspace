@@ -160,34 +160,10 @@
 			}
 		},
 		{
-			"file": "app/views/default.blade.php",
+			"file": "app/config/app.php",
 			"settings":
 			{
-				"buffer_size": 3217,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 256,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/orders/index.blade.php",
-			"settings":
-			{
-				"buffer_size": 1099,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/filters.php",
-			"settings":
-			{
-				"buffer_size": 3138,
+				"buffer_size": 8159,
 				"line_ending": "Unix"
 			}
 		}
@@ -231,11 +207,14 @@
 	[
 		"/Applications/MAMP/htdocs/clarins",
 		"/Applications/MAMP/htdocs/clarins/app",
-		"/Applications/MAMP/htdocs/clarins/app/config",
-		"/Applications/MAMP/htdocs/clarins/app/views"
+		"/Applications/MAMP/htdocs/clarins/app/config"
 	],
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/filters.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/users/import.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/routes.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_change.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activemail.blade.php",
@@ -245,7 +224,6 @@
 		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activemail.html",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_pwd.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/create.blade.php",
@@ -262,7 +240,6 @@
 		"/Applications/MAMP/htdocs/clarins/app/models/User.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Item.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/users/import.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/vendor/cartalyst/sentry/src/migrations/2012_12_06_225921_migration_cartalyst_sentry_install_users.php",
 		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/cache.php",
@@ -280,7 +257,6 @@
 		"/Applications/MAMP/htdocs/easyProcess/app/views/user/register.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/controllers/user/UserController.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/show.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Order.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/export.blade.php",
@@ -289,7 +265,6 @@
 		"/Applications/MAMP/htdocs/easyProcess/app/controllers/payment/PaymentController.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
-		"/Applications/MAMP/htdocs/clarins/app/filters.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/create.blade.php",
 		"/Applications/MAMP/htdocs/clarins/composer.json",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/policy.blade.php",
@@ -341,7 +316,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -369,48 +344,19 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2016.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/default.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3217,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1574,
-								1574
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 329.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": ".gitignore",
+					"buffer": 1,
+					"file": "app/config/app.php",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 256,
+						"buffer_size": 8159,
 						"regions":
 						{
 						},
@@ -423,72 +369,14 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/views/orders/index.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1099,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								705,
-								705
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/filters.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3138,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3056,
-								3056
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1424.0,
+						"translation.y": 2462.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
