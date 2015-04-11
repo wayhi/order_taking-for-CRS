@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'Dragon@25',
+	'password' => '',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -119,6 +119,6 @@ return array(
 	|
 	*/
 
-	'pretend' => false,
+	'pretend' => true,
 
 );

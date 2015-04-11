@@ -85,7 +85,7 @@
 <div class="col-md-offset-5">
 
             {{ Former::submit('更新')->class('btn btn-success')->name('submit') }}
-            <button onclick="javascript:history.go(-1)" class="btn btn-default">取消</button>
+            <a href="javascript:history.go(-1)" class="btn btn-default">取消</a>
         </div>
         </div>
 {{Former::close()}}

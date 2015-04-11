@@ -106,7 +106,8 @@ class ProductController extends \BaseController {
 					$item->activated = 1;
 					$item->save();
 					$n +=1;
-					if($row['一般肌肤1']==1){
+					/**
+					if($row['一般肌肤']==1){
 						$itemskin = new ItemSkin();
 						$itemskin->item_id = $item->id;
 						$itemskin->skin_id = 1;
@@ -129,7 +130,8 @@ class ProductController extends \BaseController {
 						$itemskin->item_id = $item->id;
 						$itemskin->skin_id = 4;
 						$itemskin->save();
-					}
+					} 
+					**/
 
 				}
 				
