@@ -48,7 +48,7 @@
 		{{ Former::file('attachement')->label('上传产品目录 ：')->max(5,'MB')}}
 	
 	
-	<a href=''>下载模版</a>
+	<a href="{{URL::route('download_template','activity_item_template.xlsx')}}">下载模版</a>
 	</div>
 	<div class='col-md-4 col-lg-4'>
 		{{Former::radios('activated','')->radios('暂停','活动中')->inline()}}

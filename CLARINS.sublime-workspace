@@ -4,8 +4,60 @@
 		"selected_items":
 		[
 			[
-				"array_",
-				"array_combine"
+				"order_",
+				"$order_new〔variable〕"
+			],
+			[
+				"order",
+				"$order_qty〔variable〕"
+			],
+			[
+				"ac",
+				"activityItem"
+			],
+			[
+				"item_",
+				"$item_ordered〔variable〕"
+			],
+			[
+				"ite",
+				"$item_stock〔variable〕"
+			],
+			[
+				"Order",
+				"OrderItem〔class〕"
+			],
+			[
+				"item",
+				"$item_limit〔variable〕"
+			],
+			[
+				"No",
+				"Notification"
+			],
+			[
+				"activi",
+				"activityItem"
+			],
+			[
+				"where",
+				"where('activity_id',$activity_id"
+			],
+			[
+				"Activity",
+				"ActivityItem〔class〕"
+			],
+			[
+				"activ",
+				"activity"
+			],
+			[
+				"or",
+				"orWhere〔function〕"
+			],
+			[
+				"o",
+				"orWhere〔function〕"
 			],
 			[
 				"with",
@@ -80,10 +132,6 @@
 				"Crypt"
 			],
 			[
-				"item",
-				"item_name"
-			],
-			[
 				"array_un",
 				"array_unshift〔function〕"
 			],
@@ -104,16 +152,8 @@
 				"$items_not_found〔variable〕"
 			],
 			[
-				"activi",
-				"activity_id"
-			],
-			[
 				"de",
 				"delete〔function〕"
-			],
-			[
-				"ac",
-				"activity_id"
 			],
 			[
 				"p",
@@ -155,11 +195,32 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/views/products/edit.blade.php",
+			"settings":
+			{
+				"buffer_size": 2434,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/activity/edit.blade.php",
+			"settings":
+			{
+				"buffer_size": 1905,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 392.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -171,7 +232,11 @@
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 0.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
 	},
 	"distraction_free":
 	{
@@ -182,38 +247,46 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Applications/MAMP/htdocs/clarins",
+		"/Applications/MAMP/htdocs/clarins/app",
+		"/Applications/MAMP/htdocs/clarins/app/views",
+		"/Applications/MAMP/htdocs/clarins/app/views/items"
+	],
 	"file_history":
 	[
-		"/Applications/MAMP/htdocs/clarins/app/views/errors/missing.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/missing.blade.php",
-		"/Applications/MAMP/htdocs/clarins/bootstrap/start.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
+		"/Applications/MAMP/htdocs/clarins/public/css/local.css",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade副本.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
+		"/Applications/MAMP/htdocs/clarins/app/routes.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/filters.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/import.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/routes.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_change.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activemail.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/login.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activemail.html",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_pwd.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/create.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/create.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/UserController.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_order.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_product.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_user.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/User.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Item.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
@@ -226,7 +299,6 @@
 		"/Applications/MAMP/htdocs/clarins/app/views/products/import.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/show.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ActivityController.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Group.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/Login/pwd_change.blade.php",
@@ -263,7 +335,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"show1",
+			"primary",
 			"getRandomString",
 			"clearResolvedInstance",
 			"clear",
@@ -293,8 +365,69 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/views/products/edit.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2434,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								654,
+								654
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/activity/edit.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1905,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1477,
+								1477
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 420.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -304,7 +437,7 @@
 	},
 	"input":
 	{
-		"height": 31.0
+		"height": 0.0
 	},
 	"layout":
 	{
@@ -333,14 +466,17 @@
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
+	"project": "CLARINS.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -349,15 +485,32 @@
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 200.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

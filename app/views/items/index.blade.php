@@ -57,7 +57,8 @@ $(document).on('hidden.bs.modal', function (e) {
  {{$items[$i+$k]->item->item_name}}</a>
 </h4><br>
 <div style="clear:both"></div>
-<span class="label label-info">{{$items[$i+$k]->item->size}}</span>
+<span class="label label-info">{{$items[$i+$k]->item->texture}}</span>
+<span class="label label-primary">{{$items[$i+$k]->item->size}}</span>
 <span class="label label-success">¥ {{$items[$i+$k]->offer_price}}</span> 
 <br>
 产品有效期：{{($items[$i+$k]->expiration)}}
