@@ -1,6 +1,6 @@
 <?php
 Namespace app\controllers;
-use View, Sentry, Activity, ActivityItem, DB, Crypt,Excel,Redirect,Request,URL,Cookie,Item,ItemSkin,Skin,Notification,Input,Debugbar;
+use View, Sentry, Activity, ActivityItem, DB, Crypt,Excel,Redirect,Session,Request,URL,Cookie,Item,ItemSkin,Skin,Notification,Input,Debugbar;
 
 
 class ProductController extends \BaseController {
@@ -269,6 +269,50 @@ class ProductController extends \BaseController {
 		return View::make('products/import');
 
 
+
+	}
+
+	public function search(){
+
+		if(Request::isMethod('post')){
+
+			if(Input::has('search')){
+
+				$search_string = Input::get('sn');
+				if($search_string<>""){
+
+					//$products = Item::with('category')
+					//	->where('item_name','like','%'.$search_string.'%')
+					//	->orWhere('SKU_code',$search_string)
+					//->orderby('created_at','desc')->paginate(8);
+
+					
+					return Redirect::route('products.search_result',['search_term'=>$search_string])->withInput();
+				}else{
+
+					return Redirect::back();
+				}
+
+
+			}
+		}
+	}
+	
+	public function search_result($search_term=""){
+
+		if(Request::isMethod('get')){
+			//echo "search term=".$search_term;
+			if($search_term<>""){
+				
+				$products = Item::with('category')
+						->where('item_name','like','%'.$search_term.'%')
+						->orWhere('SKU_code',$search_term)
+					->orderby('created_at','desc')->paginate(8);
+
+					
+					return View::make('products/search')->with('products',$products)->with('search_string',$search_term);
+			}
+		}
 
 	}
 

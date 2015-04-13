@@ -34,7 +34,13 @@ Route::group(array('before'=>'auth.login'),function(){
 			['as'=>'delfrmcart','uses'=>'app\controllers\ItemController@delfrmcart']);	
 		Route::get('items/category/{category_id}',
 			['as'=>'items.category','uses'=>'app\controllers\ItemController@category']);
-		Route::post('items/search',['as'=>'items.search','uses'=>'app\controllers\ItemController@search']);
+		Route::post('items/search',['as'=>'items.search','uses'=>function(){
+			if(Input::has('search')){
+				$search_string = Input::get('sn');
+				return Redirect::route('items.search_result',['search_term'=>$search_string]);
+			}	
+		}]);
+		Route::get('items/search_result/{search_term}',['as'=>'items.search_result','uses'=>'app\controllers\ItemController@search']);
 		Route::Resource('items','app\controllers\ItemController');
 	});
 	Route::group(['before'=>'HRAccess'],function(){
@@ -47,6 +53,8 @@ Route::group(array('before'=>'auth.login'),function(){
 			'uses'=>'app\controllers\OrderController@manage']);
 		Route::post('orders/manage',['as'=>'orders.manage_post','uses'=>'app\controllers\OrderController@search']);
 		Route::get('orders/admin/{id}',['as'=>'orders.admin','uses'=>'app\controllers\OrderController@admin']);
+		Route::get('products/search_result/{search_term?}',['as'=>'products.search_result','uses'=>'app\controllers\ProductController@search_result']);
+		Route::post('products/search',['as'=>'products.search','uses'=>'app\controllers\ProductController@search']);
 		Route::Resource('activity','app\controllers\ActivityController');
 		Route::Resource('products','app\controllers\ProductController');
 	});

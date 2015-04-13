@@ -207,33 +207,35 @@ class ItemController extends \BaseController {
 
 	}
 
-	public function search()
+	public function search($search_term)
 	{
-		if(Input::has('search')){
+		//if(Input::has('search')){
 
-			$search_string = Input::get('sn');
-			if($search_string<>""){
+			//$search_string = Input::get('sn');
+			if($search_term<>""){
 
 				$activity_id = Session::get('activity_id');
 				$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)
-				->whereIn('item_id',count(Item::where('item_name','like','%'.$search_string.'%')->orWhere('SKU_code',$search_string)->lists('id'))==0?[-1]:(Item::where('item_name','like','%'.$search_string.'%')
-					->orWhere('SKU_code',$search_string)
+				->whereIn('item_id',count(Item::where('item_name','like','%'.$search_term.'%')->orWhere('SKU_code',$search_term)->lists('id'))==0?[-1]:(Item::where('item_name','like','%'.$search_term.'%')
+					->orWhere('SKU_code',$search_term)
 					->lists('id')))
 				->orderby('created_at','desc')->paginate(9);
 
-				return \View::make('items/search')->with('items',$items)->with('search_string',$search_string);
+				return \View::make('items/search')->with('items',$items)->with('search_string',$search_term);
 			}else{
 				return Redirect::back();
 			}
 
-		}else{
+		//}else{
 
-			return Redirect::back();
+		//	return Redirect::back();
 
-		}
+		//}
 
 
 	}
+
+
 
 	private static function getBalance($activity_id,$user_id)
 	{
