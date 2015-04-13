@@ -61,7 +61,7 @@ $(document).on('hidden.bs.modal', function (e) {
 <span class="label label-success">¥ {{$items[$i+$k]->offer_price}}</span> 
 <br>
 产品有效期：{{($items[$i+$k]->expiration)}}
-@if($items[$i+$k]->item_stock>0)
+@if($items[$i+$k]->item_stock>$items[$i+$k]->ordered)
 <div class='pull-right'>
 
 <a href="{{URL::route('items.addtocart',['id'=>$items[$i+$k]->id,'page'=>Input::get('page')])}}"> 

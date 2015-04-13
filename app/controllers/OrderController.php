@@ -1,6 +1,6 @@
 <?php
 Namespace app\controllers;
-use View, Sentry,Session, DB, Excel,Redirect,Request,URL,Cookie,Item,
+use View, Sentry,Session, DB, ActivityItem,Excel,Redirect,Request,URL,Cookie,Item,
 ItemSkin,Skin,Notification,Input,Order,OrderItem,Count,Crypt;
 
 class OrderController extends \BaseController {
@@ -24,6 +24,7 @@ class OrderController extends \BaseController {
 	 * @return Response
 	 */
 	public function create(){
+		$order_new = null;
 		if(Input::has('submit') && (intval(Input::get('itemcount'))>0)){
 			
 			$order_new = DB::transaction(function(){
@@ -43,8 +44,45 @@ class OrderController extends \BaseController {
 				
 					$order_item = new OrderItem();
 					$order_item->order_id = $order->id;
-					$order_item->item_id = intval(Input::get('item_id'.$i));
-					$order_item->qty = intval(Input::get('item_qty_'.$i));
+					$item_id = intval(Input::get('item_id'.$i));
+					$order_qty = intval(Input::get('item_qty_'.$i));
+					$activityItem = ActivityItem::with('item')->where('activity_id',Session::get('activity_id'))
+					->where('item_id',$item_id)
+					->first();
+					if($activityItem){
+						$MoQ = $activityItem->MOQ;
+						$item_limit = $activityItem->item_limit;
+						$item_stock = $activityItem->item_stock;
+						if($MoQ>0 && $order_qty<$MoQ){
+							Notification::error('"'.$activityItem->item->item_name.'" 没有达到最小起订量！');
+							DB::rollBack();
+							Return null;
+						}
+						if($item_limit>0 && $order_qty>$item_limit){
+							Notification::error('"'.$activityItem->item->item_name.'" 超过订购限量！');
+							DB::rollBack();
+							Return null;
+						}
+						//$item_ordered = OrderItem::where('item_id',$item_id)
+						//->whereRaw('order_id in (select id from ccsc_orders 
+						//	where activity_id ='.$activity_id.' and status>0)')
+						//->sum('qty')
+						$item_ordered = $activityItem->ordered;
+						if($item_stock>0 && ($item_ordered+$order_qty>$item_stock)){
+
+							Notification::error('"'.$activityItem->item->item_name.'" 库存不足！');
+							DB::rollBack();
+							Return null;
+
+						}
+
+					}
+					
+					
+					$order_item->item_id = $item_id;
+					$order_item->qty = $order_qty;
+					$activityItem->ordered +=$order_qty;
+					$activityItem->save();
 					$order->qty_total += intval(Input::get('item_qty_'.$i));
 					$order_item->price = floatval(Input::get('item_price'.$i));
 					$order->amount_actual += floatval(Input::get('item_price'.$i))*$order_item->qty;
@@ -63,9 +101,13 @@ class OrderController extends \BaseController {
 		
 		
 		}
+		if($order_new){
+			$cookie = Cookie::forget('item_id');
+			return redirect::route('orders.index')->withCookie($cookie);
+		}else{
+			Return Redirect::back()->withInput();
+		}
 		
-		$cookie = Cookie::forget('item_id');
-		return redirect::route('orders.index')->withCookie($cookie);
 	}
 
 
