@@ -14,7 +14,7 @@
                 <th>活动名称<br>Activity</th>
                 <th>商品总数 <br> Quantity</th>
                 <th>总金额 <br> Total Amount</th>
-                <th>当前状态<br>Status</th>
+                <th>支付方式<br>Payment Method</th>
                 <th>订单时间<br>Created at</th>   
                 
             </tr>
@@ -29,8 +29,8 @@
 			<td>{{$order->qty_total}}</td>
 			<td>{{$order->amount_actual}}</td>
 			<td>
-			@if($order->status==1)已提交
-			
+			@if($order->pmt_method==1)工资抵扣
+			@elseif($order->pmt_method==0)Cash/Credit Card
 			@endif
 			</td>
 			<td>{{$order->created_at}}</td>

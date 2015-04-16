@@ -131,6 +131,8 @@ class ItemController extends \BaseController {
 			}
 			
 			$balance = Self::getBalance($activity_id,Sentry::getUser()->id);
+			$pmt_method = Self::getPmtMethod($activity_id,Sentry::getUser()->id);
+
 		}
 
 		if(is_array($item_id) ){
@@ -152,7 +154,7 @@ class ItemController extends \BaseController {
 
 		}
 		return View::make('items/showcart')->with('items',$items)
-		->with('amount',$amount)->with('itemcount',$itemcount)->with('balance',$balance);
+		->with('amount',$amount)->with('itemcount',$itemcount)->with('balance',$balance)->with('pmt_method',$pmt_method);
 	
 	}
 	
@@ -252,6 +254,27 @@ class ItemController extends \BaseController {
 			
 		$balance = $limit - $used;
 		return $balance;
+
+	}
+
+	private static function getPmtMethod($activity_id,$user_id)
+	{
+
+		$pmt_method = -1;
+		$order = Order::where('activity_id',$activity_id)->where('owner_id',$user_id)->first();
+		
+		if($order){
+
+			if($order->pmt_method==1){
+				$pmt_method = 1;
+			}elseif($order->pmt_method==0){
+				$pmt_method = 0;
+			}
+		}
+
+		return $pmt_method;
+
+
 
 	}
 }

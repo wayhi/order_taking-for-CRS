@@ -90,10 +90,20 @@
            
            <tr>
         
-        <td  colspan=5 align='right'><div class='pull-right'>Total Amount 总价：¥
-        <input type='button' class='btn btn-default btn-sm' id='totalamount' value='{{$amount}}'>
-        <input type='hidden' id='balance' name='balance' value="{{$balance}}">
-        </div></td>
+        <td colspan=3 align='center'>
+            @if($pmt_method == -1)
+                {{Former::checkbox('pmt_method','')->text('从本人工资抵扣')}}
+            @elseif($pmt_method == 1)
+                <span class='label label-danger' >从本人工资抵扣</span>
+            @endif    
+        </td>
+        <td  colspan=2 align='right'>
+
+            <div class='pull-right'>Total Amount 总价：¥
+            <input type='button' class='btn btn-default btn-sm' id='totalamount' value='{{$amount}}'>
+            <input type='hidden' id='balance' name='balance' value="{{$balance}}">
+            </div>
+        </td>
         
         </tr>
         

@@ -38,6 +38,12 @@ $(document).on('hidden.bs.modal', function (e) {
 <div class="col-md-4">
 
 <div class="box">
+  <div class="pull-left">
+  {{$items[$i+$k]->Memo}}
+</div>
+<div class='pull-right'>
+{{$items[$i+$k]->item->SKU_code}}
+</div>
 <div class="lb_l">
 	<image src="{{$items[$i+$k]->item->image->url('thumbnail')}}" >
 	
@@ -45,15 +51,26 @@ $(document).on('hidden.bs.modal', function (e) {
 
 <div class="lb_r">
 <h4>
-<div class="show1">{{$items[$i+$k]->item->category->name}}</div>
+@if($items[$i+$k]->item->category->id==2)
+    <div class="cat_green">{{$items[$i+$k]->item->category->name}}</div>
+ @elseif($items[$i+$k]->item->category->id==3)
+ <div class="cat_milk">{{$items[$i+$k]->item->category->name}}</div>
+ @elseif($items[$i+$k]->item->category->id==4)
+ <div class="cat_blue">{{$items[$i+$k]->item->category->name}}</div>
+ @elseif($items[$i+$k]->item->category->id==5)
+ <div class="cat_red">{{$items[$i+$k]->item->category->name}}</div>
+ @endif
  <a href="{{URL::route('items.show',$items[$i+$k]->id)}}" data-toggle="modal" data-target="#myModal">
  {{$items[$i+$k]->item->item_name}}</a>
 </h4><br>
 <div style="clear:both"></div>
+<span class="label label-success">{{$items[$i+$k]->item->texture}}</span>
 <span class="label label-info">{{$items[$i+$k]->item->size}}</span>
-<span class="label label-success">¥ {{$items[$i+$k]->offer_price}}</span> 
-
-@if($items[$i+$k]->item_stock>0)
+<span class="label label-default">市场价{{$items[$i+$k]->retail_price}}</span>
+<span class="label label-danger">现价{{$items[$i+$k]->offer_price}}</span> 
+<br>
+产品有效期：{{($items[$i+$k]->expiration)}}
+@if($items[$i+$k]->item_stock>$items[$i+$k]->ordered)
 <div class='pull-right'>
 
 <a href="{{URL::route('items.addtocart',['id'=>$items[$i+$k]->id,'page'=>Input::get('page')])}}"> 

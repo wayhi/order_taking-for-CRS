@@ -37,6 +37,12 @@ class OrderController extends \BaseController {
 				$order->amount_original = 0.00;
 				$order->amount_actual = 0.00;
 				$order->status = 1;
+				if(Input::has('pmt_method')){
+
+					$order->pmt_method = 1;
+				}else{
+					$order->pmt_method = 0;
+				}
 				$order->save();
 				
 				$itemcount = intval(Input::get('itemcount'));

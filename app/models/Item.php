@@ -26,7 +26,7 @@ class Item extends Eloquent implements StaplerableInterface{
     
     public function skins(){
     
-    	return $this->belongsToMany('Skin','Item_Skin','item_id','skin_id');
+    	return $this->belongsToMany('Skin','item_skin','item_id','skin_id');
     
     }
     

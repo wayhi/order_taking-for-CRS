@@ -38,7 +38,15 @@
            
            <tr>
         
-        <td  colspan=4 align='right'><div class='pull-right'>Total Amount 总价：¥{{$order->amount_actual}}
+        <td  colspan=2 align='left'>
+            @if($order->pmt_method==1)
+            <span class='label label-danger'>从本人工资抵扣</span>
+            @endif
+            
+        </div></td>
+        <td  colspan=2 align='right'>
+            
+            <div class='pull-right'>Total Amount 总价：¥{{$order->amount_actual}}
         </div></td>
         
         </tr>
