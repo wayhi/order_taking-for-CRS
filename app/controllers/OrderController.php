@@ -1,7 +1,7 @@
 <?php
 Namespace app\controllers;
-use View, Sentry,Session, DB, ActivityItem,Excel,Redirect,Request,URL,Cookie,Item,
-ItemSkin,Skin,Notification,Input,Order,OrderItem,Count,Crypt;
+use View, Sentry,Session, DB,ActivityItem,Activity,Excel,Redirect,Request,URL,Cookie,Item,
+ItemSkin,Skin,Notification,User,Input,Order,OrderItem,Count,Crypt;
 
 class OrderController extends \BaseController {
 
@@ -27,6 +27,12 @@ class OrderController extends \BaseController {
 		$order_new = null;
 		if(Input::has('submit') && (intval(Input::get('itemcount'))>0)){
 			
+			$total_amount = floatval(Input::get('totalamount'));
+			$balance = self::getBalance(Session::get('activity_id'),Sentry::getUser()->id);
+			if($total_amount>$balance){
+				Notification::error("订购总金额超过限额！");
+				return Redirect::back()->withInput();
+			}
 			$order_new = DB::transaction(function(){
 				
 				$order = new Order();
@@ -294,6 +300,139 @@ class OrderController extends \BaseController {
 
 		}
 
+
+	}
+
+	public function showcart(){
+		$item_id = Cookie::get('item_id');
+		$itemcount = 0;
+		$items =null;
+		$amount = 0.00;
+		$balance = 0.00;
+		$amount_limit = 0.00;
+		$activity_id = Session::get('activity_id');
+		$activity = Activity::find($activity_id);
+		if($activity->activated==1){
+			if(User::find(Sentry::getUser()->id)->quota>0){
+
+				$amount_limit = User::find(Sentry::getUser()->id)->quota;
+			}else{
+				$amount_limit = $activity->amount_limit;
+			}
+			
+			$balance = Self::getBalance($activity_id,Sentry::getUser()->id);
+			$pmt_method = Self::getPmtMethod($activity_id,Sentry::getUser()->id);
+
+		}
+
+		if(is_array($item_id) ){
+			$item_id = array_unique($item_id);
+			$itemcount = count($item_id);
+			if($itemcount>0){
+				$items = ActivityItem::with('item')->whereIn('id',$item_id)->get();
+				$amount = ActivityItem::whereIn('id',$item_id)->select(DB::raw('sum(offer_price) as amount'))->pluck('amount');
+			}
+			
+		}
+		
+		
+		if($balance<=100){
+			Notification::errorInstant("本次活动限额 ¥".$amount_limit.", 剩余额度 ¥".$balance);
+			//Notification::message("ok");
+		}else{
+			Notification::warningInstant("本次活动限额 ¥".$amount_limit.", 剩余额度 ¥".$balance);
+
+		}
+		return View::make('items/showcart')->with('items',$items)
+		->with('amount',$amount)->with('itemcount',$itemcount)->with('balance',$balance)->with('pmt_method',$pmt_method);
+	
+	}
+	
+	public function clearcart(){
+		$cookie = Cookie::forget('item_id');
+		return redirect::route('showcart')->withCookie($cookie);
+	}
+
+	public function addtocart($item_id,$page=1){
+		$item = ActivityItem::with('item')->find($item_id);
+		$items_exist = Cookie::get('item_id');
+		if(($items_exist)==null){
+			$items_exist=[];
+			//$items = array_add($items_exist,1,$item_id);
+		}
+		$items = array_add($items_exist,count($items_exist),$item_id);
+		
+		
+		$cookie = Cookie::make('item_id',array_unique($items), 7200);
+
+		Notification::success($item->item->item_name.'已加入您的购物车。');
+		//Debugbar::info($url);
+		return Redirect::route('items.index',['page'=>$page])->withCookie($cookie);
+	
+	}
+
+	public function delfrmcart($item_id)
+	{
+
+		$item_list= Cookie::get('item_id');
+		//Debugbar::info($item_list);
+		
+		if(is_array($item_list)){
+
+				$keys = array_keys($item_list,$item_id);
+				//Debugbar::info($keys);
+				foreach($keys as $key){
+					array_splice($item_list, $key, 1);
+
+				}
+				//Debugbar::info($item_list);
+
+		}else{
+
+
+
+		}
+
+		$cookie = Cookie::make('item_id',$item_list, 7200);
+		return Redirect::route('showcart')->withCookie($cookie)->withinput();
+		//return View::make('items/showcart');
+
+	}
+
+	private static function getBalance($activity_id,$user_id)
+	{
+		$balance = 0.00;
+		$used = Order::where('activity_id',$activity_id)->where('owner_id',$user_id)
+			->sum('amount_actual');
+		if(User::find($user_id)->quota>0){
+
+				$limit = User::find($user_id)->quota;
+			}else{
+				$limit = Activity::find($activity_id)->amount_limit;
+			}	
+		
+			
+		$balance = $limit - $used;
+		return $balance;
+
+	}
+
+	private static function getPmtMethod($activity_id,$user_id)
+	{
+
+		$pmt_method = -1;
+		$order = Order::where('activity_id',$activity_id)->where('owner_id',$user_id)->first();
+		
+		if($order){
+
+			if($order->pmt_method==1){
+				$pmt_method = 1;
+			}elseif($order->pmt_method==0){
+				$pmt_method = 0;
+			}
+		}
+
+		return $pmt_method;
 
 	}
 	

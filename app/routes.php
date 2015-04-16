@@ -26,12 +26,12 @@ Route::group(array('before'=>'auth.login'),function(){
 	Route::get('logout', array('as'=>'logout','uses'=>'app\controllers\LoginController@getLogout'));
 		
 	Route::group(['before'=>'activated'],function(){
-		Route::get('/showcart',['as'=>'showcart','uses'=>'app\controllers\ItemController@showcart']);
-		Route::get('/clearcart',['as'=>'clearcart','uses'=>'app\controllers\ItemController@clearcart']);
+		Route::get('/showcart',['as'=>'showcart','uses'=>'app\controllers\OrderController@showcart']);
+		Route::get('/clearcart',['as'=>'clearcart','uses'=>'app\controllers\OrderController@clearcart']);
 		Route::get('items/addtocart/{item_id}/{page?}',
-			['as'=>'items.addtocart','uses'=>'app\controllers\ItemController@addtocart']);
+			['as'=>'items.addtocart','uses'=>'app\controllers\OrderController@addtocart']);
 		Route::get('/delfrmcart/{item_id}',
-			['as'=>'delfrmcart','uses'=>'app\controllers\ItemController@delfrmcart']);	
+			['as'=>'delfrmcart','uses'=>'app\controllers\OrderController@delfrmcart']);	
 		Route::get('items/category/{category_id}',
 			['as'=>'items.category','uses'=>'app\controllers\ItemController@category']);
 		Route::post('items/search',['as'=>'items.search','uses'=>function(){

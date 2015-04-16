@@ -66,7 +66,9 @@
                     <td><image src="{{$items[$i]->item->image->url('micro')}}">
                     <input type='hidden' name='item_id{{$i}}' value='{{$items[$i]->item->id}}'>
                     </td>
-                    <td style="vertical-align:middle; text-align:left;">{{$items[$i]->item->item_name}}</td>
+                    <td style="vertical-align:middle; text-align:left;">{{$items[$i]->item->item_name}}
+                    <br><i style="color:grey;">{{$items[$i]->Memo}}</i>
+                    </td>
                     <td style="vertical-align:middle; text-align:center;">{{$items[$i]->offer_price}}
                     <input type='hidden' name='item_price{{$i}}' value='{{$items[$i]->offer_price}}'>
                     <input type='hidden' name='item_price_o{{$i}}' value='{{$items[$i]->retail_price}}'>
@@ -90,11 +92,12 @@
            
            <tr>
         
-        <td colspan=3 align='center'>
+        <td colspan=3 align='center' style="vertical-align:middle;" >
             @if($pmt_method == -1)
                 {{Former::checkbox('pmt_method','')->text('从本人工资抵扣')}}
             @elseif($pmt_method == 1)
                 <span class='label label-danger' >从本人工资抵扣</span>
+                <input type='hidden' name='pmt_method' value='1'>
             @endif    
         </td>
         <td  colspan=2 align='right'>
