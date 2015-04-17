@@ -24,7 +24,7 @@
  @if($item->limit>0)<span class="label label-warning">限购 {{$item->limit}} 件</span> @endif 
  @if($item->activated==1)<span class="label label-success">剩余{{$item->item_stock}}件</span>@endif
  <br>
- 产品保质期：{{$item->expiration}}
+ 产品有效期：{{$item->expiration}}
 <br>
 
 </div>

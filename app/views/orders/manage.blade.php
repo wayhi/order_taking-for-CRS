@@ -6,23 +6,23 @@
  {{Former::horizontal_open()->id('OrderSearch')->Method('POST')->route('orders.manage_post')}}
 <div class='row'>
         
-        <div class='col-md-4 col-lg-4'>
+        <div class='col-md-3 col-lg-3'>
            
             {{Former::select('activity_id','所属活动: ')->fromQuery(Activity::all(),'name','id')->class('form-control')}}
         </div>    
-        <div class='col-md-4 col-lg-4'>
+        <div class='col-md-3 col-lg-3'>
             {{Former::select('item_id','产品: ')->fromQuery(Item::all(),'item_name','id')->class('form-control')}}
         </div>    
         <div class='col-md-2 col-lg-2'>
             {{Former::select('user_id','用户: ')->fromQuery(User::all(),'last_name','id')->class('form-control')}}
         </div>  
-         <div class='col-md-2 col-lg-2' > 
+         <div class='col-md-4 col-lg-4' > 
                 <div class="control-group">   
                  <label class="control-label"> <br></label>
                  <div class="controls">
                      
                      {{Former::submit('查询')->class('btn btn-primary btn-sm')->name('submit')}}
-                     <!--{{Former::submit('导出')->class('btn btn-warning btn-sm')->name('export')}} -->
+                     {{Former::submit('导出')->class('btn btn-warning btn-sm')->name('export')}} 
                      <a class='btn btn-default btn-sm' href="{{URL::route('items.index')}}" >返回</a>
                  
                  </div>

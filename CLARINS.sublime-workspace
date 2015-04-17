@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"Activity",
+				"$ActivityItems〔variable〕"
+			],
+			[
+				"De",
+				"DebugBar"
+			],
+			[
+				"to",
+				"toArray"
+			],
+			[
+				"A",
+				"$ActivityItems〔variable〕"
+			],
+			[
+				"act",
+				"activityItem"
+			],
+			[
 				"v",
 				"vertical"
 			],
@@ -68,10 +88,6 @@
 				"getBalance"
 			],
 			[
-				"A",
-				"Activity"
-			],
-			[
 				"acti",
 				"activity_id"
 			],
@@ -118,10 +134,6 @@
 			[
 				"array_m",
 				"array_merge〔function〕"
-			],
-			[
-				"act",
-				"activity_id"
 			],
 			[
 				"items",
@@ -179,14 +191,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/views/items/showcart.blade.php",
-			"settings":
-			{
-				"buffer_size": 5235,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -216,13 +220,19 @@
 	},
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
+		"/Applications/MAMP/htdocs/clarins/app/models/ActivityItem.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/config.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/show.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/show.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_product.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/assets.blade.php",
@@ -235,10 +245,8 @@
 		"/Applications/MAMP/htdocs/clarins/app/controllers/HomeController.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/show.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Item.php",
-		"/Applications/MAMP/htdocs/clarins/app/models/ActivityItem.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/ItemSkin.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/OrderItem.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/errors/missing.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/missing.blade.php",
 		"/Applications/MAMP/htdocs/clarins/bootstrap/start.php",
@@ -259,7 +267,6 @@
 		"/Applications/MAMP/htdocs/clarins/app/views/users/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_order.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_user.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/User.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/vendor/cartalyst/sentry/src/migrations/2012_12_06_225921_migration_cartalyst_sentry_install_users.php",
@@ -274,7 +281,6 @@
 		"/Applications/MAMP/htdocs/clarins/app/models/Group.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/Login/pwd_change.blade.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/user/register.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/controllers/user/UserController.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Order.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/export.blade.php",
@@ -335,38 +341,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/views/items/showcart.blade.php",
-					"settings":
-					{
-						"buffer_size": 5235,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4141,
-								4141
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1023.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

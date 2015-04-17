@@ -1,7 +1,7 @@
 <?php
 Namespace app\controllers;
 use View, Sentry,Session, DB,ActivityItem,Activity,Excel,Redirect,Request,URL,Cookie,Item,
-ItemSkin,Skin,Notification,User,Input,Order,OrderItem,Count,Crypt;
+ItemSkin,Skin,Notification,User,Input,Order,OrderItem,Count,Crypt,Debugbar;
 
 class OrderController extends \BaseController {
 
@@ -33,8 +33,9 @@ class OrderController extends \BaseController {
 				Notification::error("订购总金额超过限额！");
 				return Redirect::back()->withInput();
 			}
+			
 			$order_new = DB::transaction(function(){
-				
+				$pmt_method = self::getPmtMethod(Session::get('activity_id'),Sentry::getUser()->id);
 				$order = new Order();
 				$order->activity_id= Session::get('activity_id');
 				$order->order_number = Self::generate_order_number();
@@ -43,12 +44,17 @@ class OrderController extends \BaseController {
 				$order->amount_original = 0.00;
 				$order->amount_actual = 0.00;
 				$order->status = 1;
-				if(Input::has('pmt_method')){
+				if($pmt_method==-1){
+					if(Input::has('pmt_method')){
 
-					$order->pmt_method = 1;
+						$order->pmt_method = 1;
+					}else{
+						$order->pmt_method = 0;
+					}
 				}else{
-					$order->pmt_method = 0;
+					$order->pmt_method = $pmt_method;
 				}
+					
 				$order->save();
 				
 				$itemcount = intval(Input::get('itemcount'));
@@ -280,19 +286,29 @@ class OrderController extends \BaseController {
 			$activity_id = Input::get('activity_id');
 			$item_id = Input::get('item_id');
 			$user_id = Input::get('user_id');
-
-			$orders = Order::with('order_items.item','owner')->where('activity_id',5)
+			$ActivityItems = ActivityItem::with('item')->where('activity_id',5)->get();
+			$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)
 			->orderBy('created_at','desc');
+			//Debugbar::info($ActivityItems);
 			
-			
-			Excel::create('Filename', function($excel) use($orders) {
+			Excel::create('Filename', function($excel) use($ActivityItems) {
 
-    			$excel->sheet('Sheetname', function($sheet) use($orders) {
-    				$main_arr[]=$orders->get()->toArray();
-        			foreach($main_arr as $one){
-                    $sheet->fromArray($one);
-                }
-        			$sheet->loadView('orders.export')->with('orders',$orders);
+    			$excel->sheet('Sheetname', function($sheet) use($ActivityItems) {
+    				//$main_arr[]=$ActivityItems->get()->toArray();
+    				//$main_arr[] = $ActivityItems->get()->toArray();
+    				//$n =1;
+    				//Debugbar::info($main_arr);
+    				//echo $ActivityItems;
+        			foreach($ActivityItems as $one){
+                    	//$sheet->fromArray($one);
+                    	//$sheet->row($n,array($item->id,$item->item->item_name));
+        				//$sheet->row($n,array(1,'test'));
+        				//$sheet->fromArray($one);
+        				$sheet->fromModel($one);
+        				//echo $item;
+                    	//$n +=1;
+                	}
+        			//$sheet->loadView('orders.export')->with('orders',$orders);
 
     			});
 
