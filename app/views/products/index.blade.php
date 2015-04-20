@@ -38,11 +38,13 @@
 		</tbody>
 </table>		
 </div>
+<div class='col-md-12 col-lg-12'>
+<div class='pagination inline'>{{$products->links()}}</div>
 
-<div class='pagination inline'>{{$products->links();}}</div>
 <div class='col-md-offset-5 col-md-6 col-lg-6'>
 	<a class='btn btn-success btn-sm' href="{{URL::route('products.create')}}">新增</a>
 	<a class='btn btn-primary btn-sm' href="{{URL::route('products.import')}}">导入产品列表...</a>
 	<a class='btn btn-sm btn-default'  href="{{URL::Route('items.index')}}">返回</a>
+</div>
 </div>
 @stop

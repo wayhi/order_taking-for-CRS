@@ -96,7 +96,7 @@
             @if($pmt_method == -1)
                 {{Former::checkbox('pmt_method','')->text('从本人工资抵扣')}}
             @elseif($pmt_method == 1)
-                <span class='label label-danger' >从本人工资抵扣</span>
+                <span class='label label-danger' style="font-size:11px">从本人工资抵扣</span>
                 <input type='hidden' name='pmt_method' value='1'>
             @endif    
         </td>

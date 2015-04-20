@@ -48,9 +48,9 @@
                         <th>用户姓名<br>Name</th>
                         <th>订单号<br>Order #</th>
                         <th>商品总数 <br> Total Qty</th>
-                        <th>总金额 <br> Total Amount</th>
                         <th>订单时间<br>Order Time</th>
                         <th>支付方式<br>Payment Method</th>
+                        <th>总金额 <br> Total Amount</th>
                         <th>商品SKU<br>SKU Code</th>
                         <th>商品名<br>Item Name</th>  
                         <th>数量<br>Qty</th>
@@ -68,7 +68,6 @@
                                         <a href='{{URL::Route('orders.admin',Crypt::encrypt($order->id))}}'>{{$order->order_number}}</a>
                                     </td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->qty_total}}</td>
-                                    <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->amount_actual}}</td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->created_at}}</td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">
                                     @if($order->pmt_method==1)工资抵扣 
@@ -76,7 +75,7 @@
                                     @elseif($order->pmt_method==2)Free
                                     @endif
                                     </td>
-                                    
+                                    <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->amount_actual}}</td>
                                 @endif
                                 
                                 <td style="vertical-align:middle; text-align:center;">{{$order->order_items[$i]->item->SKU_code}}</td>
@@ -87,7 +86,9 @@
                         @endfor
                     
                     @endforeach
+                   
                 </tbody>
+                <tfoot><tr> <td colspan=6 align='right'><b>Total Amount: {{$totalamount}}</b></td><td colspan=3></td></tr></tfoot>
         </table>  
     <div class='pagination inline'>{{$orders->links();}}</div>        
 </div>

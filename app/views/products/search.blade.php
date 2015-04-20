@@ -40,5 +40,5 @@
 </div>
 
 <div class='pagination inline'>{{$products->links();}}</div>
-
+<div class='col-md-offset-6'><a class='btn btn-default' href="{{URL::Route('products.index')}}">返回</a></div>
 @stop

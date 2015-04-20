@@ -1,7 +1,7 @@
 <?php
 Namespace app\controllers;
 use View, Sentry,Session, DB,ActivityItem,Activity,Excel,Redirect,Request,URL,Cookie,Item,
-ItemSkin,Skin,Notification,User,Input,Order,OrderItem,Count,Crypt,Debugbar;
+ItemSkin,Skin,Notification,User,Input,Order,OrderItem,Count,Crypt;
 
 class OrderController extends \BaseController {
 
@@ -233,40 +233,49 @@ class OrderController extends \BaseController {
 		return $type_code.strval(10000+$serial_no);
 	}
 
-	public function manage($activity_id,$item_id=0,$user_id=0)
+	public function manage($activity_id,$item_id=0,$user_id=0,$pmt_method=-1)
 	{
 		//$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
 		//return \View::make('orders/manage')->with(['orders'=>$orders,,'item_id'=>$item_id,'user_id'=>$user_id]);
 
-		if($item_id==0 && $user_id==0){
-				$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
-				return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
+		if($item_id==0 && $user_id==0 ){
+				//$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)->orderBy('created_at','desc')->paginate(10);
+				//return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
+				$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id);
 			}elseif($item_id<>0 and $user_id==0){
 				
 				//
 				$orders = Order::with('order_items.item','owner')
 				->where('activity_id',$activity_id)
-				->whereRaw(DB::raw('id in (select order_id from ccsc_order_items where item_id='.$item_id.')'))
-				->orderBy('created_at','desc')->paginate(10);
-				return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
+				->whereRaw(DB::raw('id in (select order_id from ccsc_order_items where item_id='.$item_id.')'));
+				//->orderBy('created_at','desc')->paginate(10);
+				//return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
 
 			}elseif($item_id==0 and $user_id<>0){
 				$orders = Order::with('order_items.item','owner')
 				->where('activity_id',$activity_id)
-				->where('owner_id',$user_id)
-				->orderBy('created_at','desc')->paginate(10);
-				return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
+				->where('owner_id',$user_id);
+				//->orderBy('created_at','desc')->paginate(10);
+				//return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
 
 			}else{
 
 				$orders = Order::with('order_items.item','owner')
 				->where('activity_id',$activity_id)
 				->whereRaw(DB::raw('id in (select order_id from ccsc_order_items where item_id='.$item_id.')'))
-				->where('owner_id',$user_id)
-				->orderBy('created_at','desc')->paginate(10);
-				return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
+				->where('owner_id',$user_id);
+				//->orderBy('created_at','desc')->paginate(10);
+				//return \View::make('orders/manage')->with(['orders'=>$orders,'item_id'=>$item_id,'user_id'=>$user_id]);
 
 			}
+			
+			if($pmt_method<>-1){
+				$orders=$orders->where('pmt_method',$pmt_method)->orderBy('created_at','desc');
+			}else{
+				$orders=$orders->orderBy('created_at','desc');
+			}
+			$totalamount = $orders->sum('amount_actual');
+			return \View::make('orders/manage')->with(['orders'=>$orders->paginate(10),'item_id'=>$item_id,'user_id'=>$user_id,'pmt_method'=>$pmt_method,'totalamount'=>$totalamount]);
 		
 	}
 
@@ -276,8 +285,8 @@ class OrderController extends \BaseController {
 			$activity_id = Input::get('activity_id');
 			$item_id = Input::get('item_id');
 			$user_id = Input::get('user_id');
-
-			return redirect::route('orders.manage',['activity_id'=>$activity_id,'item_id'=>$item_id,'user_id'=>$user_id])->withinput();
+			$pmt_method = Input::get('pmt_method');
+			return redirect::route('orders.manage',['activity_id'=>$activity_id,'item_id'=>$item_id,'user_id'=>$user_id,'pmt_method'=>$pmt_method])->withinput();
 			
 
 		}

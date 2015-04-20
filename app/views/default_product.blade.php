@@ -8,7 +8,7 @@
 		@include('assets')
 </head>
 <body>
-
+{{Former::secure_open()->id('SearchForm')->Method('POST')->route('products.search')}}
 <nav class="navbar navbar-inverse" role="navigation">
 
 <div class="container">
@@ -24,15 +24,16 @@
 
 <ul class="nav navbar-nav">
 
-{{Former::secure_open()->id('SearchForm')->Method('POST')->route('products.search')}}
+
 <div class="navbar-form navbar-left" role="search">
 <div class="input-group input-group-sm btn-group">
+	
 <input type="text" class="form-control" style="width:150px" id="sn" name='sn' placeholder="商品名称或SKU Code">
-<span class="input-group-btn">
+
 
 <button type="submit" class="btn btn-danger btn-sm" id="search" name='search' value="s">搜索</button>
-{{Former::close()}}
 
+</div></div>
 <!--li><a href="/activity/create">新建 New Activity</a></li>
 <li><a href="/activity">返回 Back</a></li-->
 </ul>
@@ -58,11 +59,12 @@
 
 </div>
 <footer class="bs-docs-footer" role="contentinfo">
-<hr>
+
 <div class='container'>
+	<hr>
 <div class='col-md-6 col-lg-6 text-muted'><p>&copy Clarins {{date('Y')}} </p></div>
 </div>
 </footer>
-
+{{Former::close()}}
 </body>
 </html>

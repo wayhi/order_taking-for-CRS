@@ -49,7 +49,7 @@ Route::group(array('before'=>'auth.login'),function(){
 	});
 	Route::group(['before'=>'OperationAccess'],function(){
 		Route::get('products/import',['as'=>'products.import','uses'=>'app\controllers\ProductController@import']);
-		Route::get('orders/manage/{activity_id}/{item_id?}/{user_id?}',['as'=>'orders.manage',
+		Route::get('orders/manage/{activity_id}/{item_id?}/{user_id?}/{pmt_method?}',['as'=>'orders.manage',
 			'uses'=>'app\controllers\OrderController@manage']);
 		Route::post('orders/manage',['as'=>'orders.manage_post','uses'=>'app\controllers\OrderController@search']);
 		Route::get('orders/admin/{id}',['as'=>'orders.admin','uses'=>'app\controllers\OrderController@admin']);

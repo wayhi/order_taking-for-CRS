@@ -12,7 +12,7 @@ class UserController extends \BaseController {
 	public function index()
 	{
 		
-		$users = Sentry::with('groups')->where('id','>',0)->paginate(10);
+		$users = Sentry::with('groups')->where('id','>',0)->paginate(15);
 		//Debugbar::info($users);
 		return View::make('users/index')->with('users',$users);
 	}
