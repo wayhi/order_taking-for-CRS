@@ -6,7 +6,7 @@
  {{Former::horizontal_open()->id('OrderSearch')->Method('POST')->route('orders.manage_post')}}
 <div class='row'>
         
-        <div class='col-md-3 col-lg-3'>
+        <div class='col-md-2 col-lg-2'>
            
             {{Former::select('activity_id','所属活动: ')->fromQuery(Activity::all(),'name','id')->class('form-control')}}
         </div>    
@@ -16,7 +16,10 @@
         <div class='col-md-2 col-lg-2'>
             {{Former::select('user_id','用户: ')->fromQuery(User::all(),'last_name','id')->class('form-control')}}
         </div>  
-         <div class='col-md-4 col-lg-4' > 
+        <div class='col-md-2 col-lg-2'>
+            {{Former::select('pmt_method','支付方式: ')->options([-1=>'所有-All',0=>'Cash',1=>'Salary',2=>'Free'])->class('form-control')}}
+        </div>  
+         <div class='col-md-3 col-lg-3' > 
                 <div class="control-group">   
                  <label class="control-label"> <br></label>
                  <div class="controls">
@@ -42,11 +45,12 @@
                 <thead>
                     <tr class='warning'>
                         
-                        <th>用户姓名<br>Customer Name</th>
+                        <th>用户姓名<br>Name</th>
                         <th>订单号<br>Order #</th>
-                        <th>商品总数 <br> Total Quantity</th>
+                        <th>商品总数 <br> Total Qty</th>
                         <th>总金额 <br> Total Amount</th>
-                        <th>订单时间<br>Created at</th>
+                        <th>订单时间<br>Order Time</th>
+                        <th>支付方式<br>Payment Method</th>
                         <th>商品SKU<br>SKU Code</th>
                         <th>商品名<br>Item Name</th>  
                         <th>数量<br>Qty</th>
@@ -66,6 +70,13 @@
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->qty_total}}</td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->amount_actual}}</td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->created_at}}</td>
+                                    <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">
+                                    @if($order->pmt_method==1)工资抵扣 
+                                    @elseif($order->pmt_method==0)Cash/Credit Card 
+                                    @elseif($order->pmt_method==2)Free
+                                    @endif
+                                    </td>
+                                    
                                 @endif
                                 
                                 <td style="vertical-align:middle; text-align:center;">{{$order->order_items[$i]->item->SKU_code}}</td>

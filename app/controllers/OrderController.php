@@ -291,24 +291,47 @@ class OrderController extends \BaseController {
 			->orderBy('created_at','desc');
 			//Debugbar::info($ActivityItems);
 			
-			Excel::create('Filename', function($excel) use($ActivityItems) {
+			Excel::create('Filename', function($excel) {
 
-    			$excel->sheet('Sheetname', function($sheet) use($ActivityItems) {
-    				//$main_arr[]=$ActivityItems->get()->toArray();
-    				//$main_arr[] = $ActivityItems->get()->toArray();
-    				//$n =1;
-    				//Debugbar::info($main_arr);
-    				//echo $ActivityItems;
-        			foreach($ActivityItems as $one){
-                    	//$sheet->fromArray($one);
-                    	//$sheet->row($n,array($item->id,$item->item->item_name));
-        				//$sheet->row($n,array(1,'test'));
-        				//$sheet->fromArray($one);
-        				$sheet->fromModel($one);
-        				//echo $item;
-                    	//$n +=1;
-                	}
-        			//$sheet->loadView('orders.export')->with('orders',$orders);
+    			$excel->sheet('Sheetname', function($sheet) {
+    				
+        			$users = DB::table('users')->whereExists(function($query){
+                		$query->select(DB::raw(1))
+                      		->from('orders')
+                     		->whereRaw('ccsc_orders.owner_id = ccsc_users.id');
+            		})->lists('last_name');
+        			$sheet->fromArray(array_merge(['','','',],$users));
+        			$data = DB::table('order_items')->leftJoin('orders','orders.id','=','order_items.order_id')
+        				->leftJoin('users','users.id','=','orders.owner_id')
+        				->leftJoin('item_master','item_master.id','=','order_items.item_id')
+        				->groupby(['order_items.item_id','orders.owner_id'])
+        				->select(DB::raw('ccsc_item_master.id,ccsc_item_master.SKU_code,ccsc_item_master.item_name,
+        					ccsc_users.last_name, sum(ccsc_order_items.qty) as qty'))
+        				->get();
+
+        			$n=2;
+        			$last_item=0;
+        			foreach($data as $row){
+        				//\Debugbar::info($row);
+        				//$sheet->fromArray($row);
+        				if($row->id <> $last_item){
+        					$n += 1;
+        				}
+        				$sheet->setCellValueByColumnAndRow(0,$n,$row->SKU_code);
+        				$sheet->setCellValueByColumnAndRow(1,$n,$row->item_name);
+        				$sheet->setCellValueByColumnAndRow(array_search($row->last_name,$users)+3,$n,$row->qty);
+        				$last_item = $row->id;
+
+        				
+        			}	
+        			//$data = DB::raw('select d.last_name, c.SKU_code,c.item_name,sum(a.qty) as qty 
+        			//		from ccsc_order_items a left join ccsc_orders b on a.order_id = b.id 
+        			//		left join ccsc_users d on d.id=b.owner_id left join `ccsc_item_master` c 
+        			//		on a.item_id = c.id group by a.item_id,b.owner_id')->get();
+        			//echo $data;
+        			//$data = DB::table('order_')
+        			//$sheet->setCellValueByColumnAndRow(1, 8, 'Some value');
+        				
 
     			});
 
