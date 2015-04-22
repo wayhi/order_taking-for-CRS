@@ -28,7 +28,7 @@
 
 <div class='row'>
 	<div class='col-md-offset-2 col-md-4 col-lg-4'>
-		{{Former::select('type','活动类型')->options([1=>'Internal Sale',2=>'Free Goods',3=>'Bazzar',])
+		{{Former::select('type','活动类型')->options([1=>'Internal Sale',2=>'Free Goods',3=>'Family Sale',])
 		->class('form-control')}}
 	</div>
 	<div class='col-md-4 col-lg-4'>	

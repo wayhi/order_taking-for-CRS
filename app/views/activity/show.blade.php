@@ -29,7 +29,7 @@
 	<div class='col-md-offset-2 col-md-4 col-lg-4'>
 		活动类型:@if($activity->type==1) Internal Sale
 		@elseif($activity->type==2) Free Goods
-		@elseif($activity->type==3) Bazzar
+		@elseif($activity->type==3) Family Sale
 		@endif
 		
 	</div>

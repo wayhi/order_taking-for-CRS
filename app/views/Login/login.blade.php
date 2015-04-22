@@ -18,7 +18,7 @@
         <image  src='../images/logo1.png' />
         </a>
         </div>
-        <h1>Internal Shop</h1>
+        <h1><br></h1>
    </div>
    
    <hr>  
@@ -33,7 +33,7 @@
   </div>  
   <div class='row'>
     <div  class="col-md-5 col-lg-5">      
-       
+left 
        {{ Former::password('password','Password: ')->placeholder('登录密码')->class('form-control') }}
         
     </div>

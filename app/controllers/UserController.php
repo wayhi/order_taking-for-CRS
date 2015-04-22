@@ -86,22 +86,24 @@ class UserController extends \BaseController {
 
 		if(Input::has('import')){
 			set_time_limit(60);
+			$n=0;
 			if(Input::hasFile('attachement')){
 				$attached = Input::file('attachement');
 				$results = Excel::load($attached)->get();
-				$n=0;
+				
 				foreach($results as $row){
 					try{
-						$user=Sentry::createUser([
-							'email' => $row['email'],
-							'password' => $row['password'],
-							'last_name' => $row['name'],
-							'activated'=> true,
-							]);
-						$group = Sentry::findGroupById($row['group_id']);
-						$user->addGroup($group);
-						$n +=1;
-
+						if($row['email']<>""){
+							$user=Sentry::createUser([
+								'email' => $row['email'],
+								'password' => $row['password'],
+								'last_name' => $row['name'],
+								'activated'=> true,
+								]);
+							$group = Sentry::findGroupById($row['group_id']);
+							$user->addGroup($group);
+							$n +=1;
+						}		
 					}catch (\Cartalyst\Sentry\Users\UserExistsException $e)
 					{
 					    Notification::error('User '.$row['email'].' with this login already exists.');
