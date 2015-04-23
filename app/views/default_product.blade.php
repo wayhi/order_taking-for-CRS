@@ -37,7 +37,7 @@
 <!--li><a href="/activity/create">新建 New Activity</a></li>
 <li><a href="/activity">返回 Back</a></li-->
 </ul>
-
+{{Former::close()}}
 
 <ul class="nav navbar-nav navbar-right huser">
 
@@ -65,6 +65,6 @@
 <div class='col-md-6 col-lg-6 text-muted'><p>&copy Clarins {{date('Y')}} </p></div>
 </div>
 </footer>
-{{Former::close()}}
+
 </body>
 </html>
