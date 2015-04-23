@@ -33,7 +33,7 @@
   </div>  
   <div class='row'>
     <div  class="col-md-5 col-lg-5">      
-left 
+
        {{ Former::password('password','Password: ')->placeholder('登录密码')->class('form-control') }}
         
     </div>

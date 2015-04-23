@@ -47,7 +47,7 @@ $(document).on('hidden.bs.modal', function (e) {
 	
 </div>
 
-<div class="lb_r">
+<div >
 <h4>
  @if($items[$i+$k]->item->category->id==2)
     <div class="cat_green">{{$items[$i+$k]->item->category->name}}</div>
@@ -60,7 +60,8 @@ $(document).on('hidden.bs.modal', function (e) {
  @endif
 
  <a href="{{URL::route('items.show',$items[$i+$k]->id)}}" data-toggle="modal" data-target="#myModal">
- {{$items[$i+$k]->item->item_name}}</a>
+ {{$items[$i+$k]->item->item_name}}<br><b style="font-size:6px">
+ {{$items[$i+$k]->item->item_name_2}}</b></a>
 </h4><br>
 <div style="clear:both"></div>
 <span class="label label-success">{{$items[$i+$k]->item->texture}}</span>

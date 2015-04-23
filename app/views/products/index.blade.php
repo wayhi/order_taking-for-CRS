@@ -27,7 +27,9 @@
 				@endif
 			</td>		
 			<td>{{$product->SKU_code}}</td>
-			<td><a href="{{URL::Route('products.show',Crypt::encrypt($product->id))}}">{{$product->item_name}}</a></td>
+			<td><a href="{{URL::Route('products.show',Crypt::encrypt($product->id))}}">{{$product->item_name}}
+			<br>{{$product->item_name_2}}
+			</a></td>
 			<td>{{$product->category->name}}</td>
 			<td>{{$product->size}}</td>
 			

@@ -8,9 +8,21 @@
 <div class="pull-left lb_l">
 	<image src="{{$item->item->image->url('original')}}" >
 </div>
-<div class="pull-left lb_r">
+<div class="pull-left ">
 <h4>
-<div class="show1">{{$item->item->category->name}}</div> <a href="#" target="_blank">{{$item->item->item_name}}</a>
+
+@if($item->item->category->id==2)
+    <div class="cat_green">{{$item->item->category->name}}</div>
+ @elseif($item->item->category->id==3)
+ <div class="cat_milk">{{$item->item->category->name}}</div>
+ @elseif($item->item->category->id==4)
+ <div class="cat_blue">{{$item->item->category->name}}</div>
+ @elseif($item->item->category->id==5)
+ <div class="cat_red">{{$item->item->category->name}}</div>
+ @endif
+
+{{$item->item->item_name}}<br><b style="font-size:6px">
+ {{$item->item->item_name_2}}</b>
 </h4>
 <div style="clear:both"></div>
 <span class="glyphicon glyphicon-leaf"></span> {{$item->item->description_short}}<br>

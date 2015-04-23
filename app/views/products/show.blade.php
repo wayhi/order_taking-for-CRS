@@ -9,9 +9,24 @@
 <div class="pull-left lb_l">
 	<image src="{{$product->image->url('original')}}" >
 </div>
-<div class="pull-left lb_r">
+<div class="pull-left ">
 <h4>
-<div class="show1">{{$product->category->name}}</div> {{$product->item_name}}
+
+@if($product->category->id==2)
+<div class="cat_green">
+@elseif($product->category->id==3)
+<div class="cat_milk">
+@elseif($product->category->id==4)
+<div class="cat_blue">
+@elseif($product->category->id==5)
+<div class="cat_red">
+@else <div>
+@endif
+{{$product->category->name}}</div>
+
+ {{$product->item_name}}
+<br>
+ {{$product->item_name_2}}
 </h4>
 <div style="clear:both"></div>
 <span class="glyphicon glyphicon-leaf"></span> {{$product->description_short}}<br>
