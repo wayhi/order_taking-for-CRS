@@ -21,15 +21,20 @@
  <div class="cat_red">{{$item->item->category->name}}</div>
  @endif
 
-{{$item->item->item_name}}<br><b style="font-size:6px">
- {{$item->item->item_name_2}}</b>
+{{$item->item->item_name}}<br>
+ {{$item->item->item_name_2}}
 </h4>
 <div style="clear:both"></div>
 <span class="glyphicon glyphicon-leaf"></span> {{$item->item->description_short}}<br>
+<b>产品介绍：</b>
+<div class="row">
 
-<b>产品介绍：</b>{{$item->item->description}}<br>
-<b>用法：</b>{{$item->item->how_to_use}}<br>
-
+<pre class="col-md-offset-1 col-md-9 col-lg-9">{{$item->item->description}}</pre><br>
+</div>
+<b>用法：</b>
+<div class="row">
+<pre class="col-md-offset-1 col-md-9 col-lg-9">{{$item->item->how_to_use}}</pre><br>
+</div>
 <span class="label label-info">{{$item->item->size}}</span> <span class="label label-success">{{$item->item->texture}}</span>
  <span class="label label-default">市场价：¥{{$item->retail_price}}</span> 
  <span class="label label-danger">现价：¥{{$item->offer_price}}</span> 

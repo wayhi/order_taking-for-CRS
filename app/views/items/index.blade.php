@@ -59,13 +59,15 @@ $(document).on('hidden.bs.modal', function (e) {
  <div class="cat_red">{{$items[$i+$k]->item->category->name}}</div>
  @endif
 
- <a href="{{URL::route('items.show',$items[$i+$k]->id)}}" data-toggle="modal" data-target="#myModal">
- {{$items[$i+$k]->item->item_name}}<br><b style="font-size:6px">
- {{$items[$i+$k]->item->item_name_2}}</b></a>
+ <a style='font-size:11px' href="{{URL::route('items.show',$items[$i+$k]->id)}}" data-toggle="modal" data-target="#myModal">
+ {{$items[$i+$k]->item->item_name}}<br>
+ {{$items[$i+$k]->item->item_name_2}}</a>
 </h4><br>
 <div style="clear:both"></div>
 <span class="label label-success">{{$items[$i+$k]->item->texture}}</span>
 <span class="label label-info">{{$items[$i+$k]->item->size}}</span>
+<span class='label label-primary'>剩余：{{($items[$i+$k]->item_stock - $items[$i+$k]->ordered)}} 件</span>
+<br>
 <span class="label label-default">市场价{{$items[$i+$k]->retail_price}}</span>
 <span class="label label-danger" style="font-size:11px">现价{{$items[$i+$k]->offer_price}}</span> 
 

@@ -58,6 +58,7 @@ class OrderController extends \BaseController {
 				$order->save();
 				
 				$itemcount = intval(Input::get('itemcount'));
+				$balance = Self::getBalance(Session::get('activity_id'),Sentry::getUser()->id);
 				for($i =0;$i<$itemcount;$i++){
 				
 					$order_item = new OrderItem();
@@ -94,6 +95,10 @@ class OrderController extends \BaseController {
 
 						}
 
+						
+
+
+
 					}
 					
 					
@@ -106,14 +111,21 @@ class OrderController extends \BaseController {
 					$order->amount_actual += floatval(Input::get('item_price'.$i))*$order_item->qty;
 					$order_item->price_original = floatval(Input::get('item_price_o'.$i));
 					$order->amount_original += floatval(Input::get('item_price_o'.$i))*$order_item->qty;
+
 					$order_item->save();
 					$order->save();
 					
 				}
 				
 				
-				
-				return $order;	
+				if($order->amount_actual>$balance){
+					Notification::error('购买总额超过限额！');
+					DB::rollBack();
+					Return null;
+				}else{
+					return $order;
+				}
+					
 			});	
 		
 		
@@ -292,27 +304,29 @@ class OrderController extends \BaseController {
 		}
 		if(Input::has('export')){
 
-			$activity_id = Input::get('activity_id');
+			
 			$item_id = Input::get('item_id');
 			$user_id = Input::get('user_id');
-			$ActivityItems = ActivityItem::with('item')->where('activity_id',5)->get();
-			$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)
-			->orderBy('created_at','desc');
+			//$ActivityItems = ActivityItem::with('item')->where('activity_id',$activity_id)->get();
+			//$orders = Order::with('order_items.item','owner')->where('activity_id',$activity_id)
+			//->orderBy('created_at','desc');
 			//Debugbar::info($ActivityItems);
 			
 			Excel::create('Filename', function($excel) {
 
     			$excel->sheet('Sheetname', function($sheet) {
-    				
+    				$activity_id = Input::get('activity_id');
         			$users = DB::table('users')->whereExists(function($query){
+        				$activity_id_1 = Input::get('activity_id');
                 		$query->select(DB::raw(1))
-                      		->from('orders')
+                      		->from('orders')->where('orders.activity_id',$activity_id_1)
                      		->whereRaw('ccsc_orders.owner_id = ccsc_users.id');
             		})->lists('last_name');
         			$sheet->fromArray(array_merge(['','','',],$users));
         			$data = DB::table('order_items')->leftJoin('orders','orders.id','=','order_items.order_id')
         				->leftJoin('users','users.id','=','orders.owner_id')
         				->leftJoin('item_master','item_master.id','=','order_items.item_id')
+        				->where('orders.activity_id',$activity_id)
         				->groupby(['order_items.item_id','orders.owner_id'])
         				->select(DB::raw('ccsc_item_master.id,ccsc_item_master.SKU_code,ccsc_item_master.item_name,
         					ccsc_users.last_name, sum(ccsc_order_items.qty) as qty'))

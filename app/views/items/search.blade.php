@@ -60,9 +60,9 @@ $(document).on('hidden.bs.modal', function (e) {
  @elseif($items[$i+$k]->item->category->id==5)
  <div class="cat_red">{{$items[$i+$k]->item->category->name}}</div>
  @endif
- <a href="{{URL::route('items.show',$items[$i+$k]->id)}}" data-toggle="modal" data-target="#myModal">
- {{$items[$i+$k]->item->item_name}}<br><b style="font-size:6px">
- {{$items[$i+$k]->item->item_name_2}}</b>
+ <a style="font-size: 11px" href="{{URL::route('items.show',$items[$i+$k]->id)}}" data-toggle="modal" data-target="#myModal">
+ {{$items[$i+$k]->item->item_name}}<br>
+ {{$items[$i+$k]->item->item_name_2}}
 
  </a>
 </h4><br>

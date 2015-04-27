@@ -34,9 +34,28 @@
 		
 	}
 	
-	function calculate_amount(){
-		
-	
+	function calculate_amount(q_){
+		var t=parseInt(document.getElementsByName('itemcount')[0].value);
+        var ttl_amount = 0.00;
+        var item_qty = 0;
+        var item_price = 0.00;
+        var item_qty_o = 0;
+        for(var i=0;i<t;i++){
+            
+            item_qty = parseInt(document.getElementsByName('item_qty'+i)[0].value);
+            document.getElementsByName('item_qty_'+i)[0].value = item_qty;
+            item_price = parseFloat(document.getElementsByName('item_price'+i)[0].value);
+            //alert(item_price);
+            ttl_amount +=  item_price * item_qty;
+            //alert(ttl_amount);
+        }
+	   
+       if(ttl_amount > parseFloat(document.getElementById('balance').value)){
+          alert("购买总额超过限额！");
+          document.getElementById(q_).focus();
+        }else{
+            document.getElementById('totalamount').value = ttl_amount;
+        }
 	}
 	
 </script>
@@ -77,8 +96,8 @@
                     <td style="vertical-align:middle; text-align:center;">
                     <button class='btn btn-default btn-xs' type='button' 
                     onclick="reduceqty('qty{{$items[$i]->id}}','qty_{{$items[$i]->id}}',{{$items[$i]->offer_price}})">-</button>
-                    <input type='button' class='btn btn-default btn-xs' name='item_qty{{$i}}' 
-                    id='qty{{$items[$i]->id}}' value='1'>
+                    <input  style="width:50px" name='item_qty{{$i}}' 
+                    id='qty{{$items[$i]->id}}' value='1' onblur="calculate_amount('qty{{$items[$i]->id}}')">
                     <input type='hidden' name="item_qty_{{$i}}" id='qty_{{$items[$i]->id}}' value='1'>
                     <button class='btn btn-default btn-xs' type='button' 
                     onclick="addqty('qty{{$items[$i]->id}}','qty_{{$items[$i]->id}}',{{$items[$i]->offer_price}})">+</button>

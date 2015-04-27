@@ -58,7 +58,7 @@ class ActivityController extends \BaseController {
 
 						
 						//$results = Excel::load('system/uploads/ccsc1.xlsx')->get()->first();
-						$results = Excel::load($attached)->get()->first();
+						$results = Excel::load($attached)->get();
 						//Debugbar::info($results);
 						
 						foreach($results as $row)
@@ -76,7 +76,11 @@ class ActivityController extends \BaseController {
 							$activity_item->retail_price = $row['retail_price'];
 							$activity_item->offer_price = $row['offer_price'];
 							$activity_item->updated_by = Sentry::getUser()->id;
-							$activity_item->expiration = $row['expiration']->format('Y-m-d');
+							
+							if($row['expiration']<>''){
+								$activity_item->expiration = $row['expiration']->format('Y-m-d');
+							}
+							
 							$activity_item->memo = $row['comments'];
 							$activity_item->save();
 							
@@ -167,7 +171,7 @@ class ActivityController extends \BaseController {
 						$existing_items->delete();
 						
 						//$results = Excel::load('system/uploads/ccsc.xlsx')->get()->first();
-						$results = Excel::load($attached)->get()->first();
+						$results = Excel::load($attached)->get();
 						
 						foreach($results as $row)
 						{
@@ -186,7 +190,10 @@ class ActivityController extends \BaseController {
 							$activity_item->retail_price = $row['retail_price'];
 							$activity_item->offer_price = $row['offer_price'];
 							$activity_item->updated_by = Sentry::getUser()->id;
-							$activity_item->expiration = $row['expiration']->format('Y-m-d');
+							if($row['expiration']<>''){
+								$activity_item->expiration = $row['expiration']->format('Y-m-d');
+							}
+							
 							$activity_item->memo = $row['comments'];
 							$activity_item->save();
 							

@@ -32,9 +32,9 @@
 			<td>
 				@if($activity->activated == 0) 
 				暂停
-				@elseif(($activity->end < date("Y-m-d h:i:s",time())) or ($activity->start > date('Y-m-d h:i:s',time())))
-				不在活动期 
-				@else活动中
+				@elseif(($activity->end < date("Y-m-d H:i:s",time())) || ($activity->start) > date("Y-m-d H:i:s",time()))
+					不在活动期 
+				@else 活动中
 				@endif
 			</td>
 			<td><a class="btn btn-xs btn-warning" href="{{URL::Route('activity.edit',Crypt::encrypt($activity->id))}}">更改</a></td>

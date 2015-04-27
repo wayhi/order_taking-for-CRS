@@ -4,7 +4,7 @@
   <h2 align='center'>产品介绍</h2>
 
  
-
+<div class="col-md-12 col-lg-12">
 <div class="box">
 <div class="pull-left lb_l">
 	<image src="{{$product->image->url('original')}}" >
@@ -31,8 +31,20 @@
 <div style="clear:both"></div>
 <span class="glyphicon glyphicon-leaf"></span> {{$product->description_short}}<br>
 
-<b style="color:blue">产品介绍：</b>{{$product->description}}<br>
-<b style="color:blue">用法：</b>{{$product->how_to_use}}<br>
+<b style="color:blue">产品介绍：</b>
+<div class="row">
+<div class="col-md-9 col-lg-9">
+<pre >{{$product->description}}</pre>
+</div>
+<br>
+</div>
+<b style="color:blue">用法：</b>
+<div class="row">
+<div class="col-md-9 col-lg-9">
+<pre>{{$product->how_to_use}}</pre>
+</div>
+<br>
+</div>
 @foreach($product->skins as $skin)
 	@if($skin->id==1)
 		<span class='label label-info'>{{$skin->type}}</span>
@@ -57,6 +69,6 @@
         <button type="button" class="btn btn-default" onclick="javascript:history.go(-1)">Close</button>
         
       </div>
-
+</div>
 
 @stop
