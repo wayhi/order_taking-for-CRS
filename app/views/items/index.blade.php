@@ -21,7 +21,7 @@ $(document).on('hidden.bs.modal', function (e) {
 </div>
 <div class="col-md-12">
 <div class="pull-left"><h3 style="margin-top:0;">
-  {{Category::find($category)->name}}
+  {{Category::find($category)->name}} <a style="font-size: 10px" href="{{URL::route('items',['ordertype'=>1,'category'=>$category])}}">价格从高到底</a>
 </h3>
 </div>
 
@@ -76,7 +76,7 @@ $(document).on('hidden.bs.modal', function (e) {
 @if($items[$i+$k]->item_stock>$items[$i+$k]->ordered)
 <div class='pull-right'>
 
-<a href="{{URL::route('items.addtocart',['id'=>$items[$i+$k]->id,'page'=>Input::get('page')])}}"> 
+<a href="{{URL::route('items.addtocart',['id'=>$items[$i+$k]->id,'backurl'=>Crypt::encrypt(URL::full())])}}"> 
 <span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</a>
 
 </div>

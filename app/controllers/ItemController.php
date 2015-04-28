@@ -8,15 +8,26 @@ class ItemController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($ordertype=0,$category=0)
 	{
 		$activity_id = Session::get('activity_id');
-		$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)
-			->orderby('created_at','desc')->paginate(9);
-			return \View::make('items/index')->with('items',$items)->with('category',0);
+		if($ordertype == 0){
+			$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)->orderby('id','aesc')->paginate(9);
+		}else{
+			
+			if($category<>0){
+				$items = ActivityItem::with('item.category')
+				->whereraw("item_id in (select id from ccsc_item_master where category_id = ".$category.")")
+				->where('activity_id',$activity_id)
+				->orderby('offer_price','desc')->paginate(9);
+				
+			}else{
+				$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)->orderby('offer_price','desc')->paginate(9);
+			}	
+		}
 		
-		
-		
+			return \View::make('items/index')->with('items',$items)->with('category',$category);
+			
 		
 	}
 
@@ -27,7 +38,7 @@ class ItemController extends \BaseController {
 		if($category_id==0){
 			
 			$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)
-			->orderby('created_at','desc')->paginate(9);
+			->orderby('id','aesc')->paginate(9);
 			return \View::make('items/index')->with('items',$items)->with('category',0);
 		
 		}else{
@@ -35,9 +46,9 @@ class ItemController extends \BaseController {
 			$items = ActivityItem::with('item.category')
 			->whereraw("item_id in (select id from ccsc_item_master where category_id = ".$category_id.")")
 			->where('activity_id',$activity_id)
-			->orderby('created_at','desc')->paginate(9);
+			->orderby('id','aesc')->paginate(9);
 			return \View::make('items/index')->with('items',$items)->with('category',$category_id);
-		
+			
 		}
 
 	}

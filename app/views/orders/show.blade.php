@@ -41,6 +41,7 @@
         <td  colspan=2 align='left'>
             @if($order->pmt_method==1)
             <span class='label label-danger'>从本人工资抵扣</span>
+            <a href="{{URL::route('download_template','内买货款调整申请表.pdf')}}">内买货款调整申请表</a> 
             @endif
             
         </div></td>

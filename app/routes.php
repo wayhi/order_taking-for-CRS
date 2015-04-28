@@ -28,7 +28,7 @@ Route::group(array('before'=>'auth.login'),function(){
 	Route::group(['before'=>'activated'],function(){
 		Route::get('/showcart',['as'=>'showcart','uses'=>'app\controllers\OrderController@showcart']);
 		Route::get('/clearcart',['as'=>'clearcart','uses'=>'app\controllers\OrderController@clearcart']);
-		Route::get('items/addtocart/{item_id}/{page?}',
+		Route::get('items/addtocart/{item_id}/{backurl}',
 			['as'=>'items.addtocart','uses'=>'app\controllers\OrderController@addtocart']);
 		Route::get('/delfrmcart/{item_id}',
 			['as'=>'delfrmcart','uses'=>'app\controllers\OrderController@delfrmcart']);	
@@ -41,6 +41,7 @@ Route::group(array('before'=>'auth.login'),function(){
 			}	
 		}]);
 		Route::get('items/search_result/{search_term}',['as'=>'items.search_result','uses'=>'app\controllers\ItemController@search']);
+		Route::get('items/orderby/{ordertype?}/{category?}',['as'=>'items','uses'=>'app\controllers\ItemController@index']);
 		Route::Resource('items','app\controllers\ItemController');
 	});
 	Route::group(['before'=>'HRAccess'],function(){

@@ -415,7 +415,8 @@ class OrderController extends \BaseController {
 		return redirect::route('showcart')->withCookie($cookie);
 	}
 
-	public function addtocart($item_id,$page=1){
+	public function addtocart($item_id,$backurl){
+		$real_backurl = Crypt::decrypt($backurl);
 		$item = ActivityItem::with('item')->find($item_id);
 		$items_exist = Cookie::get('item_id');
 		if(($items_exist)==null){
@@ -429,8 +430,8 @@ class OrderController extends \BaseController {
 
 		Notification::success($item->item->item_name.'已加入您的购物车。');
 		//Debugbar::info($url);
-		return Redirect::route('items.index',['page'=>$page])->withCookie($cookie);
-	
+		return Redirect::to($real_backurl)->withCookie($cookie);
+		
 	}
 
 	public function delfrmcart($item_id)
