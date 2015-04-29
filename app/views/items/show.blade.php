@@ -37,7 +37,7 @@
 </div>
 <span class="label label-info">{{$item->item->size}}</span> <span class="label label-success">{{$item->item->texture}}</span>
  <span class="label label-default">市场价：¥{{$item->retail_price}}</span> 
- <span class="label label-danger">现价：¥{{$item->offer_price}}</span> 
+ <span class="label label-danger" style="font-size: 11px">现价：¥{{$item->offer_price}}</span> 
  @if($item->item_limit>0)<span class="label label-warning">限购 {{$item->item_limit}} 件</span> @endif 
  
  <br>

@@ -60,7 +60,8 @@
 	   
        if(ttl_amount > parseFloat(document.getElementById('balance').value)){
           alert("购买总额超过限额！");
-          document.getElementById(q_).focus();
+          //document.getElementById(q_).focus();
+          //break;
         }else{
             document.getElementById('totalamount').value = ttl_amount;
         }
@@ -134,7 +135,7 @@
             @elseif($pmt_method == 1)
                 <span class='label label-danger' style="font-size:11px">从本人工资抵扣</span>
                 <input type='hidden' name='pmt_method' value='1'>
-                <a type=hidden name='application' href="">内买货款调整申请表</a> 
+                <a type=hidden name='application' href="{{URL::route('download_template','内买货款调整申请表.pdf')}}">内买货款调整申请表</a> 
             @endif  
 
         </td>

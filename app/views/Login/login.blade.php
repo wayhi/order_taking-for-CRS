@@ -9,21 +9,39 @@
 </head>
 <body>
   {{ Former::open()->class('form-horizontal')}}
-  <div class="container">
   
-  <div style="color:white;background:url('../images/bg.png')" class="jumbotron">
-        
-        <div style="color:white;display:block;margin:40px 0 0 0;width:261px;height:40px;float:left">
-        <a href='#'>
-        <image  src='../images/logo1.png' />
-        </a>
-        </div>
-        <h1><br></h1>
-   </div>
+  
+  <nav class="navbar navbar-inverse" role="navigation">
+<div class="container">
+
+ 
+<div class="navbar-header">
+
+  <div style="color:white;margin:5px 0 0 0;width:250px;height:20px;float:left">
+    <image src='/images/logo1.png'/>
+  </div>
+</div>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+<ul class="nav navbar-nav">
+
+
+
+
+</ul>
+
+
+
+</div>
+
+</div>
+
+</nav>
    
-   <hr>  
-    
-    
+   
+   <div class="container"> 
+    <hr>
   <div class='row'>
     <div  class="col-md-5 col-lg-5">
           

@@ -11,18 +11,17 @@
 <p align="center"><em>活动时间  {{$activity->start." ~ ".$activity->end}}</em></p>
 </div>
 
+<div class='row'>
 <div class="col-md-offset-2 col-md-8 col-lg-8">
 	
-<Pre>
-	{{$activity->policy}}
-
-</Pre>
+<Pre>{{$activity->policy}}</Pre>
 </div>
-
+</div>
+<div class='row'>
 <div class="col-md-offset-2 col-md-4 col-lg-4">
 
 	<a href='{{URL::route('login.confirm',['activity_id'=>$activity->id])}}' class='btn btn-success btn-small'>知晓并同意以上内容</a>
 
 </div>
-
+</div>
 @stop

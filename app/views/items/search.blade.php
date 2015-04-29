@@ -70,13 +70,13 @@ $(document).on('hidden.bs.modal', function (e) {
 <span class="label label-success">{{$items[$i+$k]->item->texture}}</span>
 <span class="label label-info">{{$items[$i+$k]->item->size}}</span>
 <span class="label label-default">市场价{{$items[$i+$k]->retail_price}}</span>
-<span class="label label-danger">现价{{$items[$i+$k]->offer_price}}</span> 
+<span class="label label-danger style="font-size:11px">现价{{$items[$i+$k]->offer_price}}</span> 
 <br>
 产品有效期：{{($items[$i+$k]->expiration)}}
 @if($items[$i+$k]->item_stock>$items[$i+$k]->ordered)
 <div class='pull-right'>
 
-<a href="{{URL::route('items.addtocart',['id'=>$items[$i+$k]->id,'page'=>Input::get('page')])}}"> 
+<a href="{{URL::route('items.addtocart',['id'=>$items[$i+$k]->id,'backurl'=>Crypt::encrypt(URL::full())])}}"> 
 <span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</a>
 
 </div>
