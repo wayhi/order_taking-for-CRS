@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('JWs-Mac-mini-2.local'),
+	'local' => array('shiwenbodeMacBook-Pro.local','JWs-Mac-mini-2.local'),
 
 ));
 

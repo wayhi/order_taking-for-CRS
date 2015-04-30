@@ -27,8 +27,8 @@
     	
        	<div  class="row">
       
-		{{Notification::showAll();}}
+		      {{Notification::showAll();}}
 		
-		</div>
+		    </div>
 {{Former::close()}}
 @stop

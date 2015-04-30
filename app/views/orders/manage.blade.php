@@ -31,7 +31,7 @@
                         导出 <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href = "{{URL::route('orders.export',['type'=>'orderform','activity_id'=>$activity_id])}}" >Oeder Form</a></li>
+                        <li><a href = "{{URL::route('orders.export',['type'=>'orderform','activity_id'=>$activity_id])}}" >Order Form</a></li>
                         
                         <li><a href = "{{URL::route('orders.export',['type'=>'summary','activity_id'=>$activity_id])}}">Summary</a></li>
                         

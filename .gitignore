@@ -8,6 +8,13 @@ composer.lock
 Thumbs.db
 *.bbprojectd
 *.bbprojectsettings
+<<<<<<< Updated upstream
 *.sublime-workspace
 *.sublime-project
+=======
+*.sublime-project
+*.sublime-workspace
+>>>>>>> Stashed changes
 app.zip
+start.php
+CLARINS.sublime-workspace
