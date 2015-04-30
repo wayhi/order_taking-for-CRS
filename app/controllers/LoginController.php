@@ -120,8 +120,8 @@ class LoginController extends \BaseController {
 		}
 		else
 		{
-			Notification::error('The provided password reset code is Invalid');
-			//return View::make('Login.pwd_change')->with('Email','');
+			Notification::error('The provided password reset code is Invalid.');
+			return View::make('Login.pwd_reset')->with('login','');
 		}
 		
 	}catch (\Exception $e){

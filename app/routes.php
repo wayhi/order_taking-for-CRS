@@ -52,6 +52,7 @@ Route::group(array('before'=>'auth.login'),function(){
 		Route::get('products/import',['as'=>'products.import','uses'=>'app\controllers\ProductController@import']);
 		Route::get('orders/manage/{activity_id}/{item_id?}/{user_id?}/{pmt_method?}',['as'=>'orders.manage',
 			'uses'=>'app\controllers\OrderController@manage']);
+		Route::get('orders/export/{type}/{activity_id}',['as'=>'orders.export','uses'=>'app\controllers\OrderController@search']);
 		Route::post('orders/manage',['as'=>'orders.manage_post','uses'=>'app\controllers\OrderController@search']);
 		Route::get('orders/admin/{id}',['as'=>'orders.admin','uses'=>'app\controllers\OrderController@admin']);
 		Route::get('products/search_result/{search_term?}',['as'=>'products.search_result','uses'=>'app\controllers\ProductController@search_result']);

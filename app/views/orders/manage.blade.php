@@ -17,7 +17,7 @@
             {{Former::select('user_id','用户: ')->fromQuery(User::all(),'last_name','id')->class('form-control')}}
         </div>  
         <div class='col-md-2 col-lg-2'>
-            {{Former::select('pmt_method','支付方式: ')->options([-1=>'所有-All',0=>'Cash',1=>'Salary',2=>'Free'])->class('form-control')}}
+            {{Former::select('pmt_method','支付方式: ')->options([-1=>'所有-All',0=>'Credit Card',1=>'Salary',2=>'Free'])->class('form-control')}}
         </div>  
          <div class='col-md-3 col-lg-3' > 
                 <div class="control-group">   
@@ -25,7 +25,19 @@
                  <div class="controls">
                      
                      {{Former::submit('查询')->class('btn btn-primary btn-sm')->name('submit')}}
-                     {{Former::submit('导出')->class('btn btn-warning btn-sm')->name('export')}} 
+                     
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        导出 <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href = "{{URL::route('orders.export',['type'=>'orderform','activity_id'=>$activity_id])}}" >Oeder Form</a></li>
+                        
+                        <li><a href = "{{URL::route('orders.export',['type'=>'summary','activity_id'=>$activity_id])}}">Summary</a></li>
+                        
+                        
+                      </ul>
+                    </div>
                      <a class='btn btn-default btn-sm' href="{{URL::route('items.index')}}" >返回</a>
                  
                  </div>
@@ -71,7 +83,7 @@
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->created_at}}</td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">
                                     @if($order->pmt_method==1)工资抵扣 
-                                    @elseif($order->pmt_method==0)Cash/Credit Card 
+                                    @elseif($order->pmt_method==0)Credit Card 
                                     @elseif($order->pmt_method==2)Free
                                     @endif
                                     </td>

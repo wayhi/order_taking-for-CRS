@@ -30,7 +30,7 @@
 			<td>{{$order->amount_actual}}</td>
 			<td>
 			@if($order->pmt_method==1)工资抵扣
-			@elseif($order->pmt_method==0)Cash/Credit Card
+			@elseif($order->pmt_method==0)Credit Card
 			@endif
 			</td>
 			<td>{{$order->created_at}}</td>

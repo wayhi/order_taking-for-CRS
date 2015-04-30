@@ -125,7 +125,7 @@ return array(
 		'Krucas\Notification\NotificationServiceProvider',
 		'Former\FormerServiceProvider',
 		'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider',
-		//'Barryvdh\Debugbar\ServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
@@ -198,7 +198,7 @@ return array(
 		'Sentry'            => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 		'Notification'      => 'Krucas\Notification\Facades\Notification',
 		'Former' 			=> 'Former\Facades\Former',
-		//'Debugbar' 			=> 'Barryvdh\Debugbar\Facade',
+		'Debugbar' 			=> 'Barryvdh\Debugbar\Facade',
 		'Excel' 			=> 'Maatwebsite\Excel\Facades\Excel',
 
 	),

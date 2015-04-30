@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'clarins',
 			'username'  => 'root',
-			'password'  => 'checkin',
+			'password'  => $_ENV['db_pwd'],
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => 'ccsc_',
