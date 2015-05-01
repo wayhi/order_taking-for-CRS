@@ -287,7 +287,9 @@ class OrderController extends \BaseController {
 				$orders=$orders->orderBy('created_at','desc');
 			}
 			$totalamount = $orders->sum('amount_actual');
-			return \View::make('orders/manage')->with(['orders'=>$orders->paginate(10),'item_id'=>$item_id,'user_id'=>$user_id,'pmt_method'=>$pmt_method,'totalamount'=>$totalamount,'activity_id'=>$activity_id]);
+			$totalqty = $orders->sum('qty_total');
+			return \View::make('orders/manage')->with(['orders'=>$orders->paginate(10),'qty_total'=>$totalqty,
+				'item_id'=>$item_id,'user_id'=>$user_id,'pmt_method'=>$pmt_method,'totalamount'=>$totalamount,'activity_id'=>$activity_id]);
 		
 	}
 
@@ -349,7 +351,42 @@ class OrderController extends \BaseController {
 		
 		if($type == 'summary'){
 			
-			
+			$orders = Order::with('owner')->where('activity_id',$activity_id)->get();
+
+			Excel::create('Summary', function($excel) use($orders) {
+				
+    			$excel->sheet('Sheet1', function($sheet) use($orders) {
+    				$sheet->prependRow(array('Name', 'Order #','Quantity','Date','Payment Method','Total Amount'));
+        			$n = 2;
+        			foreach($orders as $row){
+
+        				$sheet->setCellValueByColumnAndRow(0,$n,$row->owner->last_name);
+        				$sheet->setCellValueByColumnAndRow(1,$n,$row->order_number);
+        				$sheet->setCellValueByColumnAndRow(2,$n,$row->qty_total);
+        				$sheet->setCellValueByColumnAndRow(3,$n,$row->created_at->toDateTimeString());
+        				
+
+        				switch ($row->pmt_method) {
+        					case 0:
+        						$sheet->setCellValueByColumnAndRow(4,$n,"Credit Card");
+        						break;
+        					case 1:
+        						$sheet->setCellValueByColumnAndRow(4,$n,"Salary");
+        						break;
+        					default:
+        						
+        						break;
+        				}
+        				$sheet->setCellValueByColumnAndRow(5,$n,$row->amount_actual);
+
+        				$n +=1;
+        			}	
+        			
+        				
+
+    			});
+
+			})->download('xls');
 
 		}
 

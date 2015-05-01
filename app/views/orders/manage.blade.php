@@ -100,7 +100,7 @@
                     @endforeach
                    
                 </tbody>
-                <tfoot><tr> <td colspan=6 align='right'><b>Total Amount: {{$totalamount}}</b></td><td colspan=3></td></tr></tfoot>
+                <tfoot><tr> <td colspan=6 align='right'><b>Total Amount: {{$totalamount}}</b></td><td colspan=3 align='right'><b>Total Quantity: {{$qty_total}}</b></td></tr></tfoot>
         </table>  
     <div class='pagination inline'>{{$orders->links();}}</div>        
 </div>
