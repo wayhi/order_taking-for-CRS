@@ -236,42 +236,18 @@
 	"buffers":
 	[
 		{
-			"file": "app/controllers/LoginController.php",
+			"file": "app/views/items/index.blade.php",
 			"settings":
 			{
-				"buffer_size": 4954,
+				"buffer_size": 3061,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/routes.php",
+			"file": "app/views/items/search.blade.php",
 			"settings":
 			{
-				"buffer_size": 4190,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/filters.php",
-			"settings":
-			{
-				"buffer_size": 3224,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/Login/pwd_change.blade.php",
-			"settings":
-			{
-				"buffer_size": 1245,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/Login/pwd_reset.blade.php",
-			"settings":
-			{
-				"buffer_size": 769,
+				"buffer_size": 3005,
 				"line_ending": "Unix"
 			}
 		}
@@ -313,37 +289,34 @@
 	},
 	"expanded_folders":
 	[
-		"/Applications/MAMP/htdocs/clarins",
-		"/Applications/MAMP/htdocs/clarins/app",
-		"/Applications/MAMP/htdocs/clarins/app/controllers",
-		"/Applications/MAMP/htdocs/clarins/app/views"
 	],
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/routes.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
+		"/Applications/MAMP/htdocs/clarins/app/filters.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_change.blade.php",
+		"/Applications/MAMP/htdocs/clarins/bootstrap/start.php",
 		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
 		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
 		"/Applications/MAMP/htdocs/clarins/.gitignore",
-		"/Applications/MAMP/htdocs/clarins/bootstrap/start.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/search.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
-		"/Applications/MAMP/htdocs/clarins/app/routes.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
 		"/Applications/MAMP/htdocs/clarins/public/css/local.css",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade副本.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/filters.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/import.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_change.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activemail.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/login.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activemail.html",
@@ -380,7 +353,6 @@
 		"/Applications/MAMP/htdocs/easyProcess/app/models/Cctr.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/controllers/payment/PaymentController.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/create.blade.php",
 		"/Applications/MAMP/htdocs/clarins/composer.json",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/policy.blade.php",
@@ -434,158 +406,68 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/controllers/LoginController.php",
+					"file": "app/views/items/index.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4954,
+						"buffer_size": 3061,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3272,
-								3272
+								2227,
+								2329
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1416.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/routes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4190,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 572.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/filters.php",
+					"buffer": 1,
+					"file": "app/views/items/search.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3224,
+						"buffer_size": 3005,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								413,
-								413
+								2801,
+								2801
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 839.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/views/Login/pwd_change.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1245,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								501,
-								501
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 30.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/views/Login/pwd_reset.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 769,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								690,
-								690
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]

@@ -69,6 +69,8 @@ $(document).on('hidden.bs.modal', function (e) {
 <div style="clear:both"></div>
 <span class="label label-success">{{$items[$i+$k]->item->texture}}</span>
 <span class="label label-info">{{$items[$i+$k]->item->size}}</span>
+<span class='label label-primary'>剩余：{{($items[$i+$k]->item_stock - $items[$i+$k]->ordered)}} 件</span>
+<br>
 <span class="label label-default">市场价{{$items[$i+$k]->retail_price}}</span>
 <span class="label label-danger style="font-size:11px">现价{{$items[$i+$k]->offer_price}}</span> 
 <br>

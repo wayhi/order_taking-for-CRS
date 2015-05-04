@@ -2,7 +2,8 @@
 
 namespace app\controllers;
 
-use Auth, BaseController, Session,Validator, Mail, Activity,Form, Input, Redirect, URL, Sentry, View, Payment,Crypt, Notification;
+use Auth, BaseController, Session,Validator, Mail, Activity,Form, Input, Redirect, 
+URL, Sentry, View, Payment,Crypt, Notification;
 
 class LoginController extends \BaseController {
 
