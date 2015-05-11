@@ -1,7 +1,7 @@
 <?php
 Namespace app\controllers;
 use View, Sentry,Session, DB,ActivityItem,Activity,Excel,Redirect,Request,URL,Cookie,Item,
-ItemSkin,Skin,Notification,User,Input,Order,OrderItem,Count,Crypt;
+ItemSkin,Skin,Notification,User,Input,Order,OrderItem,Count,Crypt,PHPExcel_Cell_DataType;
 
 class OrderController extends \BaseController {
 
@@ -131,12 +131,33 @@ class OrderController extends \BaseController {
 		
 		
 		}
-		if($order_new){
+
+		if(Input::has('savecart')){
 			$cookie = Cookie::forget('item_id');
-			return redirect::route('orders.index')->withCookie($cookie);
-		}else{
-			Return Redirect::back()->withInput();
-		}
+			$cookie = Cookie::forget('item_qty');
+			$item_count = intval(Input::get('itemcount'));
+			$items =[];
+			$itemqty=[];
+			for($i=0;$i<$item_count;$i++){
+
+				$items = array_add($items,$i,Input::get('item_id_'.$i));
+				$itemqty=array_add($itemqty,$i,Input::get('item_qty'.$i));
+
+			}
+			//Debugbar::info($items);
+			Cookie::queue('item_id',$items,7200);
+			Cookie::queue('item_qty',$itemqty,7200);
+
+			return redirect::route('showcart')->withCookie($cookie);
+
+			}
+
+			if($order_new){
+				$cookie = Cookie::forget('item_id');
+				return redirect::route('orders.index')->withCookie($cookie);
+			}else{
+				Return Redirect::back()->withInput();
+			}
 		
 	}
 
@@ -328,12 +349,15 @@ class OrderController extends \BaseController {
 
         			$n=2;
         			$last_item=0;
+
         			foreach($data as $row){
         				
         				if($row->id <> $last_item){
         					$n += 1;
         				}
-        				$sheet->setCellValueByColumnAndRow(0,$n,$row->SKU_code);
+        				//$sheet->setCellValueByColumnAndRow(0,$n,$row->SKU_code,PHPExcel_Cell_DataType::TYPE_STRING);
+        				$sheet->setCellValueExplicit('A'.$n,$row->SKU_code,PHPExcel_Cell_DataType::TYPE_STRING);
+        				$sheet->getStyle('A'.$n)->getNumberFormat()-> setFormatCode("@");
         				$sheet->setCellValueByColumnAndRow(1,$n,$row->item_name);
         				$sheet->setCellValueByColumnAndRow(array_search($row->last_name,$users)+3,$n,$row->qty);
         				$last_item = $row->id;
@@ -394,6 +418,8 @@ class OrderController extends \BaseController {
 
 	public function showcart(){
 		$item_id = Cookie::get('item_id');
+		$item_qty = Cookie::get('item_qty');
+		
 		$itemcount = 0;
 		$items =null;
 		$amount = 0.00;
@@ -415,8 +441,9 @@ class OrderController extends \BaseController {
 		}
 
 		if(is_array($item_id) ){
-			$item_id = array_unique($item_id);
+			//$item_id = array_unique($item_id);
 			$itemcount = count($item_id);
+			//Debugbar::info($item_id);
 			if($itemcount>0){
 				$items = ActivityItem::with('item')->whereIn('id',$item_id)->get();
 				$amount = ActivityItem::whereIn('id',$item_id)->select(DB::raw('sum(offer_price) as amount'))->pluck('amount');
@@ -432,7 +459,8 @@ class OrderController extends \BaseController {
 			Notification::warningInstant("本次活动限额 ¥".$amount_limit.", 剩余额度 ¥".$balance);
 
 		}
-		return View::make('items/showcart')->with('items',$items)
+		\Debugbar::info($items);
+		return View::make('items/showcart')->with('items',$items)->with('item_qty',$item_qty)
 		->with('amount',$amount)->with('itemcount',$itemcount)->with('balance',$balance)->with('pmt_method',$pmt_method);
 	
 	}
@@ -445,22 +473,37 @@ class OrderController extends \BaseController {
 	public function addtocart($item_id,$backurl){
 		$real_backurl = Crypt::decrypt($backurl);
 		$item = ActivityItem::with('item')->find($item_id);
+		
 		$items_exist = Cookie::get('item_id');
+		$qty_exist = Cookie::get('item_qty');
 		if(($items_exist)==null){
 			$items_exist=[];
+			$qty_exist=[];
 			//$items = array_add($items_exist,1,$item_id);
 		}
 		$items = array_add($items_exist,count($items_exist),$item_id);
+		$items = array_unique($items);
+		if(count($qty_exist)<count($items)){
+			$item_qty = array_add($qty_exist,count($items_exist),1);
+			
+		}else{
+			$item_qty = $qty_exist;
+		}
+		$cookie = Cookie::make('item_id',$items, 7200);
+		Cookie::queue('item_qty',$item_qty,7200);
 		
 		
-		$cookie = Cookie::make('item_id',array_unique($items), 7200);
-
+		
+		
+		
 		Notification::success($item->item->item_name.'已加入您的购物车。');
-		//Debugbar::info($url);
+		
 		return Redirect::to($real_backurl)->withCookie($cookie);
 		
 		
 	}
+
+	
 
 	public function delfrmcart($item_id)
 	{
