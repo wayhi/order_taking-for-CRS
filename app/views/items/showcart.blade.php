@@ -86,7 +86,7 @@
         <thead>
             <tr>
                 
-                <th colspan=2 style="vertical-align:middle; text-align:center;">商品 <br> Product
+                <th colspan=3 style="vertical-align:middle; text-align:center;">商品 <br> Product
                 <input type='hidden' name='itemcount' value='{{$itemcount}}'>
                 </th>
                 <th style="vertical-align:middle; text-align:center;">单价 <br> Price</th>
@@ -104,6 +104,7 @@
                     <input type='hidden' name='item_id{{$i}}' value='{{$items[$i]->item->id}}'>
                     <input type='hidden' name='item_id_{{$i}}' value='{{$items[$i]->id}}'>
                     </td>
+                    <td style="vertical-align:middle; text-align:left;">{{$items[$i]->item->SKU_code}}</td>
                     <td style="vertical-align:middle; text-align:left;">{{$items[$i]->item->item_name}}
                     <br><i style="color:grey;">{{$items[$i]->Memo}}</i>
                     </td>
@@ -116,8 +117,8 @@
                     <button class='btn btn-default btn-xs' type='button' 
                     onclick="reduceqty('qty{{$items[$i]->id}}','qty_{{$items[$i]->id}}',{{$items[$i]->offer_price}})">-</button>
                     <input  style="width:50px" name='item_qty{{$i}}' 
-                    id='qty{{$items[$i]->id}}' value='{{$item_qty[$i]}}' onblur="calculate_amount('qty{{$items[$i]->id}}')">
-                    <input type='hidden' name="item_qty_{{$i}}" id='qty_{{$items[$i]->id}}' value='{{$item_qty[$i]}}'>
+                    id='qty{{$items[$i]->id}}' value='{{$item_qty[$items[$i]->id]}}' onblur="calculate_amount('qty{{$items[$i]->id}}')">
+                    <input type='hidden' name="item_qty_{{$i}}" id='qty_{{$items[$i]->id}}' value='{{$item_qty[$items[$i]->id]}}'>
                     <button class='btn btn-default btn-xs' type='button' 
                     onclick="addqty('qty{{$items[$i]->id}}','qty_{{$items[$i]->id}}',{{$items[$i]->offer_price}})">+</button>
                     
@@ -141,7 +142,7 @@
             @endif  
 
         </td>
-        <td  colspan=2 align='right'>
+        <td  colspan=3 align='right'>
 
             <div class='pull-right'>Total Amount 总价：¥
             <input type='button' class='btn btn-default btn-sm' id='totalamount' value='{{$amount}}'>
@@ -157,9 +158,10 @@
     </table>
     <div class='col-md-offset-3 col-md-8 col-lg-8'>
 
-    	<input class='btn btn-info btn-sm' name='savecart' type='submit' value='保存购物车'>
+    	<input class='btn btn-info btn-sm' name='savecart' type='submit' value='保存购物车'
+        @if($itemcount==0) disabled @endif>
         <input class='btn btn-success btn-sm' name='submit' type='submit' value='生成订单' 
-        @if($amount>$balance || $amount<=0) disabled @endif>
+        @if($amount>$balance || $itemcount<=0) disabled @endif>
     	<a class='btn btn-warning btn-sm' href='/clearcart' >清空购物车</a>
         <a class='btn btn-default btn-sm' href="{{URL::route('items')}}" >返回</a>
     </div>

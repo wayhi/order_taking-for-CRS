@@ -141,7 +141,7 @@ class OrderController extends \BaseController {
 			for($i=0;$i<$item_count;$i++){
 
 				$items = array_add($items,$i,Input::get('item_id_'.$i));
-				$itemqty=array_add($itemqty,$i,Input::get('item_qty'.$i));
+				$itemqty=array_add($itemqty,intval(Input::get('item_id_'.$i)),Input::get('item_qty'.$i));
 
 			}
 			//Debugbar::info($items);
@@ -446,7 +446,10 @@ class OrderController extends \BaseController {
 			//Debugbar::info($item_id);
 			if($itemcount>0){
 				$items = ActivityItem::with('item')->whereIn('id',$item_id)->get();
-				$amount = ActivityItem::whereIn('id',$item_id)->select(DB::raw('sum(offer_price) as amount'))->pluck('amount');
+				//$amount = ActivityItem::whereIn('id',$item_id)->select(DB::raw('sum(offer_price) as amount'))->pluck('amount');
+				foreach ($items as $item) {
+					$amount += $item->offer_price * $item_qty[$item->id];
+				}
 			}
 			
 		}
@@ -459,15 +462,16 @@ class OrderController extends \BaseController {
 			Notification::warningInstant("本次活动限额 ¥".$amount_limit.", 剩余额度 ¥".$balance);
 
 		}
-		\Debugbar::info($items);
+		//Debugbar::info($items);
 		return View::make('items/showcart')->with('items',$items)->with('item_qty',$item_qty)
 		->with('amount',$amount)->with('itemcount',$itemcount)->with('balance',$balance)->with('pmt_method',$pmt_method);
 	
 	}
 	
 	public function clearcart(){
-		$cookie = Cookie::forget('item_id');
-		return redirect::route('showcart')->withCookie($cookie);
+		$cookie_1 = Cookie::forget('item_id');
+		$cookie_2 = Cookie::forget('item_qty');
+		return redirect::route('showcart')->withCookie($cookie_1)->withCookie($cookie_2);
 	}
 
 	public function addtocart($item_id,$backurl){
@@ -484,7 +488,7 @@ class OrderController extends \BaseController {
 		$items = array_add($items_exist,count($items_exist),$item_id);
 		$items = array_unique($items);
 		if(count($qty_exist)<count($items)){
-			$item_qty = array_add($qty_exist,count($items_exist),1);
+			$item_qty = array_add($qty_exist,$item_id,1);
 			
 		}else{
 			$item_qty = $qty_exist;
@@ -510,13 +514,16 @@ class OrderController extends \BaseController {
 
 		$item_list= Cookie::get('item_id');
 		//Debugbar::info($item_list);
-		
+		$qty_list = Cookie::get('item_qty');
+		$cookie = Cookie::forget('item_id');
+		$cookie = Cookie::forget('item_qty');
 		if(is_array($item_list)){
 
 				$keys = array_keys($item_list,$item_id);
 				//Debugbar::info($keys);
 				foreach($keys as $key){
 					array_splice($item_list, $key, 1);
+					$qty_list = array_except($qty_list,[$item_id]);
 
 				}
 				//Debugbar::info($item_list);
@@ -528,6 +535,7 @@ class OrderController extends \BaseController {
 		}
 
 		$cookie = Cookie::make('item_id',$item_list, 7200);
+		Cookie::queue('item_qty',$qty_list,7200);
 		return Redirect::route('showcart')->withCookie($cookie)->withinput();
 		//return View::make('items/showcart');
 
