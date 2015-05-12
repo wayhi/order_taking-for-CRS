@@ -14,7 +14,8 @@
             {{Former::select('item_id','产品: ')->fromQuery(Item::all(),'item_name','id')->class('form-control')}}
         </div>    
         <div class='col-md-2 col-lg-2'>
-            {{Former::select('user_id','用户: ')->fromQuery(User::all(),'last_name','id')->class('form-control')}}
+            {{Former::select('user_id','用户: ')->fromQuery(DB::table('users')
+            ->orderBy('last_name')->get(),'last_name','id')->class('form-control')}}
         </div>  
         <div class='col-md-2 col-lg-2'>
             {{Former::select('pmt_method','支付方式: ')->options([-1=>'所有-All',0=>'Credit Card',1=>'Salary',2=>'Free'])->class('form-control')}}
