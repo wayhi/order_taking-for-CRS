@@ -195,4 +195,46 @@ class UserController extends \BaseController {
 
 	}
 
+	public function search(){
+
+		if(Request::isMethod('post')){
+
+			if(Input::has('search')){
+
+				$search_string = Input::get('sn');
+				if($search_string<>""){
+					
+					return Redirect::route('users.search_result',['search_term'=>$search_string])->withInput();
+				}else{
+
+					return Redirect::back();
+				}
+
+
+			}
+		}
+	}
+	
+		
+	public function search_result($search_term=""){
+
+		if(Request::isMethod('get')){
+			//echo "search term=".$search_term;
+			if($search_term<>""){
+				
+				$users = Sentry::with('groups')
+						->where('last_name','like','%'.$search_term.'%')
+					->orderby('created_at','desc')->paginate(15);
+
+					
+					return View::make('users/search')->with('users',$users)->with('search_string',$search_term);
+			}
+		}
+
+		
+
+
+
+	}
+
 }

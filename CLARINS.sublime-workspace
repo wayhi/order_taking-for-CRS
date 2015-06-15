@@ -4,216 +4,84 @@
 		"selected_items":
 		[
 			[
-				"qty",
-				"qty_total"
+				"Re",
+				"Redirect"
 			],
 			[
-				"last",
-				"last_name"
+				"reimbur",
+				"$reimbursement〔variable〕"
 			],
 			[
-				"total",
-				"$totalqty〔variable〕"
-			],
-			[
-				"activi",
-				"$activity_id〔variable〕"
-			],
-			[
-				"ac",
-				"$activity_id〔variable〕"
-			],
-			[
-				"acti",
-				"$activity_id〔variable〕"
-			],
-			[
-				"Order",
-				"OrderSearch"
-			],
-			[
-				"_",
-				"$_ENV〔variable〕"
-			],
-			[
-				"c",
-				"class"
-			],
-			[
-				"font",
-				"font-size: 〔property〕"
-			],
-			[
-				"get",
-				"getElementsByName〔function〕"
-			],
-			[
-				"on",
-				"onclick"
-			],
-			[
-				"created",
-				"created_at"
-			],
-			[
-				"fon",
-				"font-size: 〔property〕"
-			],
-			[
-				"pag",
-				"paginate"
-			],
-			[
-				"co",
-				"colspan"
-			],
-			[
-				"Debug",
-				"Debugbar〔class〕"
-			],
-			[
-				"se",
-				"select"
-			],
-			[
-				"from",
-				"fromArray"
-			],
-			[
-				"left",
-				"leftJoin"
-			],
-			[
-				"order_",
-				"$order_new〔variable〕"
-			],
-			[
-				"order",
-				"$order_qty〔variable〕"
-			],
-			[
-				"item_",
-				"$item_ordered〔variable〕"
-			],
-			[
-				"ite",
-				"$item_stock〔variable〕"
-			],
-			[
-				"item",
-				"$item_limit〔variable〕"
-			],
-			[
-				"No",
-				"Notification"
-			],
-			[
-				"where",
-				"where('activity_id',$activity_id"
-			],
-			[
-				"Activity",
-				"ActivityItem〔class〕"
-			],
-			[
-				"activ",
-				"activity"
-			],
-			[
-				"or",
-				"orWhere〔function〕"
-			],
-			[
-				"o",
-				"orWhere〔function〕"
-			],
-			[
-				"with",
-				"withInput〔function〕"
-			],
-			[
-				"floa",
+				"flo",
 				"floatval〔function〕"
 			],
 			[
-				"I",
-				"Item"
+				"reim",
+				"$reimbursement〔variable〕"
 			],
 			[
-				"search",
-				"search_string"
+				"fun",
+				"function〔keyword〕"
 			],
 			[
-				"di",
-				"disabled	Attr"
+				"te",
+				"text-align: 〔property〕"
 			],
 			[
-				"N",
-				"Notification"
+				"v",
+				"vertical-align: 〔property〕"
 			],
 			[
-				"wi",
-				"withCookie"
+				"fo",
+				"font-size: 〔property〕"
 			],
 			[
-				"A",
-				"Activity"
+				"vendor",
+				"$vendor_name〔variable〕"
 			],
 			[
-				"am",
-				"amount_limit"
+				"i",
+				"getId〔function〕"
 			],
 			[
-				"cre",
-				"createUser〔function〕"
+				"get",
+				"getUser〔function〕"
 			],
 			[
 				"has",
-				"hasFile〔function〕"
+				"hasMany〔function〕"
 			],
 			[
-				"group",
-				"group_id"
+				"b",
+				"belongsTo〔function〕"
 			],
 			[
-				"re",
-				"removeGroup〔function〕"
+				"resu",
+				"$results〔variable〕"
 			],
 			[
-				"foreach",
-				"foreach〔keyword〕"
+				"I",
+				"Input"
 			],
 			[
 				"Cr",
-				"Crypt"
+				"crypt"
 			],
 			[
-				"array_un",
-				"array_unshift〔function〕"
-			],
-			[
-				"array_co",
-				"array_combine〔function〕"
-			],
-			[
-				"array_m",
-				"array_merge〔function〕"
-			],
-			[
-				"act",
-				"activity_id"
-			],
-			[
-				"items",
-				"$items_not_found〔variable〕"
-			],
-			[
-				"de",
-				"delete〔function〕"
+				"ord",
+				"orderBy"
 			],
 			[
 				"p",
-				"put〔function〕"
+				"$products〔variable〕"
+			],
+			[
+				"ac",
+				"activity_id"
+			],
+			[
+				"acti",
+				"activity"
 			],
 			[
 				"show",
@@ -251,25 +119,6 @@
 	},
 	"buffers":
 	[
-<<<<<<< Updated upstream
-		{
-			"file": "app/views/items/index.blade.php",
-			"settings":
-			{
-				"buffer_size": 3061,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/items/search.blade.php",
-			"settings":
-			{
-				"buffer_size": 3005,
-				"line_ending": "Unix"
-			}
-		}
-=======
->>>>>>> Stashed changes
 	],
 	"build_system": "",
 	"command_palette":
@@ -282,7 +131,7 @@
 				"CI Codeintel Helper: Create IDE helper"
 			]
 		],
-		"width": 449.0
+		"width": 593.0
 	},
 	"console":
 	{
@@ -297,114 +146,66 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-<<<<<<< Updated upstream
-	"expanded_folders":
-	[
-	],
 	"file_history":
 	[
-		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
-=======
-	"file_history":
-	[
->>>>>>> Stashed changes
-		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/routes.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
-		"/Applications/MAMP/htdocs/clarins/app/filters.php",
-<<<<<<< Updated upstream
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_change.blade.php",
-		"/Applications/MAMP/htdocs/clarins/bootstrap/start.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
-		"/Applications/MAMP/htdocs/clarins/.gitignore",
-=======
+		"/Applications/MAMP/htdocs/easyProcess/app/models/Payment.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/create.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/approval/edit.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/models/Account.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/reimbursement/new_report.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/edit.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/approval/index.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/Nav/nav.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/public/css/nav.css",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/index.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/start.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/public/js/local.js",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/admin/_layouts/default.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/public/css/main.css",
+		"/Applications/MAMP/htdocs/easyProcess/app/controllers/payment/PaymentController.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/admin/_partials/assets.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/public/css/local.css",
+		"/Applications/MAMP/htdocs/easyProcess/public/css/bootstrap.min.css",
+		"/Applications/MAMP/htdocs/easyProcess/app/config/local/app.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/summary.blade.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/config/mail.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/config/local/mail.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/config/database.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/config/local/database.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/controllers/login/LoginController.php",
+		"/Applications/MAMP/htdocs/easyProcess/app/config/app.php",
+		"/Applications/MAMP/htdocs/easyProcess/bootstrap/start.php",
+		"/Applications/MAMP/htdocs/easyProcess/public/css/fa.css",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/models/Order.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
-		"/Applications/MAMP/htdocs/clarins/.gitignore",
-		"/Applications/MAMP/htdocs/clarins/app/config/local/database.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/database.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/local/app.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/policy.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/show.blade.php",
-		"/Applications/MAMP/htdocs/clarins/bootstrap/start.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/login.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/import.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/orders/show.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/create.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/show.blade.php",
->>>>>>> Stashed changes
-		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/show.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/import.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_product.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/search.blade.php",
-<<<<<<< Updated upstream
-		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
-=======
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_order.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_user.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_pwd.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/AdminController.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/UserController.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
-		"/Applications/MAMP/htdocs/clarins/public/css/bootstrap.min.css",
->>>>>>> Stashed changes
-		"/Applications/MAMP/htdocs/clarins/public/css/local.css",
-		"/Applications/MAMP/htdocs/clarins/app/views/users/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade副本.php",
-<<<<<<< Updated upstream
-		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/models/Activity.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
-=======
->>>>>>> Stashed changes
-		"/Applications/MAMP/htdocs/clarins/app/views/users/import.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activemail.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activemail.html",
-		"/Applications/MAMP/htdocs/clarins/app/views/users/create.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/users/edit.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/models/User.php",
-		"/Applications/MAMP/htdocs/clarins/app/models/Item.php",
-		"/Applications/MAMP/htdocs/clarins/vendor/cartalyst/sentry/src/migrations/2012_12_06_225921_migration_cartalyst_sentry_install_users.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/cache.php",
-		"/Users/JW/Desktop/userlist.csv",
-		"/Applications/MAMP/htdocs/clarins/app/database/seeds/SentrySeeder.php",
-		"/Applications/MAMP/htdocs/clarins/app/database/seeds/DatabaseSeeder.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/import.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ActivityController.php",
-		"/Applications/MAMP/htdocs/clarins/app/models/Group.php",
-		"/Applications/MAMP/htdocs/easyProcess/app/views/Login/pwd_change.blade.php",
-		"/Applications/MAMP/htdocs/easyProcess/app/views/user/register.blade.php",
-		"/Applications/MAMP/htdocs/easyProcess/app/controllers/user/UserController.php",
-		"/Applications/MAMP/htdocs/clarins/app/models/Order.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/orders/export.blade.php",
-		"/Applications/MAMP/htdocs/easyProcess/app/models/V_cctr.php",
-		"/Applications/MAMP/htdocs/easyProcess/app/models/Cctr.php",
-		"/Applications/MAMP/htdocs/easyProcess/app/controllers/payment/PaymentController.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
+		"/Applications/MAMP/htdocs/clarins/app/routes.php",
+		"/Applications/MAMP/htdocs/clarins/app/filters.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/show.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/import.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/show.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/create.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/na.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/index.blade.php",
-		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/create.blade.php",
-		"/Applications/MAMP/htdocs/clarins/composer.json",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_product.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/policy.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/models/Activity.php"
+		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/models/Item.php"
 	],
 	"find":
 	{
@@ -415,6 +216,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"/Applications/MAMP/htdocs/easyProcess/app"
 		]
 	},
 	"find_state":
@@ -422,30 +224,31 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"label-danger",
-			"label",
-			"label-danger",
-			"danger",
-			"primary",
-			"getRandomString",
-			"clearResolvedInstance",
-			"clear",
-			"<",
-			">",
-			";",
-			"$order",
-			"left"
+			"#f5f5f5",
+			"background",
+			"container",
+			"light",
+			"#fff",
+			"container",
+			"text-center",
+			"light",
+			"row",
+			"box",
+			"Debugbar",
+			"DebugBar",
+			"'",
+			")",
+			"("
 		],
-		"highlight": true,
+		"highlight": false,
 		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
-			"#",
-			"",
-			"$row",
-			"center"
+			"\"",
+			"]",
+			"["
 		],
 		"reverse": false,
 		"show_context": true,
@@ -456,81 +259,14 @@
 	"groups":
 	[
 		{
-<<<<<<< Updated upstream
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/views/items/index.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3061,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2227,
-								2329
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 572.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/items/search.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3005,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2801,
-								2801
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 839.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-=======
-			"sheets":
-			[
->>>>>>> Stashed changes
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -565,7 +301,7 @@
 	},
 	"replace":
 	{
-		"height": 42.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -588,6 +324,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 200.0,
+	"side_bar_width": 229.0,
 	"status_bar_visible": true
 }

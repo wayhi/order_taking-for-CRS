@@ -46,6 +46,8 @@ Route::group(array('before'=>'auth.login'),function(){
 	});
 	Route::group(['before'=>'HRAccess'],function(){
 		Route::get('users/import',['as'=>'users.import','uses'=>'app\controllers\UserController@import']);
+		Route::post('users/search',['as'=>'users.search','uses'=>'app\controllers\UserController@search']);
+		Route::get('users/search_result/{search_term?}',['as'=>'users.search_result','uses'=>'app\controllers\UserController@search_result']);
 		Route::Resource('users','app\controllers\UserController');
 	});
 	Route::group(['before'=>'OperationAccess'],function(){

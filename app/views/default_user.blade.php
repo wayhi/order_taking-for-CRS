@@ -8,7 +8,7 @@
 		@include('assets')
 </head>
 <body>
-
+{{Former::secure_open()->id('UserSearchForm')->Method('POST')->route('users.search')}}
 <nav class="navbar navbar-inverse" role="navigation">
 
 <div class="container">
@@ -25,10 +25,18 @@
 <ul class="nav navbar-nav">
 
 
+<div class="navbar-form navbar-left" role="search">
+<div class="input-group input-group-sm btn-group">
+	
+<input type="text" class="form-control" style="width:150px" id="sn" name='sn' placeholder="用户名称">
 
+
+<button type="submit" class="btn btn-danger btn-sm" id="search" name='search' value="s">搜索</button>
+
+</div></div>
 
 </ul>
-
+{{Former::close()}}
 
 <ul class="nav navbar-nav navbar-right huser">
 
