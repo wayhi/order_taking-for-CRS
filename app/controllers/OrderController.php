@@ -13,7 +13,8 @@ class OrderController extends \BaseController {
 	public function index()
 	{
 		$orders = Order::with('activity')->where('owner_id',Sentry::getUser()->id)->orderBy('created_at','desc')->paginate(10);
-		return \View::make('orders/index')->with('orders',$orders);
+		$orders_2 = Order::with('order_items.item','owner')->where('owner_id',Sentry::getUser()->id)->groupby('activity_id');
+		return \View::make('orders/index')->with('orders',$orders)->with('orders_2',$orders_2);
 		
 	}
 

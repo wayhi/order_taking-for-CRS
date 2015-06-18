@@ -119,6 +119,54 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/views/users/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 1300,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/users/search.blade.php",
+			"settings":
+			{
+				"buffer_size": 1152,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/products/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 1527,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/default_product.blade.php",
+			"settings":
+			{
+				"buffer_size": 1604,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/default_user.blade.php",
+			"settings":
+			{
+				"buffer_size": 1495,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/orders/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 1909,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -148,6 +196,13 @@
 	},
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/clarins/app/models/User.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/search.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/UserController.php",
+		"/Applications/MAMP/htdocs/clarins/app/routes.php",
+		"/Applications/MAMP/htdocs/clarins/app/models/Group.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/users/import.blade.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/models/Payment.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/payment/create.blade.php",
 		"/Applications/MAMP/htdocs/easyProcess/app/views/approval/edit.blade.php",
@@ -192,8 +247,6 @@
 		"/Applications/MAMP/htdocs/clarins/app/views/products/import.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ActivityController.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
-		"/Applications/MAMP/htdocs/clarins/app/routes.php",
 		"/Applications/MAMP/htdocs/clarins/app/filters.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/show.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/import.php",
@@ -259,8 +312,170 @@
 	"groups":
 	[
 		{
+			"selected": 5,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/views/users/index.blade.php",
+					"settings":
+					{
+						"buffer_size": 1300,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1300
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/users/search.blade.php",
+					"settings":
+					{
+						"buffer_size": 1152,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1152,
+								1152
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/views/products/index.blade.php",
+					"settings":
+					{
+						"buffer_size": 1527,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								193,
+								193
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/default_product.blade.php",
+					"settings":
+					{
+						"buffer_size": 1604,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1165,
+								1184
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 65.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/default_user.blade.php",
+					"settings":
+					{
+						"buffer_size": 1495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								699,
+								699
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/views/orders/index.blade.php",
+					"settings":
+					{
+						"buffer_size": 1909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1550,
+								1550
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 153.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
