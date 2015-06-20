@@ -8,7 +8,7 @@
         
         <div class='col-md-2 col-lg-2'>
            
-            {{Former::select('activity_id','所属活动: ')->fromQuery(Activity::all(),'name','id')->class('form-control')}}
+            {{Former::select('activity_id','所属活动: ')->fromQuery(Activity::all(),'name','id')->class('form-control')->select($activity_id)}}
         </div>    
         <div class='col-md-3 col-lg-3'>
             {{Former::select('item_id','产品: ')->fromQuery(Item::all(),'item_name','id')->class('form-control')}}

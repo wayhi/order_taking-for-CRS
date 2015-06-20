@@ -119,6 +119,7 @@
 	},
 	"buffers":
 	[
+<<<<<<< Updated upstream
 		{
 			"file": "app/views/users/index.blade.php",
 			"settings":
@@ -167,6 +168,22 @@
 				"line_ending": "Unix"
 			}
 		}
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+		{
+			"file": "app/views/users/edit.blade.php",
+			"settings":
+			{
+				"buffer_size": 1448,
+				"line_ending": "Unix"
+			}
+		}
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 	],
 	"build_system": "",
 	"command_palette":
@@ -194,6 +211,7 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+<<<<<<< Updated upstream
 	"file_history":
 	[
 		"/Applications/MAMP/htdocs/clarins/app/models/User.php",
@@ -233,16 +251,82 @@
 		"/Applications/MAMP/htdocs/easyProcess/public/css/fa.css",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Order.php",
+=======
+<<<<<<< Updated upstream
+	"expanded_folders":
+	[
+		"/Applications/MAMP/htdocs/clarins",
+		"/Applications/MAMP/htdocs/clarins/app",
+		"/Applications/MAMP/htdocs/clarins/app/views",
+		"/Applications/MAMP/htdocs/clarins/app/views/users"
+	],
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
+=======
+	"file_history":
+	[
+>>>>>>> Stashed changes
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/routes.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
+		"/Applications/MAMP/htdocs/clarins/app/filters.php",
+<<<<<<< Updated upstream
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_change.blade.php",
+		"/Applications/MAMP/htdocs/clarins/bootstrap/start.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
+		"/Applications/MAMP/htdocs/clarins/.gitignore",
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
+<<<<<<< Updated upstream
+=======
+		"/Applications/MAMP/htdocs/clarins/app/views/products/show.blade.php",
+>>>>>>> Stashed changes
+		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/show.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/import.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_product.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
+=======
+>>>>>>> Stashed changes
+		"/Applications/MAMP/htdocs/clarins/app/views/products/search.blade.php",
+<<<<<<< Updated upstream
+		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
+>>>>>>> Stashed changes
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/policy.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/show.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
+<<<<<<< Updated upstream
 		"/Applications/MAMP/htdocs/clarins/app/models/Activity.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
+=======
+		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
+=======
+		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_order.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_user.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/default_pwd.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/AdminController.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/UserController.php",
+>>>>>>> Stashed changes
 		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/import.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
@@ -312,7 +396,52 @@
 	"groups":
 	[
 		{
+<<<<<<< Updated upstream
 			"selected": 5,
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+			"selected": 1,
+=======
+			"selected": 0,
+>>>>>>> Stashed changes
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/views/users/edit.blade.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								41
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 			"sheets":
 			[
 				{

@@ -63,7 +63,7 @@
     <div role="tabpanel" class="tab-pane fade" id="by_activity">
 
     	<div class='col-md-12 col-lg-12'>
-			<h2>我的订单</h2><br>
+			<h2>已购商品</h2><br>
 			<table class="table n_table" >
 	
 		        <thead>
@@ -71,48 +71,30 @@
 		                
 		                
 		                <th>活动名称<br>Activity</th>
-		                <th>商品总数 <br> Total Qty</th>
-		                <th>总金额 <br> Total Amount</th>
-		                <th>支付方式<br>Payment Method</th>
                         <th>商品SKU<br>SKU Code</th>
                         <th>商品名<br>Item Name</th>  
-                        <th>数量<br>Qty</th>   
+                        <th>数量<br>Qty</th> 
+                        <th>金额<br>Amount</th> 
 		                
 		            </tr>
 		        </thead>
 				<tbody>
 					@foreach ($orders_2 as $order_2)
-						@for($i=0;$i<count($order_2->order_items);$i++)
+						
                             <tr>
-                                @if($i==0)
-                                    <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order_2->order_items)}}">
-                                        {{$order_2->activity_id}}
-                                    </td>
-                                   
-                                    
-                                    <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order_2->order_items)}}">{{$order->qty_total}}</td>
-                                    <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order_2->order_items)}}">{{$order->amount_actual}}</td>
-                                    <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order_2->order_items)}}">
-                                    @if($order_2->pmt_method==1)工资抵扣 
-                                    @elseif($order_2->pmt_method==0)Credit Card 
-                                    @elseif($order_2->pmt_method==2)Free
-                                    @endif
-                                    </td>
-                                    
-                                @endif
-                                
-                                <td style="vertical-align:middle; text-align:center;">{{$order_2->order_items[$i]->item->SKU_code}}</td>
-                                <td style="vertical-align:middle; text-align:center;">{{$order_2->order_items[$i]->item->item_name}}</td>
-                                <td style="vertical-align:middle; text-align:center;">{{$order_2->order_items[$i]->qty}}</td>
-                                
+                               <td>{{$order_2->name}}</td>
+                               <td>{{$order_2->sku_code}}</td>
+                               <td>{{$order_2->item_name}}</td>
+                               <td>{{$order_2->item_qty}}</td>
+                               <td>{{$order_2->item_amount}}</td>
                             </tr>
-                        @endfor
+                        
 					
 					@endforeach
 				</tbody>
 			</table>		
 		</div>
-		
+		<div class='pagination inline'>{{$orders_2->links();}}</div>
 
 
     </div>

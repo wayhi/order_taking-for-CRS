@@ -13,7 +13,17 @@ class OrderController extends \BaseController {
 	public function index()
 	{
 		$orders = Order::with('activity')->where('owner_id',Sentry::getUser()->id)->orderBy('created_at','desc')->paginate(10);
-		$orders_2 = Order::with('order_items.item','owner')->where('owner_id',Sentry::getUser()->id)->groupby('activity_id');
+		$orders_2 = DB::table('orders')->join('order_items','orders.id','=','order_items.order_id')
+		->join('activities','activities.id','=','orders.activity_id')
+		->join('item_master','item_master.id','=','order_items.item_id')
+		->where('orders.owner_id',Sentry::getUser()->id)->groupby('orders.activity_id','order_items.item_id')
+		->orderBy('activities.created_at','desc')
+		->select(DB::Raw('ccsc_activities.name,
+			sku_code,item_name,sum(ccsc_order_items.qty) as item_qty,
+			(ccsc_order_items.price*sum(ccsc_order_items.qty)) as item_amount'))->paginate(10);
+		//
+
+		
 		return \View::make('orders/index')->with('orders',$orders)->with('orders_2',$orders_2);
 		
 	}
