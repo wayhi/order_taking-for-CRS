@@ -4,36 +4,8 @@
 {{ Notification::showAll() }}
 <script>
   $(function () {
-
-            
-            (function ($) {
-                $.getUrlParam = function (name) {
-                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-                    var r = window.location.href.match(reg);
-                    if (r != null) return unescape(r[2]); return null;
-                }
-            })(jQuery);
-
-            
-            var xx = $.getUrlParam('sort');
-
-            if (xx =='activity') {
-            	 $(function () {
-   					$('#myTab a[href="activity"]').tab('show');
-  				})
-
-            }
-
-            
-
-        });
-
-        
-
-
-
-
- 
+   //$('#myTab a[href="#by_activity"]').tab('show')
+  })
 </script>
 <div role="tabpanel">
 
@@ -84,7 +56,7 @@
 				</tbody>
 			</table>		
 		</div>
-		<div class='pagination inline'>{{$orders->links();}}</div>
+		<div class='pagination inline'>{{$orders->links('orders.index');}}</div>
 
 
     </div>
@@ -122,7 +94,7 @@
 				</tbody>
 			</table>		
 		</div>
-		<div class='pagination inline'>{{$orders_2->appends(array('sort' => 'activity'))->links();}}</div>
+		<div class='pagination inline'>{{$orders_2->links();}}</div>
 
 
     </div>

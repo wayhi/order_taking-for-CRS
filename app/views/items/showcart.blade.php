@@ -163,7 +163,7 @@
         <input class='btn btn-success btn-sm' name='submit' type='submit' value='生成订单' 
         @if($amount>$balance || $itemcount<=0) disabled @endif>
     	<a class='btn btn-warning btn-sm' href='/clearcart' >清空购物车</a>
-        <a class='btn btn-default btn-sm' href="{{URL::route('items')}}" >返回</a>
+        <a class='btn btn-default btn-sm' href="{{URL::route('items')}}" >继续购物</a>
     </div>
     </div>
     {{Former::close()}}
