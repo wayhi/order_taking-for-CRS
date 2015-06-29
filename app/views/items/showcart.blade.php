@@ -74,6 +74,11 @@
         }
         
     }
+
+    function show_bankinfo(){
+        var msg = "户名：娇韵诗化妆品（上海）有限公司 开户银行：汇丰银行上海分行 银行账号：720-183185-001";
+        alert(msg);
+    }
 	
 </script>
 {{ Notification::showAll() }}
@@ -133,8 +138,16 @@
         
         <td colspan=3 align='center' style="vertical-align:middle;" >
             @if($pmt_method == -1)
-                {{Former::checkbox('pmt_method','')->text('从本人工资抵扣')->onclick("show_msg();")}}
+
+                {{Former::radios('付款方式')->radios(array(
+                    '本人工资抵扣' => array('name' => 'pmt_method', 'value' => '1'),
+                    '银行转账汇款' => array('name' => 'pmt_method', 'value' => '2'),
+                    '刷银行卡支付  ' => array('name' => 'pmt_method', 'value' => '0','checked'=>'true')
+                ))->onclick("show_msg();")}}
+                <br>
                 <a href="{{URL::route('download_template','内买货款调整申请表.pdf')}}">内买货款调整申请表</a> 
+                &nbsp
+                <a href="javascript:show_bankinfo();">银行汇款信息</a> 
             @elseif($pmt_method == 1)
                 <span class='label label-danger' style="font-size:11px">从本人工资抵扣</span>
                 <input type='hidden' name='pmt_method' value='1'>

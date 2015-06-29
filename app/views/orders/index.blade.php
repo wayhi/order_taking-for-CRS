@@ -8,22 +8,30 @@
             
             (function ($) {
                 $.getUrlParam = function (name) {
-                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-                    var r = window.location.href.match(reg);
+                    var reg = new RegExp("(^|&?)" + name + "=([^&]*)(&|$)");
+                    var r = window.location.search.match(reg);
+                    //alert(r);
                     if (r != null) return unescape(r[2]); return null;
                 }
             })(jQuery);
-
+            
             
             var xx = $.getUrlParam('sort');
-
-            if (xx =='activity') {
+            //alert(xx);
+            if (xx == 'item') {
+            	//alert('ok');
             	 $(function () {
-   					$('#myTab a[href="activity"]').tab('show');
+   					$('#myTab a:last').tab('show');
   				})
 
             }
+            if (xx == 'order') {
+            	//alert('ok');
+            	 $(function () {
+   					$('#myTab a:first').tab('show');
+  				})
 
+            }
             
 
         });
@@ -40,7 +48,7 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist" id="myTab">
     <li role="presentation" class="active"><a href="#by_order" aria-controls="by_order" role="tab" data-toggle="tab">By Order</a></li>
-    <li role="presentation"><a href="#by_activity" aria-controls="profile" role="tab" data-toggle="tab">By Activity</a></li>
+    <li role="presentation"><a href="#by_item" aria-controls="profile" role="tab" data-toggle="tab">By Item</a></li>
     
   </ul>
 
@@ -74,7 +82,8 @@
 					<td>{{$order->amount_actual}}</td>
 					<td>
 					@if($order->pmt_method==1)工资抵扣
-					@elseif($order->pmt_method==0)Credit Card
+					@elseif($order->pmt_method==0)银行卡支付
+					@elseif($order->pmt_method==2)银行转账／汇款
 					@endif
 					</td>
 					<td>{{$order->created_at}}</td>
@@ -84,11 +93,11 @@
 				</tbody>
 			</table>		
 		</div>
-		<div class='pagination inline'>{{$orders->links();}}</div>
+		<div class='pagination inline'>{{$orders->appends(array('sort' => 'order'))->links();}}</div>
 
 
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="by_activity">
+    <div role="tabpanel" class="tab-pane fade" id="by_item">
 
     	<div class='col-md-12 col-lg-12'>
 			<h2>已购商品</h2><br>
@@ -122,7 +131,7 @@
 				</tbody>
 			</table>		
 		</div>
-		<div class='pagination inline'>{{$orders_2->appends(array('sort' => 'activity'))->links();}}</div>
+		<div class='pagination inline'>{{$orders_2->appends(array('sort' => 'item'))->links();}}</div>
 
 
     </div>

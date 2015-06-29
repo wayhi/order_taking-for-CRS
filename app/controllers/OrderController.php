@@ -58,7 +58,7 @@ class OrderController extends \BaseController {
 				if($pmt_method==-1){
 					if(Input::has('pmt_method')){
 
-						$order->pmt_method = 1;
+						$order->pmt_method = intval(Input::get('pmt_method'));
 					}else{
 						$order->pmt_method = 0;
 					}
@@ -582,6 +582,8 @@ class OrderController extends \BaseController {
 				$pmt_method = 1;
 			}elseif($order->pmt_method==0){
 				$pmt_method = 0;
+			}elseif($order->pmt_method==2){
+				$pmt_method = 2;
 			}
 		}
 
