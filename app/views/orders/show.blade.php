@@ -27,7 +27,7 @@
                     <td><image src="{{$order_item->item->image->url('micro')}}">
                     
                     </td>
-                    <td style="vertical-align:middle; text-align:left;">{{$order_item->item->item_name}}</td>
+                    <td style="vertical-align:middle; text-align:left;">{{$order_item->item->SKU_code.'-'.$order_item->item->item_name}}</td>
                     <td style="vertical-align:middle; text-align:center;">{{$order_item->price}}
                     </td>
                     <td style="vertical-align:middle; text-align:center;">
