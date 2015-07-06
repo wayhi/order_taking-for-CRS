@@ -18,7 +18,7 @@
             ->orderBy('last_name')->get(),'last_name','id')->class('form-control')}}
         </div>  
         <div class='col-md-2 col-lg-2'>
-            {{Former::select('pmt_method','支付方式: ')->options([-1=>'所有-All',0=>'Credit Card',1=>'Salary',2=>'Free'])->class('form-control')}}
+            {{Former::select('pmt_method','支付方式: ')->options([-1=>'所有-All',0=>'刷卡支付',1=>'工资抵扣',2=>'银行汇款'])->class('form-control')}}
         </div>  
          <div class='col-md-3 col-lg-3' > 
                 <div class="control-group">   
@@ -84,8 +84,8 @@
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->created_at}}</td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">
                                     @if($order->pmt_method==1)工资抵扣 
-                                    @elseif($order->pmt_method==0)Credit Card 
-                                    @elseif($order->pmt_method==2)Free
+                                    @elseif($order->pmt_method==0)刷卡支付 
+                                    @elseif($order->pmt_method==2)银行汇款
                                     @endif
                                     </td>
                                     <td style="vertical-align:middle; text-align:center;" rowspan="{{count($order->order_items)}}">{{$order->amount_actual}}</td>

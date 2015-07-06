@@ -55,6 +55,7 @@ class OrderController extends \BaseController {
 				$order->amount_original = 0.00;
 				$order->amount_actual = 0.00;
 				$order->status = 1;
+				$order->deliver_to = Sentry::getUser()->deliver_to;
 				if($pmt_method==-1){
 					if(Input::has('pmt_method')){
 
@@ -391,7 +392,7 @@ class OrderController extends \BaseController {
 			Excel::create('Summary', function($excel) use($orders) {
 				
     			$excel->sheet('Sheet1', function($sheet) use($orders) {
-    				$sheet->prependRow(array('Name', 'Order #','Quantity','Date','Payment Method','Total Amount'));
+    				$sheet->prependRow(array('Name', 'Order #','Quantity','Date','Payment Method','Deliver To','Total Amount'));
         			$n = 2;
         			foreach($orders as $row){
 
@@ -408,11 +409,14 @@ class OrderController extends \BaseController {
         					case 1:
         						$sheet->setCellValueByColumnAndRow(4,$n,"Salary");
         						break;
+        					case 2:
+        						$sheet->setCellValueByColumnAndRow(4,$n,"T/T");	
         					default:
         						
         						break;
         				}
-        				$sheet->setCellValueByColumnAndRow(5,$n,$row->amount_actual);
+        				$sheet->setCellValueByColumnAndRow(5,$n,$row->deliver_to);
+        				$sheet->setCellValueByColumnAndRow(6,$n,$row->amount_actual);
 
         				$n +=1;
         			}	

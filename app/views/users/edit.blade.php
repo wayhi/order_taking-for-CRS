@@ -26,6 +26,13 @@
     ->inlinehelp('To replace the common rule.')}}
   </div>
   </div>
+
+  <div class='row'>
+    <div class='col-md-offset-2 col-md-8 col-lg-8'>
+      {{Former::text('deliver_to','送货地址：')->class('form-control')}}
+    </div>  
+  </div>
+
   <div class='row'>
   <div class='col-md-offset-2 col-md-4 col-lg-4'>
     
