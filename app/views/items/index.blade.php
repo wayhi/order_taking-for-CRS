@@ -70,7 +70,7 @@ $(document).on('hidden.bs.modal', function (e) {
 <br>
 <span class="label label-default">市场价{{$items[$i+$k]->retail_price}}</span>
 <span class="label label-danger" style="font-size:11px">现价{{$items[$i+$k]->offer_price}}</span> 
-
+@if($items[$i+$k]->item_limit>0)<span class="label label-warning" style="font-size:11px">限购 {{$items[$i+$k]->item_limit}} 件</span> @endif
 <br>
 产品有效期：{{($items[$i+$k]->expiration)}}
 @if($items[$i+$k]->item_stock>$items[$i+$k]->ordered)

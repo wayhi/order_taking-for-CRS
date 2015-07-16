@@ -95,7 +95,8 @@ class UserController extends \BaseController {
 				
 				foreach($results as $row){
 					try{
-						if($row['email']<>""){
+						if(($row['email']<>"") && ($row['password']<>""))
+						{
 
 							$user=Sentry::createUser([
 								'email' => $row['email'],
