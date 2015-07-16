@@ -23,7 +23,7 @@
   </div>
   <div class='col-md-4 col-lg-4'>
     {{Former::text('quota','个人单次购买限额(元):')->class('form-control')
-    ->inlinehelp('To replace the common rule.')}}
+    ->inlinehelp('To replace the common rule if the number greater than 0.')}}
   </div>
   </div>
 

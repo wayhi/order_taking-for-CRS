@@ -88,6 +88,7 @@ class UserController extends \BaseController {
 		if(Input::has('import')){
 			set_time_limit(60);
 			$n=0;
+			$k=0;
 			if(Input::hasFile('attachement')){
 				$attached = Input::file('attachement');
 				$results = Excel::load($attached)->get();
@@ -95,11 +96,14 @@ class UserController extends \BaseController {
 				foreach($results as $row){
 					try{
 						if($row['email']<>""){
+
 							$user=Sentry::createUser([
 								'email' => $row['email'],
 								'password' => $row['password'],
 								'last_name' => $row['name'],
 								'activated'=> true,
+								'deliver_to'=> $row['limitation'],
+								'quota'=> $row['limitation']
 								]);
 							$group = Sentry::findGroupById($row['group_id']);
 							$user->addGroup($group);
@@ -107,7 +111,20 @@ class UserController extends \BaseController {
 						}		
 					}catch (\Cartalyst\Sentry\Users\UserExistsException $e)
 					{
-					    Notification::error('User '.$row['email'].' with this login already exists.');
+					    //Notification::error('User '.$row['email'].' with this login already exists.');
+					    $user = Sentry::findUserByLogin($row['email']);
+					    $user->deliver_to = $row['deliver_to'];
+					    $user->quota = $row['limitation'];
+					    if($row['status'] == 0){
+					    	$user->activated = false;
+					    }elseif ($row['status'] == 1) {
+					    	$user->activated = true;
+					    }
+					    //$group = Sentry::findGroupById($row['group_id']);
+						//	$user->addGroup($group);
+					    $user->save();
+					    $k +=1;
+
 					}
 					catch (\Cartalyst\Sentry\Groups\GroupNotFoundException $e)
 					{
@@ -116,7 +133,7 @@ class UserController extends \BaseController {
 					
 				}		
 			}
-			Notification::success("There are ".$n." users imported into system successfully!");
+			Notification::success("There are ".$n." user(s) imported into system and ".$k." user(s) updated successfully!");
 			return Redirect::route('users.index');	
 		} 
 	}
