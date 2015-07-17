@@ -27,6 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'local' => array('shiwenbodeMacBook-Pro.local','JWs-Mac-mini-2.local'),
+	'stage' => array('stage_server'),
 
 ));
 
