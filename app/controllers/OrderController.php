@@ -89,7 +89,9 @@ class OrderController extends \BaseController {
 							DB::rollBack();
 							Return null;
 						}
-						if($item_limit>0 && $order_qty>$item_limit){
+						$item_personal_ordered = Self::getItemOrdered(Session::get('activity_id'),Sentry::getUser()->id,$item_id);
+						//Notification::info('ordered:'.$item_personal_ordered);
+						if($item_limit>0 && $order_qty>$item_limit-$item_personal_ordered){
 							Notification::error('"'.$activityItem->item->item_name.'" 超过订购限量！');
 							DB::rollBack();
 							Return null;
@@ -592,6 +594,19 @@ class OrderController extends \BaseController {
 		}
 
 		return $pmt_method;
+
+	}
+
+	private static function getItemOrdered($activity_id,$user_id,$item_id)
+	{
+
+		
+		$item_ordered_number= OrderItem::wherein('order_id',Order::where('activity_id',$activity_id)
+			->where('status','>',0)
+			->where('owner_id',$user_id)
+			->lists('id'))->where('item_id',$item_id)->sum('qty');
+		
+		return $item_ordered_number;
 
 	}
 	
