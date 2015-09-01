@@ -103,7 +103,7 @@ class UserController extends \BaseController {
 								'password' => $row['password'],
 								'last_name' => $row['name'],
 								'activated'=> true,
-								'deliver_to'=> $row['limitation'],
+								'deliver_to'=> $row['deliver_to'],
 								'quota'=> $row['limitation']
 								]);
 							$group = Sentry::findGroupById($row['group_id']);
