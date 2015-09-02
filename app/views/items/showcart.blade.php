@@ -138,12 +138,23 @@
         
         <td colspan=3 align='center' style="vertical-align:middle;" >
             @if($pmt_method == -1)
-
+                @if($activity->type==1)
                 {{Former::radios('付款方式')->radios(array(
                     '本人工资抵扣' => array('name' => 'pmt_method', 'value' => '1'),
                     '银行转账汇款' => array('name' => 'pmt_method', 'value' => '2'),
                     '刷银行卡支付  ' => array('name' => 'pmt_method', 'value' => '0','checked'=>'true')
+
                 ))->onclick("show_msg();")}}
+                @endif
+
+                <!--freegoods-->
+
+                @if($activity->type==2) 
+                {{Former::radios('付款方式')->radios(array(
+                    'Free Goods' => array('name' => 'pmt_method', 'value' => '3','checked'=>'true')
+
+                ))}}
+                @endif
                 <br>
                 <a href="{{URL::route('download_template','内买货款调整申请表.pdf')}}">内买货款调整申请表</a> 
                 &nbsp

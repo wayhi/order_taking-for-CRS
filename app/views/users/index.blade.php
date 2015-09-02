@@ -28,7 +28,9 @@
 			<td>{{$user->last_name}}</td>
 			<td>{{$user->email}}</td>
 			<td>{{$user->groups[0]->name}}</td>
-			<td>@if($user->activated)有效@else禁止登录@endif</td>
+			<td>@if($user->activated) 有效
+				@else 禁止登录
+				@endif</td>
 			
 			<td><a class="btn btn-xs btn-warning" href="{{URL::Route('users.edit',Crypt::encrypt($user->id))}}">更改</a></td>
 			</tr>

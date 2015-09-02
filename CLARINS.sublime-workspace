@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"ccsc_",
+				"ccsc_order_items"
+			],
+			[
+				"De",
+				"DebugBar\\DebugBar〔class〕"
+			],
+			[
+				"item_p",
+				"$item_personal_ordered〔variable〕"
+			],
+			[
+				"No",
+				"Notification::message"
+			],
+			[
+				"item_or",
+				"$item_orderd_number〔variable〕"
+			],
+			[
+				"act",
+				"activity_id"
+			],
+			[
+				"del",
+				"deliver_to"
+			],
+			[
 				"Re",
 				"Redirect"
 			],
@@ -119,71 +147,62 @@
 	},
 	"buffers":
 	[
-<<<<<<< Updated upstream
 		{
-			"file": "app/views/users/index.blade.php",
+			"file": "app/views/items/index.blade.php",
 			"settings":
 			{
-				"buffer_size": 1300,
+				"buffer_size": 3203,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/users/search.blade.php",
+			"file": "app/controllers/LoginController.php",
 			"settings":
 			{
-				"buffer_size": 1152,
+				"buffer_size": 4956,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/products/index.blade.php",
+			"file": "app/views/activity/index.blade.php",
 			"settings":
 			{
-				"buffer_size": 1527,
+				"buffer_size": 1633,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/default_product.blade.php",
+			"file": "app/views/activemail.blade.php",
 			"settings":
 			{
-				"buffer_size": 1604,
+				"buffer_size": 683,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/default_user.blade.php",
+			"file": "app/views/items/showcart.blade.php",
 			"settings":
 			{
-				"buffer_size": 1495,
+				"buffer_size": 8280,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/orders/index.blade.php",
+			"file": "app/views/activity/create.blade.php",
 			"settings":
 			{
-				"buffer_size": 1909,
+				"buffer_size": 2051,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/OrderController.php",
+			"settings":
+			{
+				"buffer_size": 18028,
 				"line_ending": "Unix"
 			}
 		}
-=======
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-		{
-			"file": "app/views/users/edit.blade.php",
-			"settings":
-			{
-				"buffer_size": 1448,
-				"line_ending": "Unix"
-			}
-		}
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 	],
 	"build_system": "",
 	"command_palette":
@@ -211,13 +230,36 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-<<<<<<< Updated upstream
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/clarins/app/views/activemail.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/emails/auth/reminder.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/local/mail.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/UserController.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/users/index.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/users/edit.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/users/create.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
+		"/Applications/MAMP/htdocs/staff_purchase/resources/views/welcome.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/models/Order.php",
+		"/Applications/MAMP/htdocs/clarins/app/models/ActivityItem.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/products/show.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/show.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/database/migrations/2015_07_13_162526_add_address_to_user_table.php",
+		"/Applications/MAMP/htdocs/clarins/app/config/database.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/index_2.blade.php",
+		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/User.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/search.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/UserController.php",
 		"/Applications/MAMP/htdocs/clarins/app/routes.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Group.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/users/import.blade.php",
@@ -250,83 +292,11 @@
 		"/Applications/MAMP/htdocs/easyProcess/bootstrap/start.php",
 		"/Applications/MAMP/htdocs/easyProcess/public/css/fa.css",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/models/Order.php",
-=======
-<<<<<<< Updated upstream
-	"expanded_folders":
-	[
-		"/Applications/MAMP/htdocs/clarins",
-		"/Applications/MAMP/htdocs/clarins/app",
-		"/Applications/MAMP/htdocs/clarins/app/views",
-		"/Applications/MAMP/htdocs/clarins/app/views/users"
-	],
-	"file_history":
-	[
-		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
-=======
-	"file_history":
-	[
->>>>>>> Stashed changes
-		"/Applications/MAMP/htdocs/clarins/app/views/orders/manage.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/routes.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/OrderController.php",
-		"/Applications/MAMP/htdocs/clarins/app/filters.php",
-<<<<<<< Updated upstream
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_change.blade.php",
-		"/Applications/MAMP/htdocs/clarins/bootstrap/start.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/mail.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
-		"/Applications/MAMP/htdocs/clarins/.gitignore",
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
-		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/LoginController.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
-<<<<<<< Updated upstream
-=======
-		"/Applications/MAMP/htdocs/clarins/app/views/products/show.blade.php",
->>>>>>> Stashed changes
-		"/Applications/MAMP/htdocs/clarins/app/views/items/search.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/items/show.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/ProductController.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/import.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_product.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
-=======
->>>>>>> Stashed changes
-		"/Applications/MAMP/htdocs/clarins/app/views/products/search.blade.php",
-<<<<<<< Updated upstream
-		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
->>>>>>> Stashed changes
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/policy.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/show.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/ItemController.php",
-<<<<<<< Updated upstream
 		"/Applications/MAMP/htdocs/clarins/app/models/Activity.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/orders/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default.blade.php",
-=======
-		"/Applications/MAMP/htdocs/clarins/app/views/items/showcart.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/activity/create.blade.php",
-=======
-		"/Applications/MAMP/htdocs/clarins/app/views/Login/pwd_reset.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_index.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_order.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_user.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_activity.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/default_pwd.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/AdminController.php",
-		"/Applications/MAMP/htdocs/clarins/app/controllers/UserController.php",
->>>>>>> Stashed changes
 		"/Applications/MAMP/htdocs/clarins/app/views/products/edit.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/import.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/index.blade.php",
@@ -334,12 +304,10 @@
 		"/Applications/MAMP/htdocs/clarins/app/filters.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/orders/show.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/config/packages/maatwebsite/excel/import.php",
-		"/Applications/MAMP/htdocs/clarins/app/views/products/show.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/products/create.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/Login/na.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/activity/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/default_product.blade.php",
-		"/Applications/MAMP/htdocs/clarins/app/config/app.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/policy.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/views/items/index.blade.php",
 		"/Applications/MAMP/htdocs/clarins/app/models/Item.php"
@@ -361,6 +329,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sum",
 			"#f5f5f5",
 			"background",
 			"container",
@@ -396,73 +365,31 @@
 	"groups":
 	[
 		{
-<<<<<<< Updated upstream
-			"selected": 5,
-=======
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-			"selected": 1,
-=======
-			"selected": 0,
->>>>>>> Stashed changes
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/users/edit.blade.php",
-					"semi_transient": true,
+					"file": "app/views/items/index.blade.php",
 					"settings":
 					{
-						"buffer_size": 1448,
+						"buffer_size": 3203,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								41
+								1117,
+								1117
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"auto_complete": false,
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "app/views/users/index.blade.php",
-					"settings":
-					{
-						"buffer_size": 1300,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								1300
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -472,45 +399,46 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/views/users/search.blade.php",
+					"file": "app/controllers/LoginController.php",
 					"settings":
 					{
-						"buffer_size": 1152,
+						"buffer_size": 4956,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1152,
-								1152
+								3442,
+								3442
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1791.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/views/products/index.blade.php",
+					"file": "app/views/activity/index.blade.php",
 					"settings":
 					{
-						"buffer_size": 1527,
+						"buffer_size": 1633,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								193,
-								193
+								201,
+								614
 							]
 						],
 						"settings":
@@ -525,50 +453,76 @@
 				},
 				{
 					"buffer": 3,
-					"file": "app/views/default_product.blade.php",
+					"file": "app/views/activemail.blade.php",
 					"settings":
 					{
-						"buffer_size": 1604,
+						"buffer_size": 683,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1165,
-								1184
+								420,
+								420
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 65.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "app/views/default_user.blade.php",
+					"file": "app/views/items/showcart.blade.php",
 					"settings":
 					{
-						"buffer_size": 1495,
+						"buffer_size": 8280,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								699,
-								699
+								6092,
+								6092
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2029.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/views/activity/create.blade.php",
+					"settings":
+					{
+						"buffer_size": 2051,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -579,28 +533,28 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "app/views/orders/index.blade.php",
+					"buffer": 6,
+					"file": "app/controllers/OrderController.php",
 					"settings":
 					{
-						"buffer_size": 1909,
+						"buffer_size": 18028,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1550,
-								1550
+								14148,
+								14148
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 153.0,
+						"translation.y": 6608.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

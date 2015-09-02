@@ -481,7 +481,7 @@ class OrderController extends \BaseController {
 		}
 		//Debugbar::info($items);
 		return View::make('items/showcart')->with('items',$items)->with('item_qty',$item_qty)
-		->with('amount',$amount)->with('itemcount',$itemcount)->with('balance',$balance)->with('pmt_method',$pmt_method);
+		->with('amount',$amount)->with('itemcount',$itemcount)->with('balance',$balance)->with('pmt_method',$pmt_method)->with('activity',$activity);
 	
 	}
 	
@@ -590,6 +590,8 @@ class OrderController extends \BaseController {
 				$pmt_method = 0;
 			}elseif($order->pmt_method==2){
 				$pmt_method = 2;
+			}else{
+				$pmt_method = $order->pmt_method;
 			}
 		}
 
