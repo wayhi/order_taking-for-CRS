@@ -11,6 +11,8 @@ class ItemController extends \BaseController {
 	public function index($ordertype=0,$category=0)
 	{
 		$activity_id = Session::get('activity_id');
+		$activity = Activity::find($activity_id);
+		$activity_type = $activity->type;
 		if($ordertype == 0){
 			$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)->orderby('id','aesc')->paginate(9);
 		}else{
@@ -26,7 +28,7 @@ class ItemController extends \BaseController {
 			}	
 		}
 		
-			return \View::make('items/index')->with('items',$items)->with('category',$category);
+			return \View::make('items/index')->with('items',$items)->with('category',$category)->with('activity_type',$activity_type);
 			
 		
 	}
@@ -134,13 +136,15 @@ class ItemController extends \BaseController {
 			if($search_term<>""){
 
 				$activity_id = Session::get('activity_id');
+				$activity = Activity::find($activity_id);
+				$activity_type = $activity->type;
 				$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)
 				->whereIn('item_id',count(Item::where('item_name','like','%'.$search_term.'%')->orWhere('SKU_code',$search_term)->lists('id'))==0?[-1]:(Item::where('item_name','like','%'.$search_term.'%')
 					->orWhere('SKU_code',$search_term)
 					->lists('id')))
 				->orderby('created_at','desc')->paginate(9);
 
-				return \View::make('items/search')->with('items',$items)->with('search_string',$search_term);
+				return \View::make('items/search')->with('items',$items)->with('search_string',$search_term)->with('activity_type',$activity_type);
 			}else{
 				return Redirect::back();
 			}

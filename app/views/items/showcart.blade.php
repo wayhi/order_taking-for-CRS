@@ -138,7 +138,7 @@
         
         <td colspan=3 align='center' style="vertical-align:middle;" >
             @if($pmt_method == -1)
-                @if($activity->type==1)
+                @if(($activity->type==1)||($activity->type==3))
                 {{Former::radios('付款方式')->radios(array(
                     '本人工资抵扣' => array('name' => 'pmt_method', 'value' => '1'),
                     '银行转账汇款' => array('name' => 'pmt_method', 'value' => '2'),
@@ -162,7 +162,11 @@
             @elseif($pmt_method == 1)
                 <span class='label label-danger' style="font-size:11px">从本人工资抵扣</span>
                 <input type='hidden' name='pmt_method' value='1'>
-                <a type=hidden name='application' href="{{URL::route('download_template','内买货款调整申请表.pdf')}}">内买货款调整申请表</a> 
+                <a type=hidden name='application' href="{{URL::route('download_template','内买货款调整申请表.pdf')}}">内买货款调整申请表</a>
+            @elseif($pmt_method == 2)
+                <span class='label label-danger' style="font-size:11px">银行转账汇款</span>
+            @elseif($pmt_method == 0)
+                <span class='label label-danger' style="font-size:11px">刷银行卡支付</span>
             @endif  
 
         </td>
