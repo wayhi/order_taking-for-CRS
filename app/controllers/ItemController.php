@@ -36,12 +36,13 @@ class ItemController extends \BaseController {
 	public function category($category_id=0)
 	{
 		$activity_id = Session::get('activity_id');
-
+		$activity = Activity::find($activity_id);
+		$activity_type = $activity->type;
 		if($category_id==0){
 			
 			$items = ActivityItem::with('item.category')->where('activity_id',$activity_id)
 			->orderby('id','aesc')->paginate(9);
-			return \View::make('items/index')->with('items',$items)->with('category',0);
+			return \View::make('items/index')->with('items',$items)->with('category',0)->with('activity_type',$activity_type);
 		
 		}else{
 
@@ -49,7 +50,7 @@ class ItemController extends \BaseController {
 			->whereraw("item_id in (select id from ccsc_item_master where category_id = ".$category_id.")")
 			->where('activity_id',$activity_id)
 			->orderby('id','aesc')->paginate(9);
-			return \View::make('items/index')->with('items',$items)->with('category',$category_id);
+			return \View::make('items/index')->with('items',$items)->with('category',$category_id)->with('activity_type',$activity_type);
 			
 		}
 
