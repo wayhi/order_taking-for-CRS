@@ -22,9 +22,9 @@
 	
 		
 		var qty = parseInt(document.getElementById(q).value)-1;
-		if(qty<0){
-			document.getElementById(q).value =0;
-			document.getElementById(q_).value=0;
+		if(qty<1){
+			document.getElementById(q).value =1;
+			document.getElementById(q_).value=1;
 		}else{
 			document.getElementById(q).value = qty;
 			document.getElementById(q_).value = qty;
