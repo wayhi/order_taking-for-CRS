@@ -37,51 +37,60 @@ class ProductController extends \BaseController {
 	{
 		if(Input::has('submit')){    //新增单个商品
 			
-			$item_new = DB::transaction(function(){
-			
-				$item = new Item();
-				$item->SKU_code = Input::get('SKU_code');
-				$item->category_id = Input::get('category');
-				$item->item_name = Input::get('item_name');
-				$item->texture = Input::get('texture');
-				$item->description = Input::get('description');
-				$item->description_short = Input::get('description_short');
-				$item->how_to_use = Input::get('how_to_use');
-				$item->size = Input::get('size');
-				$item->activated = 1;
-				if(Input::hasFile('attachement')) {
-					$item->image = Input::file('attachement')[0];
-				}
-				$item->save();
-				if(Input::has('skin_1')){
-					$itemskin = new ItemSkin();
-					$itemskin->item_id = $item->id;
-					$itemskin->skin_id = 1;
-					$itemskin->save();
-				}
-				if(Input::has('skin_2')){
-					$itemskin = new ItemSkin();
-					$itemskin->item_id = $item->id;
-					$itemskin->skin_id = 2;
-					$itemskin->save();
-				}
-				if(Input::has('skin_3')){
-					$itemskin = new ItemSkin();
-					$itemskin->item_id = $item->id;
-					$itemskin->skin_id = 3;
-					$itemskin->save();
-				}
-				if(Input::has('skin_4')){
-					$itemskin = new ItemSkin();
-					$itemskin->item_id = $item->id;
-					$itemskin->skin_id = 4;
-					$itemskin->save();
-				}
-				return $item;
-			});
-
-		Notification::success('The product "'.$item_new->item_name.'" has been created successfully!');
-		return Redirect::route('products.create');
+			$sku = Input::get('SKU_code');
+			$sku_exist = Item::where('SKU_code',$sku)->get();
+			if(count($sku_exist)==0){	
+				$item_new = DB::transaction(function(){
+				
+					$item = new Item();
+					$item->SKU_code = Input::get('SKU_code');
+					$item->category_id = Input::get('category');
+					$item->item_name = Input::get('item_name');
+					$item->texture = Input::get('texture');
+					$item->description = Input::get('description');
+					$item->description_short = Input::get('description_short');
+					$item->how_to_use = Input::get('how_to_use');
+					$item->size = Input::get('size');
+					$item->activated = 1;
+					if(Input::hasFile('attachement')) {
+						$item->image = Input::file('attachement')[0];
+					}
+					$item->save();
+					if(Input::has('skin_1')){
+						$itemskin = new ItemSkin();
+						$itemskin->item_id = $item->id;
+						$itemskin->skin_id = 1;
+						$itemskin->save();
+					}
+					if(Input::has('skin_2')){
+						$itemskin = new ItemSkin();
+						$itemskin->item_id = $item->id;
+						$itemskin->skin_id = 2;
+						$itemskin->save();
+					}
+					if(Input::has('skin_3')){
+						$itemskin = new ItemSkin();
+						$itemskin->item_id = $item->id;
+						$itemskin->skin_id = 3;
+						$itemskin->save();
+					}
+					if(Input::has('skin_4')){
+						$itemskin = new ItemSkin();
+						$itemskin->item_id = $item->id;
+						$itemskin->skin_id = 4;
+						$itemskin->save();
+					}
+					
+					return $item;
+				});
+					Notification::success('The product "'.$item_new->item_name.'" has been created successfully!');
+					return Redirect::route('products.create');
+			}else{
+				Notification::error("The product ".$sku." already exists.");
+				return Redirect::route('products.create')->withInput();
+			}
+		
+		
 		
 		}
 		
@@ -93,45 +102,28 @@ class ProductController extends \BaseController {
 				$results = Excel::load($attached)->get();
 				//Debugbar::info($results);
 				foreach($results as $row){
-					$item = new Item();
-					$item->SKU_code = $row['sku_code'];
-					$item->category_id = $row["category"];
-					$item->item_name = $row["product_name_cn"];
-					$item->item_name_2 = $row["product_name_en"];
-					$item->texture = $row["texture"];
-					$item->description = $row["description"];
-					$item->description_short = $row["description_short"];
-					$item->how_to_use = $row["how_to_use"];
-					$item->size = $row["size"];
-					$item->activated = 1;
-					$item->save();
-					$n +=1;
-					/**
-					if($row['一般肌肤']==1){
-						$itemskin = new ItemSkin();
-						$itemskin->item_id = $item->id;
-						$itemskin->skin_id = 1;
-						$itemskin->save();
+					
+					$sku = $row['sku_code'];
+					$sku_exist = Item::where('SKU_code',$sku)->get();
+					if(count($sku_exist)==0){
+						$item = new Item();
+						$item->SKU_code = $sku;
+						$item->category_id = $row["category"];
+						$item->item_name = $row["product_name_cn"];
+						$item->item_name_2 = $row["product_name_en"];
+						$item->texture = $row["texture"];
+						$item->description = $row["description"];
+						$item->description_short = $row["description_short"];
+						$item->how_to_use = $row["how_to_use"];
+						$item->size = $row["size"];
+						$item->activated = 1;
+						$item->save();
+						$n +=1;
+					}else{
+						Notification::error("The product ".$sku." already exists.");
 					}
-					if($row['干性肌肤']==1){
-						$itemskin = new ItemSkin();
-						$itemskin->item_id = $item->id;
-						$itemskin->skin_id = 2;
-						$itemskin->save();
-					}
-					if($row['混合型肌肤']==1){
-						$itemskin = new ItemSkin();
-						$itemskin->item_id = $item->id;
-						$itemskin->skin_id = 3;
-						$itemskin->save();
-					}
-					if($row['油性肌肤']==1){
-						$itemskin = new ItemSkin();
-						$itemskin->item_id = $item->id;
-						$itemskin->skin_id = 4;
-						$itemskin->save();
-					} 
-					**/
+					
+					
 
 				}
 				
